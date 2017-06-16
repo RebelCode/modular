@@ -4,8 +4,610 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc42473fff5e5b12d2bfe384f3fc9cd7",
-    "packages": [],
+    "content-hash": "78096970285e9e095e28d9cfa169f0db",
+    "packages": [
+        {
+            "name": "dhii/collections-abstract-base",
+            "version": "dev-wip/refactor",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/collections-abstract-base.git",
+                "reference": "70afd75f6d35c083d06c42c8e47497f5fb7747cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/collections-abstract-base/zipball/70afd75f6d35c083d06c42c8e47497f5fb7747cb",
+                "reference": "70afd75f6d35c083d06c42c8e47497f5fb7747cb",
+                "shasum": ""
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Collection\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Collection base classes that do not depend on other non-collection packages, on which there is a dependency of other collection packages that depend on this package. This is done to avoid circular reference in the collection toolchain",
+            "time": "2016-10-17 07:50:40"
+        },
+        {
+            "name": "dhii/data-key-value-aware-interface",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/data-key-value-aware-interface.git",
+                "reference": "220232bc9040fab78a6c039f5a4a5f9542317bdc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/data-key-value-aware-interface/zipball/220232bc9040fab78a6c039f5a4a5f9542317bdc",
+                "reference": "220232bc9040fab78a6c039f5a4a5f9542317bdc",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "4.*",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Data\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Interfaces that aim to increase interoperability of value objects",
+            "time": "2017-01-21T17:35:30+00:00"
+        },
+        {
+            "name": "dhii/loop-machine",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/machine-loop-machine.git",
+                "reference": "508b8307e020aeeaf9a92a896ee0467c182e0e72"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/machine-loop-machine/zipball/508b8307e020aeeaf9a92a896ee0467c182e0e72",
+                "reference": "508b8307e020aeeaf9a92a896ee0467c182e0e72",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Machine\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "An event-less, simple iterative machine that notifies observers on each iteration.",
+            "support": {
+                "source": "https://github.com/Dhii/machine-loop-machine/tree/master",
+                "issues": "https://github.com/Dhii/machine-loop-machine/issues"
+            },
+            "time": "2017-06-06 12:57:10"
+        },
+        {
+            "name": "dhii/modular-interface",
+            "version": "dev-task/initial-interface",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/modular-interface.git",
+                "reference": "e3d396498239c0d1751c70ff2d751118bcb4195f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/modular-interface/zipball/e3d396498239c0d1751c70ff2d751118bcb4195f",
+                "reference": "e3d396498239c0d1751c70ff2d751118bcb4195f",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/data-key-value-aware-interface": "^0.1",
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Modular\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Interfaces for modular systems.",
+            "time": "2017-06-16 07:31:41"
+        },
+        {
+            "name": "dhii/validation-abstract",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/validation-abstract.git",
+                "reference": "287d390bcf1fffa623e48a93607b4c38d7abb04a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/validation-abstract/zipball/287d390bcf1fffa623e48a93607b4c38d7abb04a",
+                "reference": "287d390bcf1fffa623e48a93607b4c38d7abb04a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "dhii/validation-interface": "^0.1",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "suggest": {
+                "dhii/validation-interface": "Needed to be able to create exceptions that are expected to be thrown"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Validation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Common abstract functionality for validation.",
+            "time": "2017-06-13 11:19:27"
+        },
+        {
+            "name": "dhii/validation-base",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/validation-base.git",
+                "reference": "9b2b9a5e8a706ec234fac4b8c9de12780762d44e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/validation-base/zipball/9b2b9a5e8a706ec234fac4b8c9de12780762d44e",
+                "reference": "9b2b9a5e8a706ec234fac4b8c9de12780762d44e",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/validation-abstract": "dev-develop",
+                "dhii/validation-interface": "^0.1",
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Validation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Base concrete functionality for validation.",
+            "time": "2017-06-13 11:39:56"
+        },
+        {
+            "name": "dhii/validation-interface",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/validation-interface.git",
+                "reference": "492823aa1bb6b0f2391b1c50b5161a8b2619288f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/validation-interface/zipball/492823aa1bb6b0f2391b1c50b5161a8b2619288f",
+                "reference": "492823aa1bb6b0f2391b1c50b5161a8b2619288f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Validation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "A base interface for validators",
+            "time": "2017-03-10T13:38:44+00:00"
+        },
+        {
+            "name": "rebelcode/module-config-interface",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RebelCodecom/module-config-interface.git",
+                "reference": "b4d9f2addabdad1a4dfa4697f1ae95afadf262d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RebelCodecom/module-config-interface/zipball/b4d9f2addabdad1a4dfa4697f1ae95afadf262d3",
+                "reference": "b4d9f2addabdad1a4dfa4697f1ae95afadf262d3",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RebelCode\\Modular\\Config\\": "src"
+                }
+            },
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "RebelCode",
+                    "email": "dev@rebelcode.com"
+                }
+            ],
+            "description": "Interfaces for module configuration",
+            "support": {
+                "source": "https://github.com/RebelCodecom/module-config-interface/tree/develop",
+                "issues": "https://github.com/RebelCodecom/module-config-interface/issues"
+            },
+            "time": "2017-06-15 10:03:22"
+        },
+        {
+            "name": "rebelcode/module-config-validator",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RebelCodecom/module-config-validator.git",
+                "reference": "4adad5c177a47c46f2bcc7351dfc300933171b12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RebelCodecom/module-config-validator/zipball/4adad5c177a47c46f2bcc7351dfc300933171b12",
+                "reference": "4adad5c177a47c46f2bcc7351dfc300933171b12",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/validation-base": "dev-develop",
+                "php": "^5.3 | ^7.0",
+                "rebelcode/module-config-interface": "dev-develop"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RebelCode\\Modular\\Config\\": "src"
+                }
+            },
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "RebelCode",
+                    "email": "dev@rebelcode.com"
+                }
+            ],
+            "description": "Validation logic for RebelCode modules",
+            "support": {
+                "source": "https://github.com/RebelCodecom/module-config-validator/tree/develop",
+                "issues": "https://github.com/RebelCodecom/module-config-validator/issues"
+            },
+            "time": "2017-06-16 12:40:28"
+        },
+        {
+            "name": "rebelcode/module-interface",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RebelCodecom/module-interface.git",
+                "reference": "ce8432ad90d4be92b4a195e588fb863bc2046c20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RebelCodecom/module-interface/zipball/ce8432ad90d4be92b4a195e588fb863bc2046c20",
+                "reference": "ce8432ad90d4be92b4a195e588fb863bc2046c20",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/modular-interface": "dev-task/initial-interface",
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RebelCode\\Modular\\Module\\": "src"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ],
+                "csfix": [
+                    "php-cs-fix fix -vvv"
+                ]
+            },
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "RebelCode",
+                    "email": "dev@rebelcode.com"
+                }
+            ],
+            "description": "Interfaces for modules.",
+            "support": {
+                "source": "https://github.com/RebelCodecom/module-interface/tree/master",
+                "issues": "https://github.com/RebelCodecom/module-interface/issues"
+            },
+            "time": "2017-06-13 15:18:18"
+        },
+        {
+            "name": "rebelcode/module-iterator-abstract",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RebelCodecom/module-iterator-abstract.git",
+                "reference": "524e28ab45957d18b9dccb0c19f7c7eb193c957e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RebelCodecom/module-iterator-abstract/zipball/524e28ab45957d18b9dccb0c19f7c7eb193c957e",
+                "reference": "524e28ab45957d18b9dccb0c19f7c7eb193c957e",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/collections-abstract-base": "dev-wip/refactor",
+                "dhii/modular-interface": "dev-task/initial-interface",
+                "php": "^5.3 | ^7.0",
+                "rebelcode/module-interface": "dev-develop"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RebelCode\\Modular\\Iterator\\": "src"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ],
+                "csfix": [
+                    "php-cs-fixer fix -vvv"
+                ]
+            },
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "RebelCode",
+                    "email": "dev@rebelcode.com"
+                }
+            ],
+            "description": "Basic and abstract functionality for module iterators.",
+            "support": {
+                "source": "https://github.com/RebelCodecom/module-iterator-abstract/tree/develop",
+                "issues": "https://github.com/RebelCodecom/module-iterator-abstract/issues"
+            },
+            "time": "2017-06-16 12:22:26"
+        },
+        {
+            "name": "rebelcode/module-loader",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RebelCodecom/module-loader.git",
+                "reference": "fa19905b7a4fac52195ca89b3ef899175af363d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RebelCodecom/module-loader/zipball/fa19905b7a4fac52195ca89b3ef899175af363d9",
+                "reference": "fa19905b7a4fac52195ca89b3ef899175af363d9",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/loop-machine": "dev-master",
+                "dhii/modular-interface": "dev-task/initial-interface",
+                "php": "^5.3 | ^7.0",
+                "rebelcode/module-interface": "dev-develop",
+                "rebelcode/module-iterator-abstract": "dev-develop"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RebelCode\\Modular\\": "src"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ],
+                "csfix": [
+                    "php-cs-fixer fix -vvv"
+                ]
+            },
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "RebelCode",
+                    "email": "dev@rebelcode.com"
+                }
+            ],
+            "description": "A module loader",
+            "support": {
+                "source": "https://github.com/RebelCodecom/module-loader/tree/develop",
+                "issues": "https://github.com/RebelCodecom/module-loader/issues"
+            },
+            "time": "2017-06-16 12:31:42"
+        },
+        {
+            "name": "rebelcode/module-locator",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RebelCodecom/module-locator.git",
+                "reference": "08a3c399eb792149f40e721165b2fa697611bbb4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RebelCodecom/module-locator/zipball/08a3c399eb792149f40e721165b2fa697611bbb4",
+                "reference": "08a3c399eb792149f40e721165b2fa697611bbb4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RebelCode\\Modular\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "RebelCode",
+                    "email": "dev@rebelcode.com"
+                }
+            ],
+            "description": "A locator of module configs",
+            "time": "2017-06-07 12:00:57"
+        }
+    ],
     "packages-dev": [
         {
             "name": "codeclimate/php-test-reporter",
@@ -103,7 +705,7 @@
                 }
             ],
             "description": "A default PHP CS Fixer config implementation",
-            "time": "2016-09-03T14:45:03+00:00"
+            "time": "2016-09-03 14:45:03"
         },
         {
             "name": "doctrine/instantiator",
@@ -157,7 +759,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2017-02-16T16:15:51+00:00"
+            "time": "2017-02-16 16:15:51"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -362,7 +964,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2017-04-30T11:58:12+00:00"
+            "time": "2017-04-30 11:58:12"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -517,7 +1119,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2017-05-31T16:22:32+00:00"
+            "time": "2017-05-31 16:22:32"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -579,7 +1181,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-10-06T15:47:00+00:00"
+            "time": "2015-10-06 15:47:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -626,7 +1228,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2016-10-03T07:40:28+00:00"
+            "time": "2016-10-03 07:40:28"
         },
         {
             "name": "phpunit/php-text-template",
@@ -716,7 +1318,7 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2017-03-07T15:42:04+00:00"
+            "time": "2017-03-07 15:42:04"
         },
         {
             "name": "phpunit/php-token-stream",
@@ -765,7 +1367,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2017-03-07T08:21:50+00:00"
+            "time": "2017-03-07 08:21:50"
         },
         {
             "name": "phpunit/phpunit",
@@ -837,7 +1439,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-03-04T06:40:26+00:00"
+            "time": "2017-03-04 06:40:26"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -893,7 +1495,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2015-10-02T06:51:40+00:00"
+            "time": "2015-10-02 06:51:40"
         },
         {
             "name": "psr/log",
@@ -940,7 +1542,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "ptrofimov/xpmock",
@@ -1031,7 +1633,7 @@
                 "github",
                 "test"
             ],
-            "time": "2017-02-25T12:10:28+00:00"
+            "time": "2017-02-25 12:10:28"
         },
         {
             "name": "sebastian/comparator",
@@ -1095,7 +1697,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2017-03-07T10:34:43+00:00"
+            "time": "2017-03-07 10:34:43"
         },
         {
             "name": "sebastian/diff",
@@ -1147,7 +1749,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2017-05-22T07:24:03+00:00"
+            "time": "2017-05-22 07:24:03"
         },
         {
             "name": "sebastian/environment",
@@ -1197,7 +1799,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2017-02-28T08:18:59+00:00"
+            "time": "2017-02-28 08:18:59"
         },
         {
             "name": "sebastian/exporter",
@@ -1264,7 +1866,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2017-02-26T13:09:30+00:00"
+            "time": "2017-02-26 13:09:30"
         },
         {
             "name": "sebastian/global-state",
@@ -1315,7 +1917,7 @@
             "keywords": [
                 "global state"
             ],
-            "time": "2017-02-23T14:11:06+00:00"
+            "time": "2017-02-23 14:11:06"
         },
         {
             "name": "sebastian/recursion-context",
@@ -1368,7 +1970,7 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "time": "2016-10-03T07:41:43+00:00"
+            "time": "2016-10-03 07:41:43"
         },
         {
             "name": "sebastian/version",
@@ -1463,7 +2065,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-02T18:32:02+00:00"
+            "time": "2017-06-02 18:32:02"
         },
         {
             "name": "symfony/console",
@@ -1533,7 +2135,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-10T12:08:03+00:00"
+            "time": "2017-06-10 12:08:03"
         },
         {
             "name": "symfony/debug",
@@ -1589,7 +2191,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-07T14:09:28+00:00"
+            "time": "2017-06-07 14:09:28"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1652,7 +2254,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-12T16:03:21+00:00"
+            "time": "2017-06-12 16:03:21"
         },
         {
             "name": "symfony/filesystem",
@@ -1701,7 +2303,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-28T14:09:32+00:00"
+            "time": "2017-05-28 14:09:32"
         },
         {
             "name": "symfony/finder",
@@ -1750,7 +2352,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-01T21:02:15+00:00"
+            "time": "2017-06-01 21:02:15"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1809,7 +2411,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-14T15:44:48+00:00"
+            "time": "2017-06-14 15:44:48"
         },
         {
             "name": "symfony/process",
@@ -1858,7 +2460,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-09T13:37:35+00:00"
+            "time": "2017-06-09 13:37:35"
         },
         {
             "name": "symfony/stopwatch",
@@ -1907,7 +2509,7 @@
             ],
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-17T16:21:40+00:00"
+            "time": "2017-05-17 16:21:40"
         },
         {
             "name": "symfony/yaml",
@@ -2012,12 +2614,18 @@
                 "check",
                 "validate"
             ],
-            "time": "2016-11-23T20:04:41+00:00"
+            "time": "2016-11-23 20:04:41"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "rebelcode/module-interface": 20,
+        "rebelcode/module-loader": 20,
+        "rebelcode/module-iterator-abstract": 20,
+        "rebelcode/module-locator": 20,
+        "rebelcode/module-config-interface": 20,
+        "rebelcode/module-config-validator": 20,
         "dhii/php-cs-fixer-config": 20
     },
     "prefer-stable": false,
