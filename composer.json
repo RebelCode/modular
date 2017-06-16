@@ -30,6 +30,10 @@
             "RebelCode\\Modular\\": "src"
         }
     },
+    "scripts": {
+        "test": "phpunit",
+        "csfix": "php-cs-fixer fix -vvv"
+    },
     "repositories": [
         {
             "type": "vcs",
