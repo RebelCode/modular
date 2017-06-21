@@ -4,8 +4,61 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "78096970285e9e095e28d9cfa169f0db",
+    "content-hash": "eaa3818aa4028e6e2d4466644fecde6a",
     "packages": [
+        {
+            "name": "dhii/callback-aware-trait",
+            "version": "dev-task/initial-traits",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/callback-aware-trait.git",
+                "reference": "f039433083a554d5faa480da32c8cff7cb916313"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/callback-aware-trait/zipball/f039433083a554d5faa480da32c8cff7cb916313",
+                "reference": "f039433083a554d5faa480da32c8cff7cb916313",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Util\\": "src"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ],
+                "csfix": [
+                    "php-cs-fixer fix -vvv"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Traits for objects that are aware of callback functions.",
+            "support": {
+                "source": "https://github.com/Dhii/callback-aware-trait/tree/task/initial-traits",
+                "issues": "https://github.com/Dhii/callback-aware-trait/issues"
+            },
+            "time": "2017-06-21 11:37:01"
+        },
         {
             "name": "dhii/collections-abstract-base",
             "version": "dev-wip/refactor",
@@ -44,6 +97,59 @@
             ],
             "description": "Collection base classes that do not depend on other non-collection packages, on which there is a dependency of other collection packages that depend on this package. This is done to avoid circular reference in the collection toolchain",
             "time": "2016-10-17 07:50:40"
+        },
+        {
+            "name": "dhii/config-aware-trait",
+            "version": "dev-task/initial-traits",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/config-aware-trait.git",
+                "reference": "9992f0deeeb0437069557672b715893883874fd2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/config-aware-trait/zipball/9992f0deeeb0437069557672b715893883874fd2",
+                "reference": "9992f0deeeb0437069557672b715893883874fd2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Util\\": "src"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ],
+                "csfix": [
+                    "php-cs-fixer fix -vvv"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Traits for objects that are aware of some configuration.",
+            "support": {
+                "source": "https://github.com/Dhii/config-aware-trait/tree/task/initial-traits",
+                "issues": "https://github.com/Dhii/config-aware-trait/issues"
+            },
+            "time": "2017-06-21 11:45:00"
         },
         {
             "name": "dhii/data-key-value-aware-interface",
@@ -86,6 +192,59 @@
             ],
             "description": "Interfaces that aim to increase interoperability of value objects",
             "time": "2017-01-21T17:35:30+00:00"
+        },
+        {
+            "name": "dhii/data-key-value-aware-trait",
+            "version": "dev-task/initial-traits",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/data-key-value-aware-trait.git",
+                "reference": "15189f54ba2807afdcfda6d3b09d79fca047c24d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/data-key-value-aware-trait/zipball/15189f54ba2807afdcfda6d3b09d79fca047c24d",
+                "reference": "15189f54ba2807afdcfda6d3b09d79fca047c24d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Data\\": "src"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ],
+                "csfix": [
+                    "php-cs-fixer fix -vvv"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Traits for objects that are aware of a key, a value, or both.",
+            "support": {
+                "source": "https://github.com/Dhii/data-key-value-aware-trait/tree/task/initial-traits",
+                "issues": "https://github.com/Dhii/data-key-value-aware-trait/issues"
+            },
+            "time": "2017-06-21 11:16:16"
         },
         {
             "name": "dhii/loop-machine",
@@ -138,16 +297,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/modular-interface.git",
-                "reference": "e3d396498239c0d1751c70ff2d751118bcb4195f"
+                "reference": "9a71948db5b09f223591395cf3afb90ec9304efe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/modular-interface/zipball/e3d396498239c0d1751c70ff2d751118bcb4195f",
-                "reference": "e3d396498239c0d1751c70ff2d751118bcb4195f",
+                "url": "https://api.github.com/repos/Dhii/modular-interface/zipball/9a71948db5b09f223591395cf3afb90ec9304efe",
+                "reference": "9a71948db5b09f223591395cf3afb90ec9304efe",
                 "shasum": ""
             },
             "require": {
-                "dhii/data-key-value-aware-interface": "^0.1",
+                "dhii/module-interface": "dev-develop",
                 "php": "^5.3 | ^7.0"
             },
             "require-dev": {
@@ -173,7 +332,50 @@
                 }
             ],
             "description": "Interfaces for modular systems.",
-            "time": "2017-06-16 07:31:41"
+            "time": "2017-06-21 08:50:53"
+        },
+        {
+            "name": "dhii/module-interface",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/module-interface.git",
+                "reference": "2103f11abdaa2f460a1ee4e702e9a30772085a02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/module-interface/zipball/2103f11abdaa2f460a1ee4e702e9a30772085a02",
+                "reference": "2103f11abdaa2f460a1ee4e702e9a30772085a02",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/data-key-value-aware-interface": "^0.1",
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Modular\\Module\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Interfaces for modules",
+            "time": "2017-06-19 11:11:58"
         },
         {
             "name": "dhii/validation-abstract",
@@ -404,16 +606,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCodecom/module-interface.git",
-                "reference": "ce8432ad90d4be92b4a195e588fb863bc2046c20"
+                "reference": "b95d54593aa19a85f8f8c149f527bcf0d7f705af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCodecom/module-interface/zipball/ce8432ad90d4be92b4a195e588fb863bc2046c20",
-                "reference": "ce8432ad90d4be92b4a195e588fb863bc2046c20",
+                "url": "https://api.github.com/repos/RebelCodecom/module-interface/zipball/b95d54593aa19a85f8f8c149f527bcf0d7f705af",
+                "reference": "b95d54593aa19a85f8f8c149f527bcf0d7f705af",
                 "shasum": ""
             },
             "require": {
-                "dhii/modular-interface": "dev-task/initial-interface",
+                "dhii/module-interface": "dev-develop",
                 "php": "^5.3 | ^7.0"
             },
             "require-dev": {
@@ -447,10 +649,10 @@
             ],
             "description": "Interfaces for modules.",
             "support": {
-                "source": "https://github.com/RebelCodecom/module-interface/tree/master",
+                "source": "https://github.com/RebelCodecom/module-interface/tree/develop",
                 "issues": "https://github.com/RebelCodecom/module-interface/issues"
             },
-            "time": "2017-06-13 15:18:18"
+            "time": "2017-06-19 11:31:44"
         },
         {
             "name": "rebelcode/module-iterator-abstract",
@@ -458,12 +660,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCodecom/module-iterator-abstract.git",
-                "reference": "524e28ab45957d18b9dccb0c19f7c7eb193c957e"
+                "reference": "4bc2fd81081d0f3263d4d2b14287b55f24622254"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCodecom/module-iterator-abstract/zipball/524e28ab45957d18b9dccb0c19f7c7eb193c957e",
-                "reference": "524e28ab45957d18b9dccb0c19f7c7eb193c957e",
+                "url": "https://api.github.com/repos/RebelCodecom/module-iterator-abstract/zipball/4bc2fd81081d0f3263d4d2b14287b55f24622254",
+                "reference": "4bc2fd81081d0f3263d4d2b14287b55f24622254",
                 "shasum": ""
             },
             "require": {
@@ -506,7 +708,7 @@
                 "source": "https://github.com/RebelCodecom/module-iterator-abstract/tree/develop",
                 "issues": "https://github.com/RebelCodecom/module-iterator-abstract/issues"
             },
-            "time": "2017-06-16 12:22:26"
+            "time": "2017-06-21 10:04:19"
         },
         {
             "name": "rebelcode/module-loader",
@@ -514,17 +716,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCodecom/module-loader.git",
-                "reference": "fa19905b7a4fac52195ca89b3ef899175af363d9"
+                "reference": "665aee025dc444368f329ae903d170792e0dd930"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCodecom/module-loader/zipball/fa19905b7a4fac52195ca89b3ef899175af363d9",
-                "reference": "fa19905b7a4fac52195ca89b3ef899175af363d9",
+                "url": "https://api.github.com/repos/RebelCodecom/module-loader/zipball/665aee025dc444368f329ae903d170792e0dd930",
+                "reference": "665aee025dc444368f329ae903d170792e0dd930",
                 "shasum": ""
             },
             "require": {
                 "dhii/loop-machine": "dev-master",
-                "dhii/modular-interface": "dev-task/initial-interface",
                 "php": "^5.3 | ^7.0",
                 "rebelcode/module-interface": "dev-develop",
                 "rebelcode/module-iterator-abstract": "dev-develop"
@@ -563,7 +764,7 @@
                 "source": "https://github.com/RebelCodecom/module-loader/tree/develop",
                 "issues": "https://github.com/RebelCodecom/module-loader/issues"
             },
-            "time": "2017-06-16 12:31:42"
+            "time": "2017-06-21 08:57:16"
         },
         {
             "name": "rebelcode/module-locator",
@@ -2626,6 +2827,9 @@
         "rebelcode/module-locator": 20,
         "rebelcode/module-config-interface": 20,
         "rebelcode/module-config-validator": 20,
+        "dhii/data-key-value-aware-trait": 20,
+        "dhii/callback-aware-trait": 20,
+        "dhii/config-aware-trait": 20,
         "dhii/php-cs-fixer-config": 20
     },
     "prefer-stable": false,
