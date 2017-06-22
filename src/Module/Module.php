@@ -28,7 +28,7 @@ class Module extends AbstractCallbackModule implements ModuleInterface
         $this->_setKey($key)
             ->_setDependencies($dependencies)
             ->_setConfig($config)
-            ->_maybeSetCallback($onLoad);
+            ->_setCallback($this->_normalizeCallback($onLoad));
     }
 
     /**

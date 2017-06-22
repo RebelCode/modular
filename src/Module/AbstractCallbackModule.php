@@ -43,13 +43,22 @@ abstract class AbstractCallbackModule extends AbstractModule
         return array();
     }
 
-    protected function _maybeSetCallback($callback)
+    /**
+     * Normalizes a callback if it is invalid.
+     *
+     * @since [*next-version*]
+     *
+     * @param callable $callback
+     *
+     * @return $this
+     */
+    protected function _normalizeCallback($callback)
     {
-        if (!is_null($callback)) {
-            $this->_setCallback($callback);
+        if (is_null($callback)) {
+            return function() {};
         }
 
-        return $this;
+        return $callback;
     }
 
     /**
