@@ -18,9 +18,11 @@
         "rebelcode/module-locator": "dev-develop",
         "rebelcode/module-config-interface": "dev-develop",
         "rebelcode/module-config-validator": "dev-develop",
+        "rebelcode/module-factory-abstract": "dev-develop",
         "dhii/data-key-value-aware-trait": "dev-task/initial-traits",
         "dhii/callback-aware-trait": "dev-task/initial-traits",
-        "dhii/config-aware-trait": "dev-task/initial-traits"
+        "dhii/config-aware-trait": "dev-task/initial-traits",
+        "dhii/factory-interface": "dev-develop"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
@@ -73,6 +75,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/Dhii/config-aware-trait"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/RebelCodecom/module-factory-abstract"
         }
     ]
 }
