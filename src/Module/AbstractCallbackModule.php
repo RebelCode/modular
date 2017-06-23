@@ -2,7 +2,7 @@
 
 namespace RebelCode\Modular\Module;
 
-use Dhii\Util\CallbackAwareTrait;
+use RebelCode\Modular\Util\CallbackAwareTrait;
 
 /**
  * Basic functionality for a module that.
