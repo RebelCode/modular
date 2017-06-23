@@ -3,7 +3,7 @@
 namespace RebelCode\Modular\Module;
 
 use Dhii\Data\KeyAwareTrait;
-use Dhii\Util\ConfigAwareTrait;
+use RebelCode\Modular\Config\ConfigAwareTrait;
 
 /**
  * Common & basic functionality for modules.
