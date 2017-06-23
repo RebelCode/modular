@@ -20,7 +20,8 @@
         "rebelcode/module-config-validator": "dev-develop",
         "rebelcode/module-factory-abstract": "dev-develop",
         "dhii/data-key-value-aware-trait": "dev-task/initial-traits",
-        "dhii/factory-interface": "dev-develop"
+        "dhii/factory-interface": "dev-develop",
+        "dhii/file-finder-abstract": "dev-task/create-finder"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
@@ -81,6 +82,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/RebelCodecom/module-factory-abstract"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Dhii/file-finder-abstract"
         }
     ]
 }

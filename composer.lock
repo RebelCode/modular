@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "739eb72cda89c4d352be94aa936b566a",
+    "content-hash": "e92f09d1079fb832292de4fa108217b1",
     "packages": [
         {
             "name": "dhii/collections-abstract-base",
@@ -181,6 +181,53 @@
                 }
             ],
             "time": "2017-06-19 14:11:26"
+        },
+        {
+            "name": "dhii/file-finder-abstract",
+            "version": "dev-task/create-finder",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/file-finder-abstract.git",
+                "reference": "7d56c03789b91a67a1a98f05bb770b05f109e0d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/file-finder-abstract/zipball/7d56c03789b91a67a1a98f05bb770b05f109e0d1",
+                "reference": "7d56c03789b91a67a1a98f05bb770b05f109e0d1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "aza/phpgen": "^1.0",
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "mikey179/vfsstream": "^1.6.4",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\File\\Finder\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Common functionality for finding files",
+            "support": {
+                "source": "https://github.com/Dhii/file-finder-abstract/tree/task/create-finder",
+                "issues": "https://github.com/Dhii/file-finder-abstract/issues"
+            },
+            "time": "2017-06-08 14:19:40"
         },
         {
             "name": "dhii/i18n-helper-base",
@@ -1674,12 +1721,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "46023de9a91eec7dfb06cc56cb4e260017298517"
+                "reference": "18e5f52e8412d23e739f7d8744e177039860e800"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/46023de9a91eec7dfb06cc56cb4e260017298517",
-                "reference": "46023de9a91eec7dfb06cc56cb4e260017298517",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/18e5f52e8412d23e739f7d8744e177039860e800",
+                "reference": "18e5f52e8412d23e739f7d8744e177039860e800",
                 "shasum": ""
             },
             "require": {
@@ -1738,7 +1785,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-06-21 08:07:12"
+            "time": "2017-06-23T12:44:27+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2928,6 +2975,7 @@
         "rebelcode/module-factory-abstract": 20,
         "dhii/data-key-value-aware-trait": 20,
         "dhii/factory-interface": 20,
+        "dhii/file-finder-abstract": 20,
         "dhii/php-cs-fixer-config": 20
     },
     "prefer-stable": false,
