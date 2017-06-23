@@ -4,61 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "11f22ce83792f43a8ac0263155fb4b3d",
+    "content-hash": "739eb72cda89c4d352be94aa936b566a",
     "packages": [
-        {
-            "name": "dhii/callback-aware-trait",
-            "version": "dev-task/initial-traits",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Dhii/callback-aware-trait.git",
-                "reference": "f039433083a554d5faa480da32c8cff7cb916313"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/callback-aware-trait/zipball/f039433083a554d5faa480da32c8cff7cb916313",
-                "reference": "f039433083a554d5faa480da32c8cff7cb916313",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.4 | ^7.0"
-            },
-            "require-dev": {
-                "codeclimate/php-test-reporter": "<=0.3.2",
-                "dhii/php-cs-fixer-config": "dev-php-5.3",
-                "phpunit/phpunit": "^4.8",
-                "ptrofimov/xpmock": "^1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Dhii\\Util\\": "src"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ],
-                "csfix": [
-                    "php-cs-fixer fix -vvv"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dhii Team",
-                    "email": "development@dhii.co"
-                }
-            ],
-            "description": "Traits for objects that are aware of callback functions.",
-            "support": {
-                "source": "https://github.com/Dhii/callback-aware-trait/tree/task/initial-traits",
-                "issues": "https://github.com/Dhii/callback-aware-trait/issues"
-            },
-            "time": "2017-06-21 11:37:01"
-        },
         {
             "name": "dhii/collections-abstract-base",
             "version": "dev-wip/refactor",
@@ -97,59 +44,6 @@
             ],
             "description": "Collection base classes that do not depend on other non-collection packages, on which there is a dependency of other collection packages that depend on this package. This is done to avoid circular reference in the collection toolchain",
             "time": "2016-10-17 07:50:40"
-        },
-        {
-            "name": "dhii/config-aware-trait",
-            "version": "dev-task/initial-traits",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Dhii/config-aware-trait.git",
-                "reference": "9992f0deeeb0437069557672b715893883874fd2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/config-aware-trait/zipball/9992f0deeeb0437069557672b715893883874fd2",
-                "reference": "9992f0deeeb0437069557672b715893883874fd2",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.4 | ^7.0"
-            },
-            "require-dev": {
-                "codeclimate/php-test-reporter": "<=0.3.2",
-                "dhii/php-cs-fixer-config": "dev-php-5.3",
-                "phpunit/phpunit": "^4.8",
-                "ptrofimov/xpmock": "^1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Dhii\\Util\\": "src"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ],
-                "csfix": [
-                    "php-cs-fixer fix -vvv"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dhii Team",
-                    "email": "development@dhii.co"
-                }
-            ],
-            "description": "Traits for objects that are aware of some configuration.",
-            "support": {
-                "source": "https://github.com/Dhii/config-aware-trait/tree/task/initial-traits",
-                "issues": "https://github.com/Dhii/config-aware-trait/issues"
-            },
-            "time": "2017-06-21 11:45:00"
         },
         {
             "name": "dhii/data-key-value-aware-interface",
@@ -3033,8 +2927,6 @@
         "rebelcode/module-config-validator": 20,
         "rebelcode/module-factory-abstract": 20,
         "dhii/data-key-value-aware-trait": 20,
-        "dhii/callback-aware-trait": 20,
-        "dhii/config-aware-trait": 20,
         "dhii/factory-interface": 20,
         "dhii/php-cs-fixer-config": 20
     },

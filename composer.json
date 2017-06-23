@@ -20,8 +20,6 @@
         "rebelcode/module-config-validator": "dev-develop",
         "rebelcode/module-factory-abstract": "dev-develop",
         "dhii/data-key-value-aware-trait": "dev-task/initial-traits",
-        "dhii/callback-aware-trait": "dev-task/initial-traits",
-        "dhii/config-aware-trait": "dev-task/initial-traits",
         "dhii/factory-interface": "dev-develop"
     },
     "require-dev": {
