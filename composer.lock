@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "00fa382abb90e283d42beb9761918e34",
+    "content-hash": "11f22ce83792f43a8ac0263155fb4b3d",
     "packages": [
         {
             "name": "dhii/callback-aware-trait",
@@ -290,16 +290,16 @@
         },
         {
             "name": "dhii/i18n-helper-base",
-            "version": "dev-task/initial-classes",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/i18n-helper-base.git",
-                "reference": "40ca48986979d4aacdf73a46ab23d0c3cbdc0576"
+                "reference": "10c8b5db9fc8569df3d44c0a0b9329a0a1b7df7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/i18n-helper-base/zipball/40ca48986979d4aacdf73a46ab23d0c3cbdc0576",
-                "reference": "40ca48986979d4aacdf73a46ab23d0c3cbdc0576",
+                "url": "https://api.github.com/repos/Dhii/i18n-helper-base/zipball/10c8b5db9fc8569df3d44c0a0b9329a0a1b7df7c",
+                "reference": "10c8b5db9fc8569df3d44c0a0b9329a0a1b7df7c",
                 "shasum": ""
             },
             "require": {
@@ -332,7 +332,7 @@
                 }
             ],
             "description": "A base for internationalization consumers",
-            "time": "2017-06-22 07:46:21"
+            "time": "2017-06-16 14:40:54"
         },
         {
             "name": "dhii/loop-machine",
@@ -464,6 +464,51 @@
             ],
             "description": "Interfaces for modules",
             "time": "2017-06-19 11:11:58"
+        },
+        {
+            "name": "dhii/module-locator-abstract",
+            "version": "dev-task/implement-locator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/module-locator-abstract.git",
+                "reference": "1f7212f6c5f75587816dd8d0da52762307177256"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/module-locator-abstract/zipball/1f7212f6c5f75587816dd8d0da52762307177256",
+                "reference": "1f7212f6c5f75587816dd8d0da52762307177256",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/modular-interface": "dev-task/initial-interface",
+                "php": "^5.4 | ^7.0"
+            },
+            "require-dev": {
+                "aza/phpgen": "^1.0",
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-master",
+                "mikey179/vfsstream": "^1.6.4",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Modular\\Locator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Common functionality for module locators",
+            "time": "2017-06-16 07:39:18"
         },
         {
             "name": "dhii/validation-abstract",
@@ -694,16 +739,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCodecom/module-factory-abstract.git",
-                "reference": "c2434c8ce37902f134dbff415a9daa81b5700a48"
+                "reference": "6049043bb15f16169b808c7121dfe8086a8ede8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCodecom/module-factory-abstract/zipball/c2434c8ce37902f134dbff415a9daa81b5700a48",
-                "reference": "c2434c8ce37902f134dbff415a9daa81b5700a48",
+                "url": "https://api.github.com/repos/RebelCodecom/module-factory-abstract/zipball/6049043bb15f16169b808c7121dfe8086a8ede8d",
+                "reference": "6049043bb15f16169b808c7121dfe8086a8ede8d",
                 "shasum": ""
             },
             "require": {
-                "dhii/i18n-helper-base": "dev-task/initial-classes",
+                "dhii/i18n-helper-base": "dev-develop",
                 "dhii/modular-interface": "dev-task/initial-interface",
                 "php": "^5.4 | ^7.0",
                 "rebelcode/module-interface": "dev-develop"
@@ -747,7 +792,7 @@
                 "source": "https://github.com/RebelCodecom/module-factory-abstract/tree/develop",
                 "issues": "https://github.com/RebelCodecom/module-factory-abstract/issues"
             },
-            "time": "2017-06-22 15:37:43"
+            "time": "2017-06-23 12:26:35"
         },
         {
             "name": "rebelcode/module-interface",
@@ -921,32 +966,38 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCodecom/module-locator.git",
-                "reference": "08a3c399eb792149f40e721165b2fa697611bbb4"
+                "reference": "811a09baf829f7fd0031b697173e64d755aa0762"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCodecom/module-locator/zipball/08a3c399eb792149f40e721165b2fa697611bbb4",
-                "reference": "08a3c399eb792149f40e721165b2fa697611bbb4",
+                "url": "https://api.github.com/repos/RebelCodecom/module-locator/zipball/811a09baf829f7fd0031b697173e64d755aa0762",
+                "reference": "811a09baf829f7fd0031b697173e64d755aa0762",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3 | ^7.0"
+                "dhii/i18n-helper-base": "dev-develop",
+                "dhii/modular-interface": "dev-task/initial-interface",
+                "dhii/module-locator-abstract": "dev-task/implement-locator",
+                "dhii/validation-interface": "^0.1",
+                "php": "^5.4 | ^7.0",
+                "rebelcode/module-config-interface": "dev-develop"
             },
             "require-dev": {
+                "aza/phpgen": "^1.0",
                 "codeclimate/php-test-reporter": "<=0.3.2",
                 "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "mikey179/vfsstream": "^1.6.4",
                 "phpunit/phpunit": "^4.8",
                 "ptrofimov/xpmock": "^1.1"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "RebelCode\\Modular\\": "src"
+                    "RebelCode\\Modular\\Locator\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "GPL-3.0"
             ],
             "authors": [
                 {
@@ -955,7 +1006,11 @@
                 }
             ],
             "description": "A locator of module configs",
-            "time": "2017-06-07 12:00:57"
+            "support": {
+                "source": "https://github.com/RebelCodecom/module-locator/tree/develop",
+                "issues": "https://github.com/RebelCodecom/module-locator/issues"
+            },
+            "time": "2017-06-23 12:20:59"
         }
     ],
     "packages-dev": [

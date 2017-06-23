@@ -66,6 +66,10 @@
         },
         {
             "type": "vcs",
+            "url": "https://github.com/RebelCodecom/module-locator"
+        },
+        {
+            "type": "vcs",
             "url": "https://github.com/Dhii/data-key-value-aware-trait"
         },
         {
