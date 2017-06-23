@@ -36,10 +36,9 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
             return array();
         }
 
-        $_this     = $this;
         $keys      = $module->getDependencies();
-        $instances = array_map(function ($key) use ($_this) {
-            return $_this->_getModuleByKey($key);
+        $instances = array_map(function ($key) {
+            return $this->_getModuleByKey($key);
         }, $keys);
 
         return array_combine($keys, $instances);
