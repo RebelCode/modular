@@ -59,7 +59,6 @@ class ModuleTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($key,    $instance->getKey());
         $this->assertEquals(array(), $instance->getDependencies());
-        $this->assertEquals(array(), $instance->getConfig());
     }
 
     /**
@@ -77,7 +76,6 @@ class ModuleTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($key,    $instance->getKey());
         $this->assertEquals($deps,   $instance->getDependencies());
-        $this->assertEquals(array(), $instance->getConfig());
     }
 
     /**
@@ -96,7 +94,6 @@ class ModuleTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($key,    $instance->getKey());
         $this->assertEquals($deps,   $instance->getDependencies());
-        $this->assertEquals($config, $instance->getConfig());
     }
 
     /**
@@ -116,7 +113,6 @@ class ModuleTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($key,    $instance->getKey());
         $this->assertEquals($deps,   $instance->getDependencies());
-        $this->assertEquals($config, $instance->getConfig());
     }
 
     /**
