@@ -56,16 +56,6 @@ class Module extends AbstractCallbackModule implements ModuleInterface
      *
      * @since [*next-version*]
      */
-    public function getConfig()
-    {
-        return $this->_getConfig();
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @since [*next-version*]
-     */
     public function load()
     {
         $this->_load();
