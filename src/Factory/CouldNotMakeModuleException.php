@@ -40,7 +40,7 @@ class CouldNotMakeModuleException extends ModuleFactoryException implements Coul
      * @param array  $config The configuration of the module that could not be created.
      */
     public function __construct(
-        $message = "",
+        $message = '',
         $code = 0,
         Exception $previous = null,
         ModuleFactoryInterface $factory = null,

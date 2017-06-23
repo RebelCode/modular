@@ -5,7 +5,7 @@ namespace RebelCode\Modular\Module;
 use Dhii\Util\CallbackAwareTrait;
 
 /**
- * Basic functionality for a module that
+ * Basic functionality for a module that.
  *
  * @since [*next-version*]
  */
@@ -25,7 +25,7 @@ abstract class AbstractCallbackModule extends AbstractModule
         $callback = $this->_getCallback();
 
         if (is_null($callback)) {
-            return null;
+            return;
         }
 
         return call_user_func_array($callback, $this->_getCallbackParams());
@@ -55,7 +55,7 @@ abstract class AbstractCallbackModule extends AbstractModule
     protected function _normalizeCallback($callback)
     {
         if (is_null($callback)) {
-            return function() {};
+            return function () {};
         }
 
         return $callback;

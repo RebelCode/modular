@@ -94,7 +94,8 @@ class ModuleFactory extends AbstractDelegatingFactory implements ModuleFactoryIn
      *
      * @since [*next-version*]
      */
-    protected function _createModuleFactoryException($message, Exception $inner = null) {
+    protected function _createModuleFactoryException($message, Exception $inner = null)
+    {
         return new ModuleFactoryException(
             $message,
             static::MODULE_FACTORY_EXCEPTION_CODE,

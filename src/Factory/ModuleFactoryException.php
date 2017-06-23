@@ -30,7 +30,7 @@ class ModuleFactoryException extends Exception implements ModuleFactoryException
      * @param ModuleFactoryInterface $factory The module factory instance related to the exception.
      */
     public function __construct(
-        $message = "",
+        $message = '',
         $code = 0,
         \Exception $previous = null,
         ModuleFactoryInterface $factory = null

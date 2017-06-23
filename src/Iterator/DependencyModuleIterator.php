@@ -26,19 +26,19 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @since [*next-version*]
      */
     protected function _getModuleDependencies(ModuleInterface $module)
     {
-        if (! $module instanceof RcModuleInterface) {
+        if (!$module instanceof RcModuleInterface) {
             return array();
         }
 
         $_this     = $this;
         $keys      = $module->getDependencies();
-        $instances = array_map(function($key) use ($_this) {
+        $instances = array_map(function ($key) use ($_this) {
             return $_this->_getModuleByKey($key);
         }, $keys);
 
@@ -46,7 +46,7 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @since [*next-version*]
      */
@@ -54,9 +54,9 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
     {
         return $this->_rewind();
     }
-    
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @since [*next-version*]
      */
@@ -66,7 +66,7 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @since [*next-version*]
      */
@@ -76,7 +76,7 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @since [*next-version*]
      */
@@ -86,7 +86,7 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @since [*next-version*]
      */
