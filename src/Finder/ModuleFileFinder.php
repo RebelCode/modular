@@ -5,7 +5,9 @@ namespace RebelCode\Modular\Finder;
 use ArrayIterator;
 use Dhii\File\Finder\AbstractFileFinder;
 use Iterator;
+use MongoDB\Driver\Exception\RuntimeException;
 use SplFileInfo;
+use Traversable;
 
 /**
  * ModuleFileFinder.
@@ -55,7 +57,27 @@ class ModuleFileFinder extends AbstractFileFinder implements Iterator
      */
     protected function _filter(SplFileInfo $fileInfo)
     {
-        return $fileInfo->isReadable();
+        if (!$fileInfo->isReadable()) {
+            throw new Exception();
+        }
+
+        return true;
+    }
+
+    /**
+     * Retrieves the iterator that can be used to iterate over found files.
+     *
+     * @since[*next-version*]
+     *
+     * @return Iterator
+     */
+    protected function _getIterator()
+    {
+        $paths = $this->_getPaths();
+
+        return ($paths instanceof Iterator)
+            ? $paths
+            : new ArrayIterator($paths);
     }
 
     /**
@@ -63,7 +85,7 @@ class ModuleFileFinder extends AbstractFileFinder implements Iterator
      */
     public function rewind()
     {
-        $this->iterator = new ArrayIterator($this->_getPaths());
+        $this->iterator = $this->_getIterator();
         $this->iterator->rewind();
     }
 
