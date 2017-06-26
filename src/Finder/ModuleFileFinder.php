@@ -2,7 +2,9 @@
 
 namespace RebelCode\Modular\Finder;
 
+use ArrayIterator;
 use Dhii\File\Finder\AbstractFileFinder;
+use Iterator;
 use SplFileInfo;
 
 /**
@@ -10,7 +12,7 @@ use SplFileInfo;
  *
  * @since[*next-version*]
  */
-class ModuleFileFinder extends AbstractFileFinder
+class ModuleFileFinder extends AbstractFileFinder implements Iterator
 {
     /**
      * The regex pattern that is used to match filenames.
@@ -20,12 +22,21 @@ class ModuleFileFinder extends AbstractFileFinder
     const FILENAME_REGEX = '/[\\/\\\\]module\.php$/';
 
     /**
+     * The delegate iterator.
+     *
+     * @since[*next-version*]
+     *
+     * @var ArrayIterator
+     */
+    protected $iterator;
+
+    /**
      * Constructor.
      *
      * @since [*next-version*]
      *
-     * @param string $rootDir  The directory path where searching will begin.
-     * @param int    $maxDepth How deep to recurse into the root directory.
+     * @param string $rootDir The directory path where searching will begin.
+     * @param int $maxDepth How deep to recurse into the root directory.
      */
     public function __construct($rootDir, $maxDepth = 2)
     {
@@ -45,5 +56,46 @@ class ModuleFileFinder extends AbstractFileFinder
     protected function _filter(SplFileInfo $fileInfo)
     {
         return $fileInfo->isReadable();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function rewind()
+    {
+        $this->iterator = new ArrayIterator($this->_getPaths());
+        $this->iterator->rewind();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function current()
+    {
+        return $this->iterator->current();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function key()
+    {
+        return $this->iterator->key();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function next()
+    {
+        $this->iterator->next();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function valid()
+    {
+        return $this->iterator->valid();
     }
 }
