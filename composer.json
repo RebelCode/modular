@@ -43,23 +43,23 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/RebelCodecom/module-interface"
+            "url": "https://github.com/RebelCode/module-interface"
         },
         {
             "type": "vcs",
-            "url": "https://github.com/RebelCodecom/module-config-validator"
+            "url": "https://github.com/RebelCode/module-config-validator"
         },
         {
             "type": "vcs",
-            "url": "https://github.com/RebelCodecom/module-config-interface"
+            "url": "https://github.com/RebelCode/module-config-interface"
         },
         {
             "type": "vcs",
-            "url": "https://github.com/RebelCodecom/module-loader"
+            "url": "https://github.com/RebelCode/module-loader"
         },
         {
             "type": "vcs",
-            "url": "https://github.com/RebelCodecom/module-iterator-abstract"
+            "url": "https://github.com/RebelCode/module-iterator-abstract"
         },
         {
             "type": "vcs",
@@ -67,7 +67,7 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/RebelCodecom/module-locator"
+            "url": "https://github.com/RebelCode/module-locator"
         },
         {
             "type": "vcs",
@@ -83,7 +83,7 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/RebelCodecom/module-factory-abstract"
+            "url": "https://github.com/RebelCode/module-factory-abstract"
         },
         {
             "type": "vcs",
