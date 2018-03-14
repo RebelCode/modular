@@ -12,7 +12,7 @@
     "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {
-        "php": "^5.3 | ^7.0",
+        "php": "^5.4 | ^7.0",
         "rebelcode/module-interface": "dev-develop",
         "rebelcode/module-loader": "dev-develop",
         "rebelcode/module-iterator-abstract": "dev-develop",
