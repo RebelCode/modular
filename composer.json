@@ -17,6 +17,8 @@
         "dhii/module-interface": "^0.1",
         "rebelcode/module-iterator-abstract": "dev-task/5_update-latest-improvements",
         "dhii/iterator-helper-base": "0.1-alpha1",
+        "dhii/exception-helper-base": "0.1-alpha2",
+        "dhii/i18n-helper-base": "^0.1",
         "dhii/data-key-value-aware-trait": "dev-task/initial-traits",
         "dhii/factory-interface": "dev-develop",
         "dhii/file-finder-abstract": "dev-task/create-finder"
