@@ -2,8 +2,13 @@
 
 namespace RebelCode\Modular\Module;
 
+use Dhii\Util\String\StringableInterface;
+use InvalidArgumentException;
+use stdClass;
+use Traversable;
+
 /**
- * Something that has module dependencies.
+ * Functionality for awareness of a list of dependencies.
  *
  * @since [*next-version*]
  */
@@ -14,7 +19,7 @@ trait DependenciesAwareTrait
      *
      * @since [*next-version*]
      *
-     * @var string[]
+     * @var string[]|StringableInterface[]|stdClass|Traversable
      */
     protected $dependencies;
 
@@ -23,7 +28,7 @@ trait DependenciesAwareTrait
      *
      * @since [*next-version*]
      *
-     * @return string[]
+     * @return string[]|StringableInterface[]|stdClass|Traversable
      */
     protected function _getDependencies()
     {
@@ -35,14 +40,25 @@ trait DependenciesAwareTrait
      *
      * @since [*next-version*]
      *
-     * @param string[] $dependencies The
-     *
-     * @return $this
+     * @param string[]|StringableInterface[]|Traversable $dependencies The
      */
     protected function _setDependencies($dependencies)
     {
-        $this->dependencies = $dependencies;
-
-        return $this;
+        $this->dependencies = $this->_normalizeIterable($dependencies);
     }
+
+    /**
+     * Normalizes an iterable.
+     *
+     * Makes sure that the return value can be iterated over.
+     *
+     * @since [*next-version*]
+     *
+     * @param mixed $iterable The iterable to normalize.
+     *
+     * @throws InvalidArgumentException If the iterable could not be normalized.
+     *
+     * @return array|Traversable|stdClass The normalized iterable.
+     */
+    abstract protected function _normalizeIterable($iterable);
 }
