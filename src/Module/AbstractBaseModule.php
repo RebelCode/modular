@@ -12,9 +12,12 @@ use RebelCode\Modular\Config\ConfigAwareTrait;
  */
 abstract class AbstractModule
 {
-    use KeyAwareTrait;
-    use ConfigAwareTrait;
-    use DependenciesAwareTrait;
+    /*
+     * Provides common module functionality.
+     *
+     * @since [*next-version*]
+     */
+    use ModuleTrait;
 
     /**
      * Loads the module.
