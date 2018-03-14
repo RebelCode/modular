@@ -10,7 +10,9 @@ use Dhii\Modular\Module\ModuleInterface;
  *
  * @since [*next-version*]
  */
-abstract class AbstractBaseModule implements ModuleInterface, DependenciesAwareInterface
+abstract class AbstractBaseModule implements
+    ModuleInterface,
+    DependenciesAwareInterface
 {
     /*
      * Provides common module functionality.
