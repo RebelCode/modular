@@ -13,13 +13,10 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^5.4 | ^7.0",
-        "rebelcode/module-interface": "dev-develop",
-        "rebelcode/module-loader": "dev-develop",
-        "rebelcode/module-iterator-abstract": "dev-develop",
-        "rebelcode/module-locator": "dev-develop",
-        "rebelcode/module-config-interface": "dev-develop",
-        "rebelcode/module-config-validator": "dev-develop",
-        "rebelcode/module-factory-abstract": "dev-develop",
+        "psr/container": "^1.0",
+        "dhii/module-interface": "^0.1",
+        "rebelcode/module-iterator-abstract": "dev-task/5_update-latest-improvements",
+        "dhii/iterator-helper-base": "0.1-alpha1",
         "dhii/data-key-value-aware-trait": "dev-task/initial-traits",
         "dhii/factory-interface": "dev-develop",
         "dhii/file-finder-abstract": "dev-task/create-finder"
@@ -39,55 +36,5 @@
     "scripts": {
         "test": "phpunit",
         "csfix": "php-cs-fixer fix -vvv"
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCode/module-interface"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCode/module-config-validator"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCode/module-config-interface"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCode/module-loader"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCode/module-iterator-abstract"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/Dhii/machine-loop-machine"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCode/module-locator"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/Dhii/data-key-value-aware-trait"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/Dhii/callback-aware-trait"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/Dhii/config-aware-trait"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCode/module-factory-abstract"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/Dhii/file-finder-abstract"
-        }
-    ]
+    }
 }
