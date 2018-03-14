@@ -2,26 +2,31 @@
 
 namespace RebelCode\Modular\Config;
 
+use InvalidArgumentException;
+use Psr\Container\ContainerInterface;
+use ArrayAccess;
+use stdClass;
+
 /**
- * Something that has configuration.
+ * Functionality for awareness of a configuration container.
  *
  * @since [*next-version*]
  */
 trait ConfigAwareTrait
 {
     /**
-     * The configuration.
+     * The configuration container.
      *
-     * @var array
+     * @var array|ArrayAccess|stdClass|ContainerInterface
      */
     protected $config;
 
     /**
-     * Retrieves the configuration.
+     * Retrieves the configuration associated with this instance.
      *
      * @since [*next-version*]
      *
-     * @return array
+     * @return array|ArrayAccess|stdClass|ContainerInterface
      */
     protected function _getConfig()
     {
@@ -29,18 +34,31 @@ trait ConfigAwareTrait
     }
 
     /**
-     * Sets the configuration.
+     * Sets the configuration for this instance.
      *
      * @since [*next-version*]
      *
-     * @param array $config The configuration.
+     * @param array|ArrayAccess|stdClass|ContainerInterface $config The configuration container.
      *
-     * @return $this
+     * @throws InvalidArgumentException If the configuration container is invalid.
      */
-    protected function _setConfig(array $config)
+    protected function _setConfig($config)
     {
-        $this->config = $config;
-
-        return $this;
+        $this->config = $this->_normalizeContainer($config);
     }
+
+    /**
+     * Normalizes a container.
+     *
+     * @since [*next-version*]
+     *
+     * @param array|ArrayAccess|stdClass|ContainerInterface $container The container to normalize.
+     *
+     * @throws InvalidArgumentException If the container is invalid.
+     *
+     * @return array|ArrayAccess|stdClass|ContainerInterface Something that can be used with
+     *                                                       {@see ContainerGetCapableTrait#_containerGet()} or
+     *                                                       {@see ContainerHasCapableTrait#_containerHas()}.
+     */
+    abstract protected function _normalizeContainer($container);
 }
