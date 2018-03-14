@@ -2,9 +2,18 @@
 
 namespace RebelCode\Modular\Iterator;
 
+use ArrayIterator;
+use Dhii\Exception\CreateInvalidArgumentExceptionCapableTrait;
+use Dhii\Exception\CreateOutOfRangeExceptionCapableTrait;
+use Dhii\I18n\StringTranslatingTrait;
+use Dhii\Iterator\NormalizeIteratorCapableTrait;
+use Dhii\Modular\Module\DependenciesAwareInterface;
 use Dhii\Modular\Module\ModuleInterface;
-use RebelCode\Modular\Module\ModuleInterface as RcModuleInterface;
+use Dhii\Util\Normalization\NormalizeStringCapableTrait;
 use Iterator;
+use IteratorIterator;
+use stdClass;
+use Traversable;
 
 /**
  *  A module iterator that handles module dependencies.
@@ -13,6 +22,52 @@ use Iterator;
  */
 class DependencyModuleIterator extends AbstractDependencyModuleIterator implements Iterator
 {
+    /*
+     * Provides string normalization functionality.
+     *
+     * @since [*next-version*]
+     */
+    use NormalizeStringCapableTrait;
+
+    /*
+     * Provides iterator normalization functionality.
+     *
+     * @since [*next-version*]
+     */
+    use NormalizeIteratorCapableTrait;
+
+    /*
+     * Provides functionality for creating invalid-argument exceptions.
+     *
+     * @since [*next-version*]
+     */
+    use CreateInvalidArgumentExceptionCapableTrait;
+
+    /*
+     * Provides functionality for creating out-of-range exceptions.
+     *
+     * @since [*next-version*]
+     */
+    use CreateOutOfRangeExceptionCapableTrait;
+
+    /*
+     * Provides string translating functionality.
+     *
+     * @since [*next-version*]
+     */
+    use StringTranslatingTrait;
+
+    /**
+     * A map of the modules to iterate over, mapped by their keys.
+     *
+     * This map is used to efficiently search for module instances by their keys, when resolving module dependencies.
+     *
+     * @since [*next-version*]
+     *
+     * @var ModuleInterface[]
+     */
+    protected $moduleMap;
+
     /**
      * Constructor.
      *
@@ -20,9 +75,26 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
      *
      * @param array $modules An array of modules.
      */
-    public function __construct($modules = array())
+    public function __construct($modules = [])
     {
-        $this->items = $modules;
+        $this->_setModules($modules);
+        $this->_createModuleMap($modules);
+    }
+
+    /**
+     * Creates the map of modules to be iterator over, mapped by their key.
+     *
+     * @since [*next-version*]
+     *
+     * @param ModuleInterface[]|stdClass|Traversable $modules The modules to iterate over.
+     */
+    protected function _createModuleMap($modules)
+    {
+        $this->moduleMap = [];
+
+        foreach ($modules as $_module) {
+            $this->moduleMap[$_module->getKey()] = $_module;
+        }
     }
 
     /**
@@ -32,16 +104,21 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
      */
     protected function _getModuleDependencies(ModuleInterface $module)
     {
-        if (!$module instanceof RcModuleInterface) {
-            return array();
+        if (!($module instanceof DependenciesAwareInterface)) {
+            return [];
         }
 
-        $keys      = $module->getDependencies();
-        $instances = array_map(function ($key) {
-            return $this->_getModuleByKey($key);
-        }, $keys);
+        $dependencies = [];
 
-        return array_combine($keys, $instances);
+        foreach ($module->getDependencies() as $_dep) {
+            $_depKey = $this->_normalizeString($_dep);
+
+            if (isset($this->moduleMap[$_depKey])) {
+                $dependencies[$_depKey] = $this->moduleMap[$_depKey];
+            }
+        }
+
+        return $dependencies;
     }
 
     /**
@@ -51,7 +128,7 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
      */
     public function rewind()
     {
-        return $this->_rewind();
+        $this->_rewind();
     }
 
     /**
@@ -81,7 +158,7 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
      */
     public function next()
     {
-        return $this->_next();
+        $this->_next();
     }
 
     /**
@@ -92,5 +169,25 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
     public function valid()
     {
         return $this->_valid();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    protected function _createArrayIterator(array $array)
+    {
+        return new ArrayIterator($array);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    protected function _createTraversableIterator(Traversable $traversable)
+    {
+        return new IteratorIterator($traversable);
     }
 }

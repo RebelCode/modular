@@ -2,9 +2,9 @@
 
 namespace RebelCode\Modular\FuncTest\Loader;
 
-use RebelCode\Modular\Iterator\DependencyModuleIterator;
-use RebelCode\Modular\Loader\LoopMachineModuleLoader;
-use RebelCode\Modular\Module\ModuleInterface;
+use Dhii\Modular\Module\ModuleInterface;
+use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use RebelCode\Modular\Iterator\DependencyModuleIterator as TestSubject;
 use Xpmock\TestCase;
 
 /**
@@ -19,7 +19,7 @@ class DependencyModuleIteratorTest extends TestCase
      *
      * @since [*next-version*]
      */
-    const MODULE_CLASSNAME = 'RebelCode\\Modular\\Module\\ModuleInterface';
+    const MODULE_CLASSNAME = 'Dhii\\Modular\\Module\\ModuleInterface';
 
     /**
      * Create a new instance of the test subject.
@@ -28,11 +28,11 @@ class DependencyModuleIteratorTest extends TestCase
      *
      * @param array $modules The list of modules.
      *
-     * @return LoopMachineModuleLoader
+     * @return TestSubject
      */
-    public function createInstance(array $modules = array())
+    public function createInstance(array $modules = [])
     {
-        return new DependencyModuleIterator($modules);
+        return new TestSubject($modules);
     }
 
     /**
@@ -40,20 +40,55 @@ class DependencyModuleIteratorTest extends TestCase
      *
      * @since [*next-version*]
      *
-     * @param string $key The module key.
+     * @param string $key  The module key.
      * @param array  $deps The keys of the dependency modules.
-     * @param callable $load The load callback.
      *
-     * @return ModuleInterface
+     * @return ModuleInterface|MockObject
      */
-    public function createModuleInstance($key, array $deps = array(), $load = null)
+    public function createModuleInstance($key, array $deps = [])
     {
-        return $this->mock(static::MODULE_CLASSNAME)
-            ->getKey($key)
-            ->getName($key)
-            ->getDependencies($deps)
-            ->load($load)
-            ->new();
+        $mock = $this->mockClassAndInterfaces(
+            'stdClass',
+            [
+                'Dhii\Modular\Module\ModuleInterface',
+                'Dhii\Modular\Module\DependenciesAwareInterface',
+            ]
+        );
+
+        $mock->method('getKey')->willReturn($key);
+        $mock->method('getDependencies')->willReturn($deps);
+
+        return $mock;
+    }
+
+    /**
+     * Creates a mock that both extends a class and implements interfaces.
+     *
+     * This is particularly useful for cases where the mock is based on an
+     * internal class, such as in the case with exceptions. Helps to avoid
+     * writing hard-coded stubs.
+     *
+     * @since [*next-version*]
+     *
+     * @param string   $className      Name of the class for the mock to extend.
+     * @param string[] $interfaceNames Names of the interfaces for the mock to implement.
+     *
+     * @return MockObject The object that extends and implements the specified class and interfaces.
+     */
+    public function mockClassAndInterfaces($className, $interfaceNames = [])
+    {
+        $paddingClassName = uniqid($className);
+        $definition = vsprintf(
+            'abstract class %1$s extends %2$s implements %3$s {}',
+            [
+                $paddingClassName,
+                $className,
+                implode(', ', $interfaceNames),
+            ]
+        );
+        eval($definition);
+
+        return $this->getMock($paddingClassName);
     }
 
     /**
@@ -63,15 +98,17 @@ class DependencyModuleIteratorTest extends TestCase
      */
     public function testIteration()
     {
-        $instance = $this->createInstance(array(
-            $this->createModuleInstance('a', array('b')),
-            $this->createModuleInstance('b', array('c', 'd')),
-            $this->createModuleInstance('c'),
-            $this->createModuleInstance('d', array('a', 'c')),
-        ));
+        $instance = $this->createInstance(
+            [
+                $this->createModuleInstance('a', ['b']),
+                $this->createModuleInstance('b', ['c', 'd']),
+                $this->createModuleInstance('c'),
+                $this->createModuleInstance('d', ['a', 'c']),
+            ]
+        );
 
-        $result   = array_keys(iterator_to_array($instance));
-        $expected = array('c', 'd', 'b', 'a');
+        $result = array_keys(iterator_to_array($instance));
+        $expected = ['c', 'd', 'b', 'a'];
 
         $this->assertEquals($expected, $result);
     }
