@@ -2,29 +2,23 @@
 
 namespace RebelCode\Modular\Module;
 
-use Dhii\Data\KeyAwareTrait;
-use RebelCode\Modular\Config\ConfigAwareTrait;
+use Dhii\Modular\Module\DependenciesAwareInterface;
+use Dhii\Modular\Module\ModuleInterface;
 
 /**
- * Common & basic functionality for modules.
+ * Common base functionality for modules.
  *
  * @since [*next-version*]
  */
-abstract class AbstractModule
+abstract class AbstractBaseModule implements ModuleInterface, DependenciesAwareInterface
 {
     /*
      * Provides common module functionality.
      *
      * @since [*next-version*]
      */
-    use ModuleTrait;
-
-    /**
-     * Loads the module.
-     *
-     * @since [*next-version*]
-     */
-    protected function _load()
-    {
+    use ModuleTrait {
+        _getKey as public getKey;
+        _getDependencies as public getDependencies;
     }
 }
