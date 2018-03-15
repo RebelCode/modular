@@ -4,8 +4,105 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e32934fe0243a3b5cad2b00d264c08bc",
+    "content-hash": "d6a5195725baab0ecabbfa2e92759d5c",
     "packages": [
+        {
+            "name": "dhii/container-helper-base",
+            "version": "v0.1-alpha5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/container-helper-base.git",
+                "reference": "701dc8e6c5cbf5ab998fae8a7c178da86d69c4f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/container-helper-base/zipball/701dc8e6c5cbf5ab998fae8a7c178da86d69c4f1",
+                "reference": "701dc8e6c5cbf5ab998fae8a7c178da86d69c4f1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "^0.1",
+                "dhii/stringable-interface": "^0.1",
+                "phpunit/phpunit": "^4.8",
+                "psr/container": "^1.0",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Data\\Container\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Helper functionality for working with container.",
+            "time": "2018-02-16T13:22:06+00:00"
+        },
+        {
+            "name": "dhii/data-key-value-aware-abstract",
+            "version": "v0.1-alpha4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/data-key-value-aware-abstract.git",
+                "reference": "a32b4938c92f06739e22fa23396b130c363f7d3a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/data-key-value-aware-abstract/zipball/a32b4938c92f06739e22fa23396b130c363f7d3a",
+                "reference": "a32b4938c92f06739e22fa23396b130c363f7d3a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "dhii/stringable-interface": "^0.1",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Data\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Traits for objects that are aware of a key, a value, or both.",
+            "time": "2018-02-11T15:58:23+00:00"
+        },
         {
             "name": "dhii/data-key-value-aware-interface",
             "version": "v0.1",
@@ -47,59 +144,6 @@
             ],
             "description": "Interfaces that aim to increase interoperability of value objects",
             "time": "2017-01-21T17:35:30+00:00"
-        },
-        {
-            "name": "dhii/data-key-value-aware-trait",
-            "version": "dev-task/initial-traits",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Dhii/data-key-value-aware-trait.git",
-                "reference": "15189f54ba2807afdcfda6d3b09d79fca047c24d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/data-key-value-aware-trait/zipball/15189f54ba2807afdcfda6d3b09d79fca047c24d",
-                "reference": "15189f54ba2807afdcfda6d3b09d79fca047c24d",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.4 | ^7.0"
-            },
-            "require-dev": {
-                "codeclimate/php-test-reporter": "<=0.3.2",
-                "dhii/php-cs-fixer-config": "dev-php-5.3",
-                "phpunit/phpunit": "^4.8",
-                "ptrofimov/xpmock": "^1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Dhii\\Data\\": "src"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ],
-                "csfix": [
-                    "php-cs-fixer fix -vvv"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dhii Team",
-                    "email": "development@dhii.co"
-                }
-            ],
-            "description": "Traits for objects that are aware of a key, a value, or both.",
-            "support": {
-                "source": "https://github.com/Dhii/data-key-value-aware-trait/tree/task/initial-traits",
-                "issues": "https://github.com/Dhii/data-key-value-aware-trait/issues"
-            },
-            "time": "2017-06-21T11:16:16+00:00"
         },
         {
             "name": "dhii/exception",
@@ -2672,9 +2716,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "rebelcode/module-iterator-abstract": 20,
-        "dhii/data-key-value-aware-trait": 20,
         "dhii/factory-interface": 20,
+        "rebelcode/module-iterator-abstract": 20,
         "dhii/file-finder-abstract": 20,
         "dhii/php-cs-fixer-config": 20,
         "mikey179/vfsstream": 20

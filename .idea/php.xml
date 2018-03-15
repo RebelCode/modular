@@ -10,7 +10,6 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
       <path value="$PROJECT_DIR$/vendor/dhii/module-interface" />
       <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
-      <path value="$PROJECT_DIR$/vendor/dhii/data-key-value-aware-trait" />
       <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/dhii/factory-interface" />
@@ -56,6 +55,8 @@
       <path value="$PROJECT_DIR$/vendor/dhii/exception" />
       <path value="$PROJECT_DIR$/vendor/dhii/iterator-helper-base" />
       <path value="$PROJECT_DIR$/vendor/dhii/exception-helper-base" />
+      <path value="$PROJECT_DIR$/vendor/dhii/container-helper-base" />
+      <path value="$PROJECT_DIR$/vendor/dhii/data-key-value-aware-abstract" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />
