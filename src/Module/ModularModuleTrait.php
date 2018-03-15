@@ -37,17 +37,19 @@ trait ModularModuleTrait
      */
     protected function _setup()
     {
-        // Cache modules, in case the `_getModules()` call is expensive
-        $this->modules = $this->_getModules();
+        $modules = $this->_getModules();
 
         // Setup all modules and collect their containers
+        $this->modules = [];
         $containers = [];
-        foreach ($this->modules as $_module) {
+        foreach ($modules as $_module) {
             $_container = $_module->setup();
 
             if ($_container !== null) {
                 $containers[] = $_container;
             }
+
+            $this->modules[$_module->getKey()] = $_module;
         }
 
         // Prepend a container with all module instances
@@ -77,7 +79,7 @@ trait ModularModuleTrait
      *
      * @since [*next-version*]
      *
-     * @return ModuleInterface[]|Traversable A list of module instances, mapped by their key.
+     * @return ModuleInterface[]|Traversable A list of module instances.
      */
     abstract protected function _getModules();
 
