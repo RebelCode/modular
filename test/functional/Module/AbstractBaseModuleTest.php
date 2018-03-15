@@ -29,7 +29,14 @@ class AbstractBaseModuleTest extends TestCase
      */
     public function createInstance()
     {
-        $mock = $this->getMockForAbstractClass(static::TEST_SUBJECT_CLASSNAME);
+        $mock = $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
+                     ->setMethods(
+                         [
+                             'setup',
+                             'run',
+                         ]
+                     )
+                     ->getMockForAbstractClass();
 
         return $mock;
     }
@@ -88,11 +95,6 @@ class AbstractBaseModuleTest extends TestCase
             uniqid('dep-'),
             uniqid('dep-'),
         ];
-
-        $subject->expects($this->once())
-                ->method('_normalizeIterable')
-                ->with($deps)
-                ->willReturn($deps);
 
         $reflect->_setDependencies($deps);
 
