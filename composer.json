@@ -15,7 +15,7 @@
         "php": "^5.4 | ^7.0",
         "psr/container": "^1.0",
         "dhii/module-interface": "^0.1",
-        "dhii/factory-interface": "dev-develop",
+        "dhii/factory-interface": "0.1-alpha2",
         "rebelcode/module-iterator-abstract": "dev-task/5_update-latest-improvements",
         "dhii/file-finder-abstract": "dev-task/create-finder",
         "dhii/data-key-value-aware-abstract": "0.1-alpha4",

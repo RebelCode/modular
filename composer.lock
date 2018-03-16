@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1021f8cf8fc5ca067d7f480988e069e4",
+    "content-hash": "b5fa2878e419cdf44fb9e7cd26e4ebcf",
     "packages": [
         {
             "name": "dhii/container-helper-base",
@@ -249,7 +249,7 @@
         },
         {
             "name": "dhii/factory-interface",
-            "version": "dev-develop",
+            "version": "v0.1-alpha2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/factory-interface.git",
@@ -2667,7 +2667,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "dhii/factory-interface": 20,
         "rebelcode/module-iterator-abstract": 20,
         "dhii/file-finder-abstract": 20,
         "dhii/iterator-helper-base": 20,
