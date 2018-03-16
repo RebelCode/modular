@@ -11,7 +11,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/data-key-value-aware-abstract" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/data-key-value-aware-interface" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/exception" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/exception-helper-base" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/exception-interface" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/factory-interface" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/file-finder-abstract" />
