@@ -174,18 +174,20 @@ abstract class AbstractBaseModule implements
      * @return array|ArrayAccess|stdClass|ContainerInterface The config.
      *
      * @throws InternalException If an exception was thrown by the PHP config file.
-     * @throws InvalidArgumentException If the config retrieved from the PHP config file is not a valid container.
+     * @throws InvalidArgumentException If the config retrieved from the PHP config file is not a valid container./
+     * @throws RuntimeException If the config file could not be read.
      */
     protected function _loadPhpConfigFile($filePath)
     {
+        if (!file_exists($filePath) || !is_readable($filePath)) {
+            throw $this->_createRuntimeException(
+                $this->__('Config file does not exist or not readable'),
+                null,
+                null
+            );
+        }
+
         try {
-            if (!file_exists($filePath) || !is_readable($filePath)) {
-                throw $this->_createRuntimeException(
-                    $this->__('Config file does not exist or not readable'),
-                    null,
-                    null
-                );
-            }
             $config = require $filePath;
         } catch (Exception $exception) {
             throw $this->_createInternalException(
