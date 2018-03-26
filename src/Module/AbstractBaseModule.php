@@ -191,7 +191,7 @@ abstract class AbstractBaseModule implements
             throw $this->_createInternalException(
                 $this->__('The PHP config file triggered an exception'),
                 null,
-                null
+                $exception
             );
         }
 
