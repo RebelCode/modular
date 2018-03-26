@@ -3,12 +3,17 @@
 namespace RebelCode\Modular\Finder;
 
 use ArrayIterator;
+use Dhii\Exception\CreateInvalidArgumentExceptionCapableTrait;
 use Dhii\Exception\CreateRuntimeExceptionCapableTrait;
 use Dhii\File\Finder\AbstractFileFinder;
 use Dhii\I18n\StringTranslatingTrait;
+use Dhii\Iterator\NormalizeIteratorCapableTrait;
 use Exception;
 use Iterator;
+use IteratorAggregate;
+use IteratorIterator;
 use SplFileInfo;
+use Traversable;
 
 /**
  * Concrete implementation of a module file finder.
@@ -17,8 +22,22 @@ use SplFileInfo;
  *
  * @since[*next-version*]
  */
-class ModuleFileFinder extends AbstractFileFinder implements Iterator
+class ModuleFileFinder extends AbstractFileFinder implements IteratorAggregate
 {
+    /*
+     * Provides iterator normalization functionality.
+     *
+     * @since [*next-version*]
+     */
+    use NormalizeIteratorCapableTrait;
+
+    /*
+     * Provides functionality for creating invalid-argument exceptions.
+     *
+     * @since [*next-version*]
+     */
+    use CreateInvalidArgumentExceptionCapableTrait;
+
     /*
      * Provides functionality for creating runtime exceptions.
      *
@@ -34,7 +53,7 @@ class ModuleFileFinder extends AbstractFileFinder implements Iterator
     use StringTranslatingTrait;
 
     /**
-     * The regex pattern that is used to match filenames.
+     * The regex pattern that is used to match file names.
      *
      * @since [*next-version*]
      */
@@ -91,19 +110,13 @@ class ModuleFileFinder extends AbstractFileFinder implements Iterator
     }
 
     /**
-     * Retrieves the iterator that can be used to iterate over found files.
+     * {@inheritdoc}
      *
-     * @since[*next-version*]
-     *
-     * @return Iterator
+     * @since [*next-version*]
      */
-    protected function _getIterator()
+    public function getIterator()
     {
-        $paths = $this->_getPaths();
-
-        return ($paths instanceof Iterator)
-            ? $paths
-            : new ArrayIterator($paths);
+        return $this->_normalizeIterator($this->_getPaths());
     }
 
     /**
@@ -111,10 +124,9 @@ class ModuleFileFinder extends AbstractFileFinder implements Iterator
      *
      * @since [*next-version*]
      */
-    public function rewind()
+    protected function _createArrayIterator(array $array)
     {
-        $this->iterator = $this->_getIterator();
-        $this->iterator->rewind();
+        return new ArrayIterator($array);
     }
 
     /**
@@ -122,38 +134,8 @@ class ModuleFileFinder extends AbstractFileFinder implements Iterator
      *
      * @since [*next-version*]
      */
-    public function current()
+    protected function _createTraversableIterator(Traversable $traversable)
     {
-        return $this->iterator->current();
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @since [*next-version*]
-     */
-    public function key()
-    {
-        return $this->iterator->key();
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @since [*next-version*]
-     */
-    public function next()
-    {
-        $this->iterator->next();
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @since [*next-version*]
-     */
-    public function valid()
-    {
-        return $this->iterator->valid();
+        return new IteratorIterator($traversable);
     }
 }
