@@ -7,6 +7,7 @@ use Dhii\Data\Container\ContainerFactoryInterface;
 use Dhii\Data\Container\NormalizeContainerCapableTrait;
 use Dhii\Exception\CreateInternalExceptionCapableTrait;
 use Dhii\Exception\CreateInvalidArgumentExceptionCapableTrait;
+use Dhii\Exception\CreateRuntimeExceptionCapableTrait;
 use Dhii\Exception\InternalException;
 use Dhii\Factory\Exception\CouldNotMakeExceptionInterface;
 use Dhii\Factory\Exception\FactoryExceptionInterface;
@@ -20,6 +21,7 @@ use Dhii\Util\String\StringableInterface as Stringable;
 use Exception;
 use InvalidArgumentException;
 use Psr\Container\ContainerInterface;
+use RuntimeException;
 use stdClass;
 
 /**
@@ -75,6 +77,13 @@ abstract class AbstractBaseModule implements
      * @since [*next-version*]
      */
     use CreateInternalExceptionCapableTrait;
+
+    /*
+     * Provides functionality for creating runtime exceptions.
+     *
+     * @since [*next-version*]
+     */
+    use CreateRuntimeExceptionCapableTrait;
 
     /*
      * Provides string translating functionality.
@@ -170,6 +179,13 @@ abstract class AbstractBaseModule implements
     protected function _loadPhpConfigFile($filePath)
     {
         try {
+            if (!file_exists($filePath) || !is_readable($filePath)) {
+                throw $this->_createRuntimeException(
+                    $this->__('Config file does not exist or not readable'),
+                    null,
+                    null
+                );
+            }
             $config = require $filePath;
         } catch (Exception $exception) {
             throw $this->_createInternalException(
