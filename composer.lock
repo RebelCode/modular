@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c67861437a3c2a57e65cf99118af2d14",
+    "content-hash": "74c89b378d1834ddeef4476070975554",
     "packages": [
         {
             "name": "dhii/callback-abstract",
@@ -109,16 +109,16 @@
         },
         {
             "name": "dhii/data-container-interface",
-            "version": "dev-task/13_add-container-factory-interface",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/data-container-interface.git",
-                "reference": "1df03b833e69a74f8961b43a722030ca883fd339"
+                "reference": "63fbd3215c211c4d45a0e39c33a8ca9b8b4fe2fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/data-container-interface/zipball/1df03b833e69a74f8961b43a722030ca883fd339",
-                "reference": "1df03b833e69a74f8961b43a722030ca883fd339",
+                "url": "https://api.github.com/repos/Dhii/data-container-interface/zipball/63fbd3215c211c4d45a0e39c33a8ca9b8b4fe2fb",
+                "reference": "63fbd3215c211c4d45a0e39c33a8ca9b8b4fe2fb",
                 "shasum": ""
             },
             "require": {
@@ -159,7 +159,7 @@
                 }
             ],
             "description": "Interfaces for working with data containers",
-            "time": "2018-03-26T12:59:19+00:00"
+            "time": "2018-03-26T13:27:27+00:00"
         },
         {
             "name": "dhii/data-key-value-aware-abstract",
