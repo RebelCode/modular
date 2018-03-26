@@ -2,6 +2,7 @@
 
 namespace RebelCode\Modular\FuncTest\Module;
 
+use org\bovigo\vfs\vfsStream;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
 use RebelCode\Modular\Module\AbstractBaseModule as TestSubject;
 use Xpmock\TestCase;
@@ -99,5 +100,65 @@ class AbstractBaseModuleTest extends TestCase
         $reflect->_setDependencies($deps);
 
         $this->assertEquals($deps, $subject->getDependencies(), 'Set and retrieved dependencies are not the same.');
+    }
+
+    /**
+     * Tests the container creation method.
+     *
+     * @since [*next-version*]
+     */
+    public function testCreateContainer()
+    {
+        $subject = $this->createInstance();
+        $reflect = $this->reflect($subject);
+
+        $definitions = [
+            uniqid('definition-'),
+            uniqid('definition-'),
+            uniqid('definition-'),
+        ];
+        $config = [
+            'definitions' => $definitions,
+        ];
+        $container = $this->getMockForAbstractClass('Psr\Container\ContainerInterface');
+
+        $reflect->containerFactory = $this->getMockForAbstractClass('Dhii\Data\Container\ContainerFactoryInterface');
+        $reflect->containerFactory->expects($this->once())
+                                  ->method('make')
+                                  ->with($config)
+                                  ->willReturn($container);
+
+        $actual = $reflect->_createContainer($definitions);
+
+        $this->assertEquals($container, $actual, 'Created container is not the container created by the factory.');
+    }
+
+    /**
+     * Tests the PHP config file load method.
+     *
+     * @since [*next-version*]
+     */
+    public function testLoadPhpConfigFile()
+    {
+        $config = [
+            uniqid('key-') => uniqid('val-'),
+            uniqid('key-') => uniqid('val-'),
+            uniqid('key-') => uniqid('val-'),
+        ];
+
+        $vfs = vfsStream::setup('config');
+        vfsStream::create(
+            [
+                'config.php' => '<?php return ' . var_export($config, true) . ';',
+            ],
+            $vfs
+        );
+
+        $subject = $this->createInstance();
+        $reflect = $this->reflect($subject);
+
+        $actual = $reflect->_loadPhpConfigFile($vfs->url() . '/config.php');
+
+        $this->assertEquals($config, $actual);
     }
 }

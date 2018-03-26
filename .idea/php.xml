@@ -56,6 +56,8 @@
       <path value="$PROJECT_DIR$/vendor/dhii/iterator-helper-base" />
       <path value="$PROJECT_DIR$/vendor/dhii/container-helper-base" />
       <path value="$PROJECT_DIR$/vendor/dhii/data-key-value-aware-abstract" />
+      <path value="$PROJECT_DIR$/vendor/dhii/callback-abstract" />
+      <path value="$PROJECT_DIR$/vendor/dhii/data-container-interface" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />
