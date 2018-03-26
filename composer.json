@@ -20,10 +20,10 @@
         "dhii/file-finder-abstract": "dev-task/create-finder",
         "dhii/data-key-value-aware-abstract": "0.1-alpha4",
         "dhii/callback-abstract": "^0.1-alpha1",
-        "dhii/iterator-helper-base": "dev-release/0.1-alpha2",
+        "dhii/iterator-helper-base": "^0.1-alpha2",
         "dhii/exception-helper-base": "0.1-alpha2",
         "dhii/normalization-helper-base": "0.1-alpha2",
-        "dhii/data-container-interface": "dev-task/13_add-container-factory-interface",
+        "dhii/data-container-interface": "^0.2",
         "dhii/container-helper-base": "0.1-alpha5",
         "dhii/i18n-helper-base": "^0.1"
     },
