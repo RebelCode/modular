@@ -11,7 +11,6 @@ use Dhii\Exception\CreateRuntimeExceptionCapableTrait;
 use Dhii\Exception\InternalException;
 use Dhii\Factory\Exception\CouldNotMakeExceptionInterface;
 use Dhii\Factory\Exception\FactoryExceptionInterface;
-use Dhii\Factory\FactoryInterface;
 use Dhii\I18n\StringTranslatingTrait;
 use Dhii\Modular\Module\DependenciesAwareInterface;
 use Dhii\Modular\Module\ModuleInterface;
@@ -111,7 +110,7 @@ abstract class AbstractBaseModule implements
      * @param string[]|Stringable[]                         $dependencies     The module dependencies.
      * @param array|ArrayAccess|stdClass|ContainerInterface $config           The module config.
      */
-    protected function _initModule(ContainerFactoryInterface $containerFactory, $key, $dependencies = [], $config = [])
+    protected function _initModule(ContainerFactoryInterface $containerFactory, $key, $dependencies = array(), $config = array())
     {
         $this->_setKey($key);
         $this->_setDependencies($dependencies);
@@ -150,14 +149,14 @@ abstract class AbstractBaseModule implements
      *
      * @param array $definitions
      *
-     * @return ContainerInterface The created container instance.
-     *
      * @throws CouldNotMakeExceptionInterface If the factory failed to create the exception.
-     * @throws FactoryExceptionInterface If the factory encountered an error.
+     * @throws FactoryExceptionInterface      If the factory encountered an error.
+     *
+     * @return ContainerInterface The created container instance.
      */
-    protected function _createContainer($definitions = [])
+    protected function _createContainer($definitions = array())
     {
-        return $this->_getContainerFactory()->make(['definitions' => $definitions]);
+        return $this->_getContainerFactory()->make(array('definitions' => $definitions));
     }
 
     /**
@@ -171,11 +170,11 @@ abstract class AbstractBaseModule implements
      *
      * @param string|Stringable $filePath The path to the PHP config file. Absolute paths are recommended.
      *
-     * @return array|ArrayAccess|stdClass|ContainerInterface The config.
-     *
-     * @throws InternalException If an exception was thrown by the PHP config file.
+     * @throws InternalException        If an exception was thrown by the PHP config file.
      * @throws InvalidArgumentException If the config retrieved from the PHP config file is not a valid container./
-     * @throws RuntimeException If the config file could not be read.
+     * @throws RuntimeException         If the config file could not be read.
+     *
+     * @return array|ArrayAccess|stdClass|ContainerInterface The config.
      */
     protected function _loadPhpConfigFile($filePath)
     {

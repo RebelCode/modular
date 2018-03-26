@@ -40,8 +40,8 @@ trait ModularModuleTrait
         $modules = $this->_getModules();
 
         // Setup all modules and collect their containers
-        $this->modules = [];
-        $containers = [];
+        $this->modules = array();
+        $containers    = array();
         foreach ($modules as $_module) {
             $_container = $_module->setup();
 

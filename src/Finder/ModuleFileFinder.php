@@ -81,7 +81,7 @@ class ModuleFileFinder extends AbstractFileFinder implements IteratorAggregate
         $this->_setRootDir($rootDir)
              ->_setFilenameRegex(static::FILENAME_REGEX)
              ->_setMaxDepth($maxDepth)
-             ->_setCallbackFilter([$this, '_filter'])
+             ->_setCallbackFilter(array($this, '_filter'))
              ->_construct();
     }
 
