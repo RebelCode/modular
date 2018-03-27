@@ -143,20 +143,21 @@ abstract class AbstractBaseModule implements
     }
 
     /**
-     * Creates a container instance using the container factory.
+     * Creates a container instance with the given service definitions.
      *
      * @since [*next-version*]
      *
-     * @param array $definitions
+     * @param callable[]|ArrayAccess|stdClass|ContainerInterface $definitions The service definitions.
+     * @param ContainerInterface|null                            $parent      The parent container instance, if any.
+     *
+     * @return ContainerInterface The created container instance.
      *
      * @throws CouldNotMakeExceptionInterface If the factory failed to create the exception.
      * @throws FactoryExceptionInterface      If the factory encountered an error.
-     *
-     * @return ContainerInterface The created container instance.
      */
-    protected function _createContainer($definitions = array())
+    protected function _createContainer($definitions = array(), ContainerInterface $parent = null)
     {
-        return $this->_getContainerFactory()->make(array('definitions' => $definitions));
+        return $this->_getContainerFactory()->make(['definitions' => $definitions, 'parent' => $parent]);
     }
 
     /**
