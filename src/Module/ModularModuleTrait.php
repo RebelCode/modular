@@ -2,8 +2,10 @@
 
 namespace RebelCode\Modular\Module;
 
+use ArrayAccess;
 use Dhii\Modular\Module\ModuleInterface;
 use Psr\Container\ContainerInterface;
+use stdClass;
 use Traversable;
 
 /**
@@ -40,8 +42,8 @@ trait ModularModuleTrait
         $modules = $this->_getModules();
 
         // Setup all modules and collect their containers
-        $this->modules = array();
-        $containers    = array();
+        $this->modules = [];
+        $containers = [];
         foreach ($modules as $_module) {
             $_container = $_module->setup();
 
@@ -84,15 +86,16 @@ trait ModularModuleTrait
     abstract protected function _getModules();
 
     /**
-     * Creates a container instance with the given services.
+     * Creates a container instance with the given service definitions.
      *
      * @since [*next-version*]
      *
-     * @param mixed $services The services.
+     * @param callable[]|ArrayAccess|stdClass|ContainerInterface $definitions The service definitions.
+     * @param ContainerInterface|null                            $parent      The parent container instance, if any.
      *
      * @return ContainerInterface The created container instance.
      */
-    abstract protected function _createContainer($services);
+    abstract protected function _createContainer($definitions = [], ContainerInterface $parent = null);
 
     /**
      * Creates a composite container with the given children container instances.
