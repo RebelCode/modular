@@ -39,7 +39,8 @@ trait ModularModuleTrait
      */
     protected function _setup()
     {
-        $modules = $this->_getModules();
+        $moduleInitContainer = $this->_getModuleInitContainer();
+        $modules = $this->_getModules($moduleInitContainer);
 
         // Setup all modules and collect their containers
         $this->modules = [];
@@ -57,6 +58,9 @@ trait ModularModuleTrait
         // Prepend a container with all module instances
         $modulesContainer = $this->_createContainer($this->modules);
         array_unshift($containers, $modulesContainer);
+
+        // Prepend the container that was used to initialize modules
+        array_unshift($containers, $moduleInitContainer);
 
         // Construct the master container and return
         return $this->_createCompositeContainer($containers);
@@ -81,9 +85,20 @@ trait ModularModuleTrait
      *
      * @since [*next-version*]
      *
+     * @param ContainerInterface|null $container The container to initialize containers with.
+     *
      * @return ModuleInterface[]|Traversable A list of module instances.
      */
-    abstract protected function _getModules();
+    abstract protected function _getModules(ContainerInterface $container = null);
+
+    /**
+     * Retrieves the container to use to initialize modules.
+     *
+     * @since [*next-version*]
+     *
+     * @return ContainerInterface|null The container instance, if any.
+     */
+    abstract protected function _getModuleInitContainer();
 
     /**
      * Creates a container instance with the given service definitions.
