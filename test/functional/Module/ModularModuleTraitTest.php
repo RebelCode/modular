@@ -38,6 +38,7 @@ class ModularModuleTraitTest extends TestCase
             $methods,
             [
                 '_getModules',
+                '_getModuleInitContainer',
                 '_createContainer',
                 '_createCompositeContainer',
             ]
@@ -201,8 +202,14 @@ class ModularModuleTraitTest extends TestCase
             $key3 => $this->createContainer(),
         ];
 
+        $moduleInitContainer = $this->createContainer();
+        $subject->expects($this->once())
+                ->method('_getModuleInitContainer')
+                ->willReturn($moduleInitContainer);
+
         $subject->expects($this->once())
                 ->method('_getModules')
+                ->with($moduleInitContainer)
                 ->willReturn($modules);
 
         foreach ($modules as $_key => $_module) {
@@ -219,6 +226,7 @@ class ModularModuleTraitTest extends TestCase
 
         $compositeContainer = $this->createContainer();
         $childrenContainers = [
+            $moduleInitContainer,
             $modulesContainer,
             $containers[$key1],
             $containers[$key2],
@@ -259,7 +267,12 @@ class ModularModuleTraitTest extends TestCase
         ];
 
         $subject->expects($this->once())
+                ->method('_getModuleInitContainer')
+                ->willReturn(null);
+
+        $subject->expects($this->once())
                 ->method('_getModules')
+                ->with(null)
                 ->willReturn($modules);
 
         foreach ($modules as $_key => $_module) {

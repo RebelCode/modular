@@ -112,6 +112,7 @@ class AbstractBaseModuleTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
+        $parent = $this->getMockForAbstractClass('Psr\Container\ContainerInterface');
         $definitions = [
             uniqid('definition-'),
             uniqid('definition-'),
@@ -119,6 +120,7 @@ class AbstractBaseModuleTest extends TestCase
         ];
         $config = [
             'definitions' => $definitions,
+            'parent'      => $parent
         ];
         $container = $this->getMockForAbstractClass('Psr\Container\ContainerInterface');
 
@@ -128,7 +130,7 @@ class AbstractBaseModuleTest extends TestCase
                                   ->with($config)
                                   ->willReturn($container);
 
-        $actual = $reflect->_createContainer($definitions);
+        $actual = $reflect->_createContainer($definitions, $parent);
 
         $this->assertEquals($container, $actual, 'Created container is not the container created by the factory.');
     }
