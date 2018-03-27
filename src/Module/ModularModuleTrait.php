@@ -60,7 +60,9 @@ trait ModularModuleTrait
         array_unshift($containers, $modulesContainer);
 
         // Prepend the container that was used to initialize modules
-        array_unshift($containers, $moduleInitContainer);
+        if ($moduleInitContainer !== null) {
+            array_unshift($containers, $moduleInitContainer);
+        }
 
         // Construct the master container and return
         return $this->_createCompositeContainer($containers);
