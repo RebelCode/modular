@@ -38,6 +38,7 @@ class ModularModuleTraitTest extends TestCase
             $methods,
             [
                 '_getModules',
+                '_getModuleServiceKey',
                 '_getModuleInitContainer',
                 '_createContainer',
                 '_createCompositeContainer',
@@ -207,6 +208,11 @@ class ModularModuleTraitTest extends TestCase
                 ->method('_getModuleInitContainer')
                 ->willReturn($moduleInitContainer);
 
+        $subject->expects($this->exactly(count($modules)))
+                ->method('_getModuleServiceKey')
+                ->withConsecutive([$modules[$key1]], [$modules[$key2]], [$modules[$key3]])
+                ->willReturnOnConsecutiveCalls($key1, $key2, $key3);
+
         $subject->expects($this->once())
                 ->method('_getModules')
                 ->with($moduleInitContainer)
@@ -269,6 +275,11 @@ class ModularModuleTraitTest extends TestCase
         $subject->expects($this->once())
                 ->method('_getModuleInitContainer')
                 ->willReturn(null);
+
+        $subject->expects($this->exactly(count($modules)))
+                ->method('_getModuleServiceKey')
+                ->withConsecutive([$modules[$key1]], [$modules[$key2]], [$modules[$key3]])
+                ->willReturnOnConsecutiveCalls($key1, $key2, $key3);
 
         $subject->expects($this->once())
                 ->method('_getModules')

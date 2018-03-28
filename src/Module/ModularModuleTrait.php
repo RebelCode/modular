@@ -52,7 +52,8 @@ trait ModularModuleTrait
                 $containers[] = $_container;
             }
 
-            $this->modules[$_module->getKey()] = $_module;
+            $_moduleServiceKey = $this->_getModuleServiceKey($_module);
+            $this->modules[$_moduleServiceKey] = $_module;
         }
 
         // Prepend a container with all module instances
@@ -81,6 +82,17 @@ trait ModularModuleTrait
             $_module->run($c);
         }
     }
+
+    /**
+     * Retrieves the service key for the service that represents a module.
+     *
+     * @since [*next-version*]
+     *
+     * @param ModuleInterface $module The module instance.
+     *
+     * @return string The module service key.
+     */
+    abstract protected function _getModuleServiceKey(ModuleInterface $module);
 
     /**
      * Retrieves the module instances to load.
