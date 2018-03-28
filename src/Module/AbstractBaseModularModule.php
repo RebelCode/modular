@@ -4,6 +4,7 @@ namespace RebelCode\Modular\Module;
 
 use ArrayAccess;
 use Dhii\Data\Container\ContainerFactoryInterface;
+use Dhii\Modular\Module\ModuleInterface;
 use Dhii\Util\String\StringableInterface as Stringable;
 use Psr\Container\ContainerInterface;
 use stdClass;
@@ -52,6 +53,16 @@ abstract class AbstractBaseModularModule extends AbstractBaseModule
     ) {
         $this->_setCompositeContainerFactory($compContainerFactory);
         $this->_initModule($containerFactory, $key, $dependencies, $config);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    protected function _getModuleServiceKey(ModuleInterface $module)
+    {
+        return sprintf('%s-module', $module->getKey());
     }
 
     /**
