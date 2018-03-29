@@ -62,7 +62,7 @@ abstract class AbstractBaseModularModule extends AbstractBaseModule
      */
     protected function _getModuleServiceKey(ModuleInterface $module)
     {
-        return sprintf('%s-module', $module->getKey());
+        return sprintf('%s_module', $module->getKey());
     }
 
     /**
