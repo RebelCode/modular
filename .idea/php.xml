@@ -58,6 +58,8 @@
       <path value="$PROJECT_DIR$/vendor/dhii/data-key-value-aware-abstract" />
       <path value="$PROJECT_DIR$/vendor/dhii/callback-abstract" />
       <path value="$PROJECT_DIR$/vendor/dhii/data-container-interface" />
+      <path value="$PROJECT_DIR$/vendor/dhii/wp-events" />
+      <path value="$PROJECT_DIR$/vendor/dhii/psr-14" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1cb643c913a7a099ea93ec5689b21fec",
+    "content-hash": "85b8c318c34a22680b8e63d0d5a57439",
     "packages": [
         {
             "name": "dhii/callback-abstract",
@@ -738,6 +738,40 @@
             "time": "2018-02-12T09:41:29+00:00"
         },
         {
+            "name": "dhii/psr-14",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/psr-14.git",
+                "reference": "ebfa94b69b34e34ffdfc7288aeea2f1a315288b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/psr-14/zipball/ebfa94b69b34e34ffdfc7288aeea2f1a315288b5",
+                "reference": "ebfa94b69b34e34ffdfc7288aeea2f1a315288b5",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Psr\\EventManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Miguel Muscat",
+                    "email": "miguelmuscat93@gmail.com"
+                },
+                {
+                    "name": "Anton Ukhanev",
+                    "email": "xedin.unknown@gmail.com"
+                }
+            ],
+            "description": "A temporary PSR-14 repository.",
+            "time": "2016-07-06T18:43:19+00:00"
+        },
+        {
             "name": "dhii/stringable-interface",
             "version": "v0.1",
             "source": {
@@ -778,6 +812,59 @@
             ],
             "description": "Interoperability interface for objects that can be cast to string",
             "time": "2017-01-23T15:08:20+00:00"
+        },
+        {
+            "name": "dhii/wp-events",
+            "version": "dev-task/wip-refactoring",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/wp-events.git",
+                "reference": "f4f49fccffd8f215ce3fc1f8d592d824a86b6d55"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/wp-events/zipball/f4f49fccffd8f215ce3fc1f8d592d824a86b6d55",
+                "reference": "f4f49fccffd8f215ce3fc1f8d592d824a86b6d55",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/exception": "0.1-alpha4",
+                "dhii/i18n-helper-base": "^0.1",
+                "dhii/normalization-helper-base": "^0.1-alpha2",
+                "dhii/psr-14": "^0.1",
+                "php": "^5.4 | ^7.0"
+            },
+            "require-dev": {
+                "10up/wp_mock": "^0.1.1",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "dhii/stringable-interface": "^0.1",
+                "doctrine/instantiator": ">=1.0.5 <1.1.0",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\EventManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "A PSR-14 compliant event wrapper for WordPress.",
+            "time": "2018-03-30T16:03:51+00:00"
         },
         {
             "name": "psr/container",
@@ -2773,6 +2860,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "dhii/wp-events": 20,
         "rebelcode/module-iterator-abstract": 20,
         "dhii/file-finder-abstract": 20,
         "dhii/data-container-interface": 20,
