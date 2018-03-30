@@ -21,7 +21,7 @@
         "dhii/data-key-value-aware-abstract": "0.1-alpha4",
         "dhii/callback-abstract": "^0.1-alpha1",
         "dhii/iterator-helper-base": "^0.1-alpha2",
-        "dhii/exception-helper-base": "0.1-alpha2",
+        "dhii/exception": "^0.1-alpha4",
         "dhii/normalization-helper-base": "0.1-alpha2",
         "dhii/data-container-interface": "0.2.x-dev",
         "dhii/container-helper-base": "0.1-alpha5",
