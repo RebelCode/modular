@@ -7,6 +7,7 @@ use Dhii\Data\Container\ContainerFactoryInterface;
 use Dhii\Data\Container\NormalizeContainerCapableTrait;
 use Dhii\Exception\CreateInternalExceptionCapableTrait;
 use Dhii\Exception\CreateInvalidArgumentExceptionCapableTrait;
+use Dhii\Exception\CreateOutOfRangeExceptionCapableTrait;
 use Dhii\Exception\CreateRuntimeExceptionCapableTrait;
 use Dhii\Exception\InternalException;
 use Dhii\Factory\Exception\CouldNotMakeExceptionInterface;
@@ -19,6 +20,7 @@ use Dhii\Util\Normalization\NormalizeStringCapableTrait;
 use Dhii\Util\String\StringableInterface as Stringable;
 use Exception;
 use InvalidArgumentException;
+use OutOfRangeException;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
 use stdClass;
@@ -69,6 +71,13 @@ abstract class AbstractBaseModule implements
      * @since [*next-version*]
      */
     use CreateInvalidArgumentExceptionCapableTrait;
+
+    /*
+     * Provides functionality for creating out-of-range exceptions.
+     *
+     * @since [*next-version*]
+     */
+    use CreateOutOfRangeExceptionCapableTrait;
 
     /*
      * Provides functionality for creating internal exceptions.
@@ -171,9 +180,9 @@ abstract class AbstractBaseModule implements
      *
      * @param string|Stringable $filePath The path to the PHP config file. Absolute paths are recommended.
      *
-     * @throws InternalException        If an exception was thrown by the PHP config file.
-     * @throws InvalidArgumentException If the config retrieved from the PHP config file is not a valid container./
-     * @throws RuntimeException         If the config file could not be read.
+     * @throws InternalException   If an exception was thrown by the PHP config file.
+     * @throws OutOfRangeException If the config retrieved from the PHP config file is not a valid container.
+     * @throws RuntimeException    If the config file could not be read.
      *
      * @return array|ArrayAccess|stdClass|ContainerInterface The config.
      */
@@ -200,7 +209,7 @@ abstract class AbstractBaseModule implements
         try {
             return $this->_normalizeContainer($config);
         } catch (InvalidArgumentException $exception) {
-            throw $this->_createInvalidArgumentException(
+            throw $this->_createOutOfRangeException(
                 $this->__('The config retrieved from the PHP config file is not a valid container'),
                 null,
                 null,
