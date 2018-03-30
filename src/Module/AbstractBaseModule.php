@@ -105,7 +105,7 @@ abstract class AbstractBaseModule implements
      *
      * @since [*next-version*]
      *
-     * @var ContainerFactoryInterface
+     * @var ContainerFactoryInterface|null
      */
     protected $containerFactory;
 
@@ -114,12 +114,12 @@ abstract class AbstractBaseModule implements
      *
      * @since [*next-version*]
      *
-     * @param ContainerFactoryInterface                     $containerFactory The container factory.
+     * @param ContainerFactoryInterface|null                $containerFactory The container factory, or null.
      * @param string|Stringable                             $key              The module key.
      * @param string[]|Stringable[]                         $dependencies     The module dependencies.
      * @param array|ArrayAccess|stdClass|ContainerInterface $config           The module config.
      */
-    protected function _initModule(ContainerFactoryInterface $containerFactory, $key, $dependencies = array(), $config = array())
+    protected function _initModule($containerFactory, $key, $dependencies = array(), $config = array())
     {
         $this->_setKey($key);
         $this->_setDependencies($dependencies);
@@ -132,7 +132,7 @@ abstract class AbstractBaseModule implements
      *
      * @since [*next-version*]
      *
-     * @return ContainerFactoryInterface The container factory instance.
+     * @return ContainerFactoryInterface|null The container factory instance, if any.
      */
     protected function _getContainerFactory()
     {
@@ -144,10 +144,19 @@ abstract class AbstractBaseModule implements
      *
      * @since [*next-version*]
      *
-     * @param ContainerFactoryInterface $containerFactory The container factory instance.
+     * @param ContainerFactoryInterface|null $containerFactory The container factory instance or null.
      */
-    protected function _setContainerFactory(ContainerFactoryInterface $containerFactory)
+    protected function _setContainerFactory($containerFactory)
     {
+        if ($containerFactory !== null && !($containerFactory instanceof ContainerFactoryInterface)) {
+            throw $this->_createInvalidArgumentException(
+                $this->__('Argument is not a container factory'),
+                null,
+                null,
+                $containerFactory
+            );
+        }
+
         $this->containerFactory = $containerFactory;
     }
 
@@ -163,10 +172,21 @@ abstract class AbstractBaseModule implements
      *
      * @throws CouldNotMakeExceptionInterface If the factory failed to create the exception.
      * @throws FactoryExceptionInterface      If the factory encountered an error.
+     * @throws RuntimeException               If the container factory associated with this instance is null.
      */
     protected function _createContainer($definitions = array(), ContainerInterface $parent = null)
     {
-        return $this->_getContainerFactory()->make(['definitions' => $definitions, 'parent' => $parent]);
+        $containerFactory = $this->_getContainerFactory();
+
+        if (!($containerFactory instanceof ContainerFactoryInterface)) {
+            throw $this->_createRuntimeException(
+                $this->__('Not a valid container factory instance'),
+                null,
+                null
+            );
+        }
+
+        return $containerFactory->make(['definitions' => $definitions, 'parent' => $parent]);
     }
 
     /**
