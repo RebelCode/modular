@@ -24,6 +24,7 @@ use InvalidArgumentException;
 use OutOfRangeException;
 use Psr\Container\ContainerInterface;
 use Psr\EventManager\EventManagerInterface;
+use RebelCode\Modular\Events\AttachCapableTrait;
 use RebelCode\Modular\Events\CreateEventCapableTrait;
 use RebelCode\Modular\Events\EventFactoryAwareTrait;
 use RebelCode\Modular\Events\EventManagerAwareTrait;
@@ -85,6 +86,13 @@ abstract class AbstractBaseModule implements
      * @since [*next-version*]
      */
     use FilterCapableTrait;
+
+    /*
+     * Provides event attaching functionality.
+     *
+     * @since [*next-version*]
+     */
+    use AttachCapableTrait;
 
     /*
      * Provides event creation functionality.
