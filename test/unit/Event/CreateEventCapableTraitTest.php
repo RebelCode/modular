@@ -171,7 +171,7 @@ class CreateEventCapableTraitTest extends TestCase
             rand(0, 100),
         ];
 
-        $factory = $this->getMock('Dhii\EventManager\EventFactoryInterface');
+        $factory = $this->getMock('Dhii\Event\EventFactoryInterface');
 
         $subject->expects($this->once())
                 ->method('_getEventFactory')

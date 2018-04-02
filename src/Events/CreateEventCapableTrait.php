@@ -3,7 +3,7 @@
 namespace RebelCode\Modular\Events;
 
 use Dhii\Factory\Exception\CouldNotMakeExceptionInterface;
-use Dhii\EventManager\EventFactoryInterface;
+use Dhii\Event\EventFactoryInterface;
 use Dhii\Util\String\StringableInterface as Stringable;
 use Exception as RootException;
 use Psr\EventManager\EventInterface;

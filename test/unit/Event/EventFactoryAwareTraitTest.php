@@ -71,7 +71,7 @@ class EventFactoryAwareTraitTest extends TestCase
     {
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
-        $input = $this->mock('Dhii\EventManager\EventFactoryInterface');
+        $input = $this->getMock('Dhii\Event\EventFactoryInterface');
 
         $reflect->_setEventFactory($input);
 
