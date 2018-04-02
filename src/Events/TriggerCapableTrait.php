@@ -3,6 +3,7 @@
 namespace RebelCode\Modular\Events;
 
 use Dhii\Exception\InternalException;
+use Dhii\Exception\InternalExceptionInterface;
 use Dhii\Factory\Exception\CouldNotMakeExceptionInterface;
 use Dhii\Util\String\StringableInterface as Stringable;
 use Exception as RootException;
@@ -26,7 +27,7 @@ trait TriggerCapableTrait
      * @param array|object          $data  The data of the event, if any.
      *
      * @throws RuntimeException If an error occurred and the event could not be dispatched.
-     * @throws InternalException If an error occurred while dispatching the event.
+     * @throws InternalExceptionInterface If an error occurred while dispatching the event.
      *
      * @return EventInterface The event instance.
      */
