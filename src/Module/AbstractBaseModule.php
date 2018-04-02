@@ -5,6 +5,7 @@ namespace RebelCode\Modular\Module;
 use ArrayAccess;
 use Dhii\Data\Container\ContainerFactoryInterface;
 use Dhii\Data\Container\NormalizeContainerCapableTrait;
+use Dhii\Event\EventFactoryInterface;
 use Dhii\Exception\CreateInternalExceptionCapableTrait;
 use Dhii\Exception\CreateInvalidArgumentExceptionCapableTrait;
 use Dhii\Exception\CreateOutOfRangeExceptionCapableTrait;
@@ -22,6 +23,12 @@ use Exception;
 use InvalidArgumentException;
 use OutOfRangeException;
 use Psr\Container\ContainerInterface;
+use Psr\EventManager\EventManagerInterface;
+use RebelCode\Modular\Events\CreateEventCapableTrait;
+use RebelCode\Modular\Events\EventFactoryAwareTrait;
+use RebelCode\Modular\Events\EventManagerAwareTrait;
+use RebelCode\Modular\Events\FilterCapableTrait;
+use RebelCode\Modular\Events\TriggerCapableTrait;
 use RuntimeException;
 use stdClass;
 
@@ -64,6 +71,41 @@ abstract class AbstractBaseModule implements
      * @since [*next-version*]
      */
     use NormalizeContainerCapableTrait;
+
+    /*
+     * Provides event triggering functionality.
+     *
+     * @since [*next-version*]
+     */
+    use TriggerCapableTrait;
+
+    /*
+     * Provides value filtering functionality.
+     *
+     * @since [*next-version*]
+     */
+    use FilterCapableTrait;
+
+    /*
+     * Provides event creation functionality.
+     *
+     * @since [*next-version*]
+     */
+    use CreateEventCapableTrait;
+
+    /*
+     * Provides awareness of an event manager.
+     *
+     * @since [*next-version*]
+     */
+    use EventManagerAwareTrait;
+
+    /*
+     * Provides awareness of an event factory.
+     *
+     * @since [*next-version*]
+     */
+    use EventFactoryAwareTrait;
 
     /*
      * Provides functionality for creating invalid-argument exceptions.
@@ -119,12 +161,26 @@ abstract class AbstractBaseModule implements
      * @param string[]|Stringable[]                         $dependencies     The module dependencies.
      * @param array|ArrayAccess|stdClass|ContainerInterface $config           The module config.
      */
-    protected function _initModule($containerFactory, $key, $dependencies = array(), $config = array())
+    protected function _initModule($containerFactory, $key, $dependencies = [], $config = [])
     {
         $this->_setKey($key);
         $this->_setDependencies($dependencies);
         $this->_setConfig($config);
         $this->_setContainerFactory($containerFactory);
+    }
+
+    /**
+     * Initializes the module's event functionality.
+     *
+     * @since [*next-version*]
+     *
+     * @param EventManagerInterface|null $eventManager The event manager, or null.
+     * @param EventFactoryInterface|null $eventFactory The event factory, or null.
+     */
+    protected function _initModuleEvents($eventManager, $eventFactory)
+    {
+        $this->_setEventManager($eventManager);
+        $this->_setEventFactory($eventFactory);
     }
 
     /**
@@ -174,7 +230,7 @@ abstract class AbstractBaseModule implements
      * @throws FactoryExceptionInterface      If the factory encountered an error.
      * @throws RuntimeException               If the container factory associated with this instance is null.
      */
-    protected function _createContainer($definitions = array(), ContainerInterface $parent = null)
+    protected function _createContainer($definitions = [], ContainerInterface $parent = null)
     {
         $containerFactory = $this->_getContainerFactory();
 
