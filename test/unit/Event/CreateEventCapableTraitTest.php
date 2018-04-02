@@ -2,10 +2,12 @@
 
 namespace RebelCode\Modular\Events\UnitTest;
 
-use RebelCode\Modular\Events\CreateEventCapableTrait as TestSubject;
-use Xpmock\TestCase;
 use Exception as RootException;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use Psr\EventManager\EventInterface;
+use RebelCode\Modular\Events\CreateEventCapableTrait as TestSubject;
+use RuntimeException;
+use Xpmock\TestCase;
 
 /**
  * Tests {@see TestSubject}.
@@ -35,12 +37,38 @@ class CreateEventCapableTraitTest extends TestCase
         $methods = $this->mergeValues(
             $methods,
             [
+                '_getEventFactory',
             ]
         );
 
         $mock = $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
                      ->setMethods($methods)
                      ->getMockForTrait();
+
+        return $mock;
+    }
+
+    /**
+     * Creates a new mock event instance.
+     *
+     * @since [*next-version*]
+     *
+     * @param string|null $name   The event name.
+     * @param array|null  $params The event params.
+     *
+     * @return MockObject|EventInterface
+     */
+    public function createEvent($name = null, $params = null)
+    {
+        $mock = $this->getMock('Psr\EventManager\EventInterface');
+
+        if ($name !== null) {
+            $mock->method('getName')->willReturn($name);
+        }
+
+        if ($params !== null) {
+            $mock->method('getParams')->willReturn($params);
+        }
 
         return $mock;
     }
@@ -142,15 +170,56 @@ class CreateEventCapableTraitTest extends TestCase
             uniqid('key-') => uniqid('value-'),
             rand(0, 100),
         ];
-        $event = $reflect->_createEvent($name, $data);
+
+        $factory = $this->getMock('Dhii\EventManager\EventFactoryInterface');
+
+        $subject->expects($this->once())
+                ->method('_getEventFactory')
+                ->willReturn($factory);
+
+        $event = $this->createEvent($name, $data);
+        $factory->expects($this->once())
+                ->method('make')
+                ->with(['name' => $name, 'params' => $data])
+                ->willReturn($event);
+
+        $actual = $reflect->_createEvent($name, $data);
 
         $this->assertInstanceOf(
             'Psr\EventManager\EventInterface',
-            $event,
+            $actual,
             'Created event does not implement expected interface.'
         );
+        $this->assertSame($event, $actual, 'Returned event is not the event instance returned by the factory.');
+    }
 
-        $this->assertEquals($name, $event->getName(), 'Event name is incorrect.');
-        $this->assertEquals($data, $event->getParams(), 'Event data is incorrect.');
+    /**
+     * Tests the event creation functionality to assert whether an exception is thrown when the event factory is null.
+     *
+     * @since [*next-version*]
+     */
+    public function testCreateEventNoEventFactory()
+    {
+        $subject = $this->createInstance();
+        $reflect = $this->reflect($subject);
+
+        $name = uniqid('event-');
+        $data = [
+            uniqid('param-'),
+            uniqid('key-') => uniqid('value-'),
+            rand(0, 100),
+        ];
+
+        $subject->expects($this->once())
+                ->method('_getEventFactory')
+                ->willReturn(null);
+
+        $subject->expects($this->once())
+                ->method('_createRuntimeException')
+                ->willReturn(new RuntimeException());
+
+        $this->setExpectedException('RuntimeException');
+
+        $reflect->_createEvent($name, $data);
     }
 }
