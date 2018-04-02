@@ -103,12 +103,17 @@ class EventFactoryTest extends TestCase
         );
 
         $this->assertInstanceOf(
-            'Dhii\EventManager\EventFactoryInterface',
+            'Dhii\Event\EventFactoryInterface',
             $subject,
             'Test subject does not implement expected interface.'
         );
     }
 
+    /**
+     * Tests the instance creation functionality to assert whether new instances can be correctly created.
+     *
+     * @since [*next-version*]
+     */
     public function testMake()
     {
         $subject = new TestSubject();
@@ -139,6 +144,6 @@ class EventFactoryTest extends TestCase
         $this->assertEquals($name, $actual->getName(), 'Event name is incorrect.');
         $this->assertEquals($params, $actual->getParams(), 'Event params are incorrect.');
         $this->assertSame($target, $actual->getTarget(), 'Event target is incorrect.');
-        $this->assertEquals($propagation, $actual->isPropagationStopped(), 'Event propagation flag is incorrect.');
+        $this->assertEquals($propagation, !$actual->isPropagationStopped(), 'Event propagation flag is incorrect.');
     }
 }
