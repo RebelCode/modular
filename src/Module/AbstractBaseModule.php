@@ -24,12 +24,7 @@ use InvalidArgumentException;
 use OutOfRangeException;
 use Psr\Container\ContainerInterface;
 use Psr\EventManager\EventManagerInterface;
-use RebelCode\Modular\Events\AttachCapableTrait;
-use RebelCode\Modular\Events\CreateEventCapableTrait;
-use RebelCode\Modular\Events\EventFactoryAwareTrait;
-use RebelCode\Modular\Events\EventManagerAwareTrait;
-use RebelCode\Modular\Events\FilterCapableTrait;
-use RebelCode\Modular\Events\TriggerCapableTrait;
+use RebelCode\Modular\Events\EventsFunctionalityTrait;
 use RuntimeException;
 use stdClass;
 
@@ -74,46 +69,11 @@ abstract class AbstractBaseModule implements
     use NormalizeContainerCapableTrait;
 
     /*
-     * Provides event triggering functionality.
+     * Provides common functionality for events.
      *
      * @since [*next-version*]
      */
-    use TriggerCapableTrait;
-
-    /*
-     * Provides value filtering functionality.
-     *
-     * @since [*next-version*]
-     */
-    use FilterCapableTrait;
-
-    /*
-     * Provides event attaching functionality.
-     *
-     * @since [*next-version*]
-     */
-    use AttachCapableTrait;
-
-    /*
-     * Provides event creation functionality.
-     *
-     * @since [*next-version*]
-     */
-    use CreateEventCapableTrait;
-
-    /*
-     * Provides awareness of an event manager.
-     *
-     * @since [*next-version*]
-     */
-    use EventManagerAwareTrait;
-
-    /*
-     * Provides awareness of an event factory.
-     *
-     * @since [*next-version*]
-     */
-    use EventFactoryAwareTrait;
+    use EventsFunctionalityTrait;
 
     /*
      * Provides functionality for creating invalid-argument exceptions.
