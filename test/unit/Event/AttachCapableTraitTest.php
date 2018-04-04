@@ -147,8 +147,7 @@ class AttachCapableTraitTest extends TestCase
     }
 
     /**
-     * Tests the `_attach()` method with an event name and event data to assert whether an event instance is created
-     * internally, dispatched via an event manager and then returned.
+     * Tests the `_attach()` method with an event name and event data to assert whether the handler is attached.
      *
      * @since [*next-version*]
      */
