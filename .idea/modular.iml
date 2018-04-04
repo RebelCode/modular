@@ -8,7 +8,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/callback-abstract" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/callback-aware-trait" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/config-aware-trait" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/container-helper-base" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/data-container-abstract" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/data-container-base" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/data-container-interface" />

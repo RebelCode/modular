@@ -21,13 +21,13 @@
         "dhii/event-interface": "^0.2-alpha1",
         "rebelcode/module-iterator-abstract": "dev-task/5_update-latest-improvements",
         "dhii/file-finder-abstract": "dev-task/create-finder",
-        "dhii/data-key-value-aware-abstract": "0.1-alpha4",
+        "dhii/data-key-value-aware-abstract": "^0.1-alpha4",
         "dhii/callback-abstract": "^0.1-alpha1",
         "dhii/iterator-helper-base": "^0.1-alpha2",
         "dhii/exception": "^0.1-alpha4",
-        "dhii/normalization-helper-base": "0.1-alpha2",
+        "dhii/normalization-helper-base": "^0.1-alpha2",
         "dhii/data-container-interface": "0.2.x-dev",
-        "dhii/container-helper-base": "0.1-alpha5",
+        "dhii/container-helper-base": "^0.1-alpha5",
         "dhii/i18n-helper-base": "^0.1"
     },
     "require-dev": {
