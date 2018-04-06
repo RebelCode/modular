@@ -65,6 +65,11 @@
       <path value="$PROJECT_DIR$/vendor/dhii/data-container-abstract" />
       <path value="$PROJECT_DIR$/vendor/dhii/invocable-base" />
       <path value="$PROJECT_DIR$/vendor/dhii/event-interface" />
+      <path value="$PROJECT_DIR$/vendor/dhii/container-helper-base" />
+      <path value="$PROJECT_DIR$/vendor/dhii/validation-base" />
+      <path value="$PROJECT_DIR$/vendor/dhii/validation-abstract" />
+      <path value="$PROJECT_DIR$/vendor/dhii/args-list-validation" />
+      <path value="$PROJECT_DIR$/vendor/dhii/validation-interface" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />
