@@ -70,7 +70,7 @@ trait ModularModuleTrait
         }
 
         // Create a container that has the module instances as services, and add it to the list
-        $containers->add($this->_createContainer($this->modules));
+        $containers->add($this->_createContainer($this->modules, $composite));
 
         // Add the containers retrieved from the modules, to the list
         foreach ($moduleContainers as $_moduleContainer) {
