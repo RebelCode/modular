@@ -18,6 +18,9 @@ use Traversable;
  *
  * On {@see _run()}, every module's {@see run()} method is invoked with the given container.
  *
+ * It is very important to use a composite container that can work with a {@see Traversable} list of containers that is
+ * initially empty and populated later. This is the only sane remedy for the chicken-egg problem.
+ *
  * @since [*next-version*]
  */
 trait ModularModuleTrait
@@ -40,19 +43,21 @@ trait ModularModuleTrait
      */
     protected function _setup()
     {
-        $this->modules = [];
-
-        // The containers
+        // The list of containers that will be added to the composite container
         $containers = $this->_createAddCapableList();
-        // The initial container that will be used to initialize the modules
-        $moduleInitContainer = $this->_getModuleInitContainer();
+        // The composite container - the container for this modular module
+        $composite = $this->_createCompositeContainer($containers);
 
-        if ($moduleInitContainer !== null) {
-            $containers->add($moduleInitContainer);
+        // The initial container that will be used to initialize the modules
+        $initContainer = $this->_getInitialContainer($composite);
+        if ($initContainer !== null) {
+            $containers->add($initContainer);
         }
 
+        $this->modules = [];
+
         // Get the modules to set up
-        $modules = $this->_getModules($moduleInitContainer);
+        $modules = $this->_getModules($initContainer);
         $moduleContainers = [];
         foreach ($modules as $_module) {
             // Set up the module and collect its container
@@ -73,7 +78,7 @@ trait ModularModuleTrait
         }
 
         // Construct the master container and return
-        return $this->_createCompositeContainer($containers);
+        return $composite;
     }
 
     /**
@@ -117,9 +122,11 @@ trait ModularModuleTrait
      *
      * @since [*next-version*]
      *
+     * @param ContainerInterface|null $parent The parent container, if any.
+     *
      * @return ContainerInterface|null The container instance, if any.
      */
-    abstract protected function _getModuleInitContainer();
+    abstract protected function _getInitialContainer(ContainerInterface $parent = null);
 
     /**
      * Creates a container instance with the given service definitions.

@@ -39,7 +39,7 @@ class ModularModuleTraitTest extends TestCase
             [
                 '_getModules',
                 '_getModuleServiceKey',
-                '_getModuleInitContainer',
+                '_getInitialContainer',
                 '_createContainer',
                 '_createCompositeContainer',
                 '_createAddCapableList'
@@ -212,10 +212,10 @@ class ModularModuleTraitTest extends TestCase
                 ->method('_createAddCapableList')
                 ->willReturn($containerList);
 
-        $moduleInitContainer = $this->createContainer();
+        $initContainer = $this->createContainer();
         $subject->expects($this->once())
-                ->method('_getModuleInitContainer')
-                ->willReturn($moduleInitContainer);
+                ->method('_getInitialContainer')
+                ->willReturn($initContainer);
 
         $subject->expects($this->exactly(count($modules)))
                 ->method('_getModuleServiceKey')
@@ -224,7 +224,7 @@ class ModularModuleTraitTest extends TestCase
 
         $subject->expects($this->once())
                 ->method('_getModules')
-                ->with($moduleInitContainer)
+                ->with($initContainer)
                 ->willReturn($modules);
 
         foreach ($modules as $_key => $_module) {
@@ -283,7 +283,7 @@ class ModularModuleTraitTest extends TestCase
                 ->willReturn($containerList);
 
         $subject->expects($this->once())
-                ->method('_getModuleInitContainer')
+                ->method('_getInitialContainer')
                 ->willReturn(null);
 
         $subject->expects($this->exactly(count($modules)))
