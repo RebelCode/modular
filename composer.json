@@ -28,7 +28,8 @@
         "dhii/normalization-helper-base": "^0.1-alpha2",
         "dhii/data-container-interface": "0.2.x-dev",
         "dhii/container-helper-base": "^0.1-alpha5",
-        "dhii/i18n-helper-base": "^0.1"
+        "dhii/i18n-helper-base": "^0.1",
+        "dhii/collections-interface": "^0.2-alpha4"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",

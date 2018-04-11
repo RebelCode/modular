@@ -42,6 +42,7 @@ class ModularModuleTraitTest extends TestCase
                 '_getModuleInitContainer',
                 '_createContainer',
                 '_createCompositeContainer',
+                '_createAddCapableList'
             ]
         );
 
@@ -203,6 +204,14 @@ class ModularModuleTraitTest extends TestCase
             $key3 => $this->createContainer(),
         ];
 
+        $containerList = $this->mockClassAndInterfaces('stdClass', [
+            'Iterator',
+            'Dhii\Collection\AddCapableInterface'
+        ]);
+        $subject->expects($this->once())
+                ->method('_createAddCapableList')
+                ->willReturn($containerList);
+
         $moduleInitContainer = $this->createContainer();
         $subject->expects($this->once())
                 ->method('_getModuleInitContainer')
@@ -231,16 +240,9 @@ class ModularModuleTraitTest extends TestCase
                 ->willReturn($modulesContainer);
 
         $compositeContainer = $this->createContainer();
-        $childrenContainers = [
-            $moduleInitContainer,
-            $modulesContainer,
-            $containers[$key1],
-            $containers[$key2],
-            $containers[$key3],
-        ];
         $subject->expects($this->once())
                 ->method('_createCompositeContainer')
-                ->with($childrenContainers)
+                ->with($containerList)
                 ->willReturn($compositeContainer);
 
         $this->assertSame(
@@ -272,6 +274,14 @@ class ModularModuleTraitTest extends TestCase
             $key3 => $this->createContainer(),
         ];
 
+        $containerList = $this->mockClassAndInterfaces('stdClass', [
+            'Iterator',
+            'Dhii\Collection\AddCapableInterface'
+        ]);
+        $subject->expects($this->once())
+                ->method('_createAddCapableList')
+                ->willReturn($containerList);
+
         $subject->expects($this->once())
                 ->method('_getModuleInitContainer')
                 ->willReturn(null);
@@ -299,14 +309,9 @@ class ModularModuleTraitTest extends TestCase
                 ->willReturn($modulesContainer);
 
         $compositeContainer = $this->createContainer();
-        $childrenContainers = [
-            $modulesContainer,
-            $containers[$key1],
-            $containers[$key3],
-        ];
         $subject->expects($this->once())
                 ->method('_createCompositeContainer')
-                ->with($childrenContainers)
+                ->with($containerList)
                 ->willReturn($compositeContainer);
 
         $this->assertSame(

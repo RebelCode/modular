@@ -68,6 +68,7 @@
       <path value="$PROJECT_DIR$/vendor/dhii/validation-abstract" />
       <path value="$PROJECT_DIR$/vendor/dhii/validation-base" />
       <path value="$PROJECT_DIR$/vendor/dhii/factory-base" />
+      <path value="$PROJECT_DIR$/vendor/dhii/collections-interface" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />

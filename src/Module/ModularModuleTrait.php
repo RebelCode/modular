@@ -3,6 +3,7 @@
 namespace RebelCode\Modular\Module;
 
 use ArrayAccess;
+use Dhii\Collection\AddCapableInterface;
 use Dhii\Modular\Module\ModuleInterface;
 use Psr\Container\ContainerInterface;
 use stdClass;
@@ -39,30 +40,36 @@ trait ModularModuleTrait
      */
     protected function _setup()
     {
-        $moduleInitContainer = $this->_getModuleInitContainer();
-        $modules = $this->_getModules($moduleInitContainer);
-
-        // Setup all modules and collect their containers
         $this->modules = [];
-        $containers = [];
-        foreach ($modules as $_module) {
-            $_container = $_module->setup();
 
-            if ($_container !== null) {
-                $containers[] = $_container;
-            }
+        // The containers
+        $containers = $this->_createAddCapableList();
+        // The initial container that will be used to initialize the modules
+        $moduleInitContainer = $this->_getModuleInitContainer();
 
-            $_moduleServiceKey = $this->_getModuleServiceKey($_module);
-            $this->modules[$_moduleServiceKey] = $_module;
+        if ($moduleInitContainer !== null) {
+            $containers->add($moduleInitContainer);
         }
 
-        // Prepend a container with all module instances
-        $modulesContainer = $this->_createContainer($this->modules);
-        array_unshift($containers, $modulesContainer);
+        // Get the modules to set up
+        $modules = $this->_getModules($moduleInitContainer);
+        $moduleContainers = [];
+        foreach ($modules as $_module) {
+            // Set up the module and collect its container
+            if ($_container = $_module->setup()) {
+                $moduleContainers[] = $_container;
+            }
 
-        // Prepend the container that was used to initialize modules
-        if ($moduleInitContainer !== null) {
-            array_unshift($containers, $moduleInitContainer);
+            // Save module instance
+            $this->modules[$this->_getModuleServiceKey($_module)] = $_module;
+        }
+
+        // Create a container that has the module instances as services, and add it to the list
+        $containers->add($this->_createContainer($this->modules));
+
+        // Add the containers retrieved from the modules, to the list
+        foreach ($moduleContainers as $_moduleContainer) {
+            $containers->add($_moduleContainer);
         }
 
         // Construct the master container and return
@@ -136,4 +143,13 @@ trait ModularModuleTrait
      * @return ContainerInterface The created composite container instance.
      */
     abstract protected function _createCompositeContainer($containers);
+
+    /**
+     * Creates a new, modifiable list.
+     *
+     * @since [*next-version*]
+     *
+     * @return AddCapableInterface|Traversable The traversable, modifiable list.
+     */
+    abstract protected function _createAddCapableList();
 }
