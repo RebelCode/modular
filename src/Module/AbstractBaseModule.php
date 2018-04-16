@@ -193,18 +193,21 @@ abstract class AbstractBaseModule implements
      *
      * @param string|Stringable         $key                  The module key.
      * @param string[]|Stringable[]     $dependencies         The module dependencies.
-     * @param ContainerFactoryInterface $compContainerFactory The composite container factory.
      * @param ContainerFactoryInterface $containerFactory     The container factory.
+     * @param ContainerFactoryInterface $configFactory        The config factory.
+     * @param ContainerFactoryInterface $compContainerFactory The composite container factory.
      */
     protected function _initModule(
         $key,
         $dependencies = [],
-        ContainerFactoryInterface $compContainerFactory,
-        ContainerFactoryInterface $containerFactory
+        ContainerFactoryInterface $containerFactory,
+        ContainerFactoryInterface $configFactory,
+        ContainerFactoryInterface $compContainerFactory
     ) {
         $this->_setKey($key);
         $this->_setDependencies($dependencies);
         $this->_setContainerFactory($containerFactory);
+        $this->_setConfigFactory($configFactory);
         $this->_setCompositeContainerFactory($compContainerFactory);
     }
 
