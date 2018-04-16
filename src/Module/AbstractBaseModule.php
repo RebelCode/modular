@@ -169,6 +169,15 @@ abstract class AbstractBaseModule implements
     protected $containerFactory;
 
     /**
+     * The factory to use for creating config containers.
+     *
+     * @since [*next-version*]
+     *
+     * @var ContainerFactoryInterface
+     */
+    protected $configFactory;
+
+    /**
      * The factory to use for creating composite containers.
      *
      * @since [*next-version*]
@@ -244,6 +253,39 @@ abstract class AbstractBaseModule implements
         }
 
         $this->containerFactory = $containerFactory;
+    }
+
+    /**
+     * Retrieves the config container factory associated with this module.
+     *
+     * @since [*next-version*]
+     *
+     * @return ContainerFactoryInterface The config container factory instance, if any.
+     */
+    protected function _getConfigFactory()
+    {
+        return $this->configFactory;
+    }
+
+    /**
+     * Sets the config container factory for this module.
+     *
+     * @since [*next-version*]
+     *
+     * @param ContainerFactoryInterface $configFactory The config container factory instance.
+     */
+    protected function _setConfigFactory($configFactory)
+    {
+        if ($configFactory !== null && !($configFactory instanceof ContainerFactoryInterface)) {
+            throw $this->_createInvalidArgumentException(
+                $this->__('Argument is not a container factory'),
+                null,
+                null,
+                $configFactory
+            );
+        }
+
+        $this->configFactory = $configFactory;
     }
 
     /**
