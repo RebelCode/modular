@@ -5,7 +5,7 @@ namespace RebelCode\Modular\Module;
 use Dhii\Modular\Module\ModuleInterface;
 
 /**
- * Base functionality for modular modules.it
+ * Base functionality for modular modules.
  *
  * @since [*next-version*]
  */
