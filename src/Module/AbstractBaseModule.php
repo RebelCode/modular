@@ -342,6 +342,24 @@ abstract class AbstractBaseModule implements
     }
 
     /**
+     * Creates a config container instance with the given data.
+     *
+     * @since [*next-version*]
+     *
+     * @param callable[]|ArrayAccess|stdClass|ContainerInterface $data The config data.
+     *
+     * @return ContainerInterface The created config container instance.
+     *
+     * @throws CouldNotMakeExceptionInterface If the factory failed to create the exception.
+     * @throws FactoryExceptionInterface      If the factory encountered an error.
+     * @throws RuntimeException               If the container factory associated with this instance is null.
+     */
+    protected function _createConfig($data = [])
+    {
+        return $this->_getConfigFactory()->make(['definitions' => $data]);
+    }
+
+    /**
      * Creates a composite container with the given children container instances.
      *
      * @since [*next-version*]
