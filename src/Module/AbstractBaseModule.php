@@ -164,7 +164,7 @@ abstract class AbstractBaseModule implements
      *
      * @since [*next-version*]
      *
-     * @var ContainerFactoryInterface|null
+     * @var ContainerFactoryInterface
      */
     protected $containerFactory;
 
@@ -218,7 +218,7 @@ abstract class AbstractBaseModule implements
      *
      * @since [*next-version*]
      *
-     * @return ContainerFactoryInterface|null The container factory instance, if any.
+     * @return ContainerFactoryInterface The container factory instance, if any.
      */
     protected function _getContainerFactory()
     {
@@ -230,7 +230,7 @@ abstract class AbstractBaseModule implements
      *
      * @since [*next-version*]
      *
-     * @param ContainerFactoryInterface|null $containerFactory The container factory instance or null.
+     * @param ContainerFactoryInterface $containerFactory The container factory instance or null.
      */
     protected function _setContainerFactory($containerFactory)
     {
