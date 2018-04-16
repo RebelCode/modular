@@ -25,11 +25,4 @@ trait ModuleTrait
      * @since [*next-version*]
      */
     use DependenciesAwareTrait;
-
-    /*
-     * Provides awareness and storage functionality for a configuration container.
-     *
-     * @since [*next-version*]
-     */
-    use ConfigAwareTrait;
 }

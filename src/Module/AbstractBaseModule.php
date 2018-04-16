@@ -33,6 +33,7 @@ use Psr\EventManager\EventManagerInterface;
 use RebelCode\Modular\Events\EventsFunctionalityTrait;
 use RuntimeException;
 use stdClass;
+use Traversable;
 
 /**
  * Common base functionality for modules.
@@ -168,21 +169,34 @@ abstract class AbstractBaseModule implements
     protected $containerFactory;
 
     /**
+     * The factory to use for creating composite containers.
+     *
+     * @since [*next-version*]
+     *
+     * @var ContainerFactoryInterface
+     */
+    protected $compContainerFactory;
+
+    /**
      * Initializes the module with all required information.
      *
      * @since [*next-version*]
      *
-     * @param ContainerFactoryInterface|null                $containerFactory The container factory, or null.
-     * @param string|Stringable                             $key              The module key.
-     * @param string[]|Stringable[]                         $dependencies     The module dependencies.
-     * @param array|ArrayAccess|stdClass|ContainerInterface $config           The module config.
+     * @param string|Stringable         $key                  The module key.
+     * @param string[]|Stringable[]     $dependencies         The module dependencies.
+     * @param ContainerFactoryInterface $compContainerFactory The composite container factory.
+     * @param ContainerFactoryInterface $containerFactory     The container factory.
      */
-    protected function _initModule($containerFactory, $key, $dependencies = [], $config = [])
-    {
+    protected function _initModule(
+        $key,
+        $dependencies = [],
+        ContainerFactoryInterface $compContainerFactory,
+        ContainerFactoryInterface $containerFactory
+    ) {
         $this->_setKey($key);
         $this->_setDependencies($dependencies);
-        $this->_setConfig($config);
         $this->_setContainerFactory($containerFactory);
+        $this->_setCompositeContainerFactory($compContainerFactory);
     }
 
     /**
@@ -233,6 +247,30 @@ abstract class AbstractBaseModule implements
     }
 
     /**
+     * Retrieves the composite container factory associated with this module.
+     *
+     * @since [*next-version*]
+     *
+     * @return ContainerFactoryInterface The composite container factory instance.
+     */
+    protected function _getCompositeContainerFactory()
+    {
+        return $this->compContainerFactory;
+    }
+
+    /**
+     * Sets the composite container factory for this module.
+     *
+     * @since [*next-version*]
+     *
+     * @param ContainerFactoryInterface $compContainerFactory The composite container factory instance.
+     */
+    protected function _setCompositeContainerFactory(ContainerFactoryInterface $compContainerFactory)
+    {
+        $this->compContainerFactory = $compContainerFactory;
+    }
+
+    /**
      * Creates a container instance with the given service definitions.
      *
      * @since [*next-version*]
@@ -259,6 +297,20 @@ abstract class AbstractBaseModule implements
         }
 
         return $containerFactory->make(['definitions' => $definitions, 'parent' => $parent]);
+    }
+
+    /**
+     * Creates a composite container with the given children container instances.
+     *
+     * @since [*next-version*]
+     *
+     * @param ContainerInterface[]|Traversable $containers The children container instances.
+     *
+     * @return ContainerInterface The created composite container instance.
+     */
+    protected function _createCompositeContainer($containers)
+    {
+        return $this->_getCompositeContainerFactory()->make(['containers' => $containers]);
     }
 
     /**
