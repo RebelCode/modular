@@ -4,7 +4,13 @@ namespace RebelCode\Modular\Module;
 
 use ArrayAccess;
 use Dhii\Data\Container\ContainerFactoryInterface;
+use Dhii\Data\Container\ContainerGetCapableTrait;
+use Dhii\Data\Container\ContainerGetPathCapableTrait;
+use Dhii\Data\Container\ContainerHasCapableTrait;
+use Dhii\Data\Container\CreateContainerExceptionCapableTrait;
+use Dhii\Data\Container\CreateNotFoundExceptionCapableTrait;
 use Dhii\Data\Container\NormalizeContainerCapableTrait;
+use Dhii\Data\Container\NormalizeKeyCapableTrait;
 use Dhii\Event\EventFactoryInterface;
 use Dhii\Exception\CreateInternalExceptionCapableTrait;
 use Dhii\Exception\CreateInvalidArgumentExceptionCapableTrait;
@@ -46,6 +52,34 @@ abstract class AbstractBaseModule implements
         _getKey as public getKey;
         _getDependencies as public getDependencies;
     }
+
+    /*
+     * Provides functionality for retrieving a value for a path from any type of container hierarchy.
+     *
+     * @since [*next-version*]
+     */
+    use ContainerGetPathCapableTrait;
+
+    /*
+     * Provides functionality for reading from any type of container.
+     *
+     * @since [*next-version*]
+     */
+    use ContainerGetCapableTrait;
+
+    /*
+     * Provides functionality for key-checking any type of container.
+     *
+     * @since [*next-version*]
+     */
+    use ContainerHasCapableTrait;
+
+    /*
+     * Provides key normalization functionality.
+     *
+     * @since [*next-version*]
+     */
+    use NormalizeKeyCapableTrait;
 
     /*
      * Provides string normalization functionality.
@@ -102,6 +136,20 @@ abstract class AbstractBaseModule implements
      * @since [*next-version*]
      */
     use CreateRuntimeExceptionCapableTrait;
+
+    /*
+     * Provides functionality for creating container exceptions.
+     *
+     * @since [*next-version*]
+     */
+    use CreateContainerExceptionCapableTrait;
+
+    /*
+     * Provides functionality for creating container not-found exceptions.
+     *
+     * @since [*next-version*]
+     */
+    use CreateNotFoundExceptionCapableTrait;
 
     /*
      * Provides string translating functionality.
