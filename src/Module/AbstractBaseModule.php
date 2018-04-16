@@ -226,6 +226,24 @@ abstract class AbstractBaseModule implements
     }
 
     /**
+     * Creates the module setup container for the module.
+     *
+     * @since [*next-version*]
+     *
+     * @param array|ArrayAccess|stdClass|ContainerInterface $config   The config data.
+     * @param array|ArrayAccess|stdClass|ContainerInterface $services The service definitions.
+     *
+     * @return ContainerInterface The created module setup container.
+     */
+    protected function _setupContainer($config, $services)
+    {
+        return $this->_createCompositeContainer([
+            ($config instanceof ContainerInterface) ? $config : $this->_createConfig($config),
+            ($services instanceof ContainerInterface) ? $services : $this->_createContainer($services),
+        ]);
+    }
+
+    /**
      * Retrieves the container factory associated with this module.
      *
      * @since [*next-version*]
