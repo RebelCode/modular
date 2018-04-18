@@ -200,14 +200,14 @@ abstract class AbstractBaseModule implements
     protected function _initModule(
         $key,
         $dependencies = [],
-        ContainerFactoryInterface $containerFactory,
         ContainerFactoryInterface $configFactory,
+        ContainerFactoryInterface $containerFactory,
         ContainerFactoryInterface $compContainerFactory
     ) {
         $this->_setKey($key);
         $this->_setDependencies($dependencies);
-        $this->_setContainerFactory($containerFactory);
         $this->_setConfigFactory($configFactory);
+        $this->_setContainerFactory($containerFactory);
         $this->_setCompositeContainerFactory($compContainerFactory);
     }
 
