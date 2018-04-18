@@ -73,7 +73,7 @@ trait ModularModuleTrait
         $containers->add($this->_createContainer($this->modules, $composite));
 
         // Add the containers retrieved from the modules, to the list
-        foreach ($moduleContainers as $_moduleContainer) {
+        foreach (array_reverse($moduleContainers) as $_moduleContainer) {
             $containers->add($_moduleContainer);
         }
 
