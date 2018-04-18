@@ -377,7 +377,7 @@ abstract class AbstractBaseModule implements
      */
     protected function _createConfig($data = [])
     {
-        return $this->_getConfigFactory()->make(['definitions' => $data]);
+        return $this->_getConfigFactory()->make(['data' => $data]);
     }
 
     /**
