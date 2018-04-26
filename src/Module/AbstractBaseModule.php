@@ -359,7 +359,10 @@ abstract class AbstractBaseModule implements
             );
         }
 
-        return $containerFactory->make(['definitions' => $definitions, 'parent' => $parent]);
+        return $containerFactory->make([
+            ContainerFactoryInterface::K_DATA => $definitions,
+            'parent'                          => $parent,
+        ]);
     }
 
     /**

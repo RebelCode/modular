@@ -318,12 +318,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/data-container-interface.git",
-                "reference": "63fbd3215c211c4d45a0e39c33a8ca9b8b4fe2fb"
+                "reference": "b9767d34214fa4d73f10989fca4ad54196a7b7f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/data-container-interface/zipball/63fbd3215c211c4d45a0e39c33a8ca9b8b4fe2fb",
-                "reference": "63fbd3215c211c4d45a0e39c33a8ca9b8b4fe2fb",
+                "url": "https://api.github.com/repos/Dhii/data-container-interface/zipball/b9767d34214fa4d73f10989fca4ad54196a7b7f3",
+                "reference": "b9767d34214fa4d73f10989fca4ad54196a7b7f3",
                 "shasum": ""
             },
             "require": {
@@ -364,7 +364,7 @@
                 }
             ],
             "description": "Interfaces for working with data containers",
-            "time": "2018-03-26T13:27:27+00:00"
+            "time": "2018-04-26T09:50:30+00:00"
         },
         {
             "name": "dhii/data-key-value-aware-abstract",
@@ -1051,17 +1051,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/module-interface.git",
-                "reference": "eb2fd0003aaed3daddd3b141bc27e56ea692228e"
+                "reference": "8aa782dc55d763109c0db54762ab997602730984"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/module-interface/zipball/eb2fd0003aaed3daddd3b141bc27e56ea692228e",
-                "reference": "eb2fd0003aaed3daddd3b141bc27e56ea692228e",
+                "url": "https://api.github.com/repos/Dhii/module-interface/zipball/8aa782dc55d763109c0db54762ab997602730984",
+                "reference": "8aa782dc55d763109c0db54762ab997602730984",
                 "shasum": ""
             },
             "require": {
                 "dhii/data-key-value-aware-interface": "^0.1",
                 "dhii/exception-interface": "^0.1 | ^0.2",
+                "dhii/factory-interface": "^0.1-alpha1",
                 "php": "^5.3 | ^7.0",
                 "psr/container": "^1.0"
             },
@@ -1094,7 +1095,7 @@
                 }
             ],
             "description": "Interfaces for modules",
-            "time": "2018-03-14T10:52:04+00:00"
+            "time": "2018-04-16T12:08:26+00:00"
         },
         {
             "name": "dhii/normalization-helper-base",
@@ -1934,23 +1935,23 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.7.5",
+            "version": "1.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "dfd6be44111a7c41c2e884a336cc4f461b3b2401"
+                "reference": "33a7e3c4fda54e912ff6338c48823bd5c0f0b712"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/dfd6be44111a7c41c2e884a336cc4f461b3b2401",
-                "reference": "dfd6be44111a7c41c2e884a336cc4f461b3b2401",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/33a7e3c4fda54e912ff6338c48823bd5c0f0b712",
+                "reference": "33a7e3c4fda54e912ff6338c48823bd5c0f0b712",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
                 "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0",
-                "sebastian/comparator": "^1.1|^2.0",
+                "sebastian/comparator": "^1.1|^2.0|^3.0",
                 "sebastian/recursion-context": "^1.0|^2.0|^3.0"
             },
             "require-dev": {
@@ -1993,7 +1994,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2018-02-19T10:16:54+00:00"
+            "time": "2018-04-18T13:57:24+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
