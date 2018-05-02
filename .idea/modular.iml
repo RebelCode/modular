@@ -8,6 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/args-list-validation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/callback-abstract" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/collections-interface" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/config-interface" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/container-helper-base" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/data-container-abstract" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/data-container-base" />

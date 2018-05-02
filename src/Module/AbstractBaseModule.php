@@ -3,6 +3,7 @@
 namespace RebelCode\Modular\Module;
 
 use ArrayAccess;
+use Dhii\Config\ConfigFactoryInterface;
 use Dhii\Data\Container\ContainerFactoryInterface;
 use Dhii\Data\Container\ContainerGetCapableTrait;
 use Dhii\Data\Container\ContainerGetPathCapableTrait;
@@ -173,7 +174,7 @@ abstract class AbstractBaseModule implements
      *
      * @since [*next-version*]
      *
-     * @var ContainerFactoryInterface
+     * @var ConfigFactoryInterface
      */
     protected $configFactory;
 
@@ -193,14 +194,14 @@ abstract class AbstractBaseModule implements
      *
      * @param string|Stringable         $key                  The module key.
      * @param string[]|Stringable[]     $dependencies         The module dependencies.
+     * @param ConfigFactoryInterface    $configFactory        The config factory.
      * @param ContainerFactoryInterface $containerFactory     The container factory.
-     * @param ContainerFactoryInterface $configFactory        The config factory.
      * @param ContainerFactoryInterface $compContainerFactory The composite container factory.
      */
     protected function _initModule(
         $key,
         $dependencies = [],
-        ContainerFactoryInterface $configFactory,
+        ConfigFactoryInterface $configFactory,
         ContainerFactoryInterface $containerFactory,
         ContainerFactoryInterface $compContainerFactory
     ) {
@@ -281,7 +282,7 @@ abstract class AbstractBaseModule implements
      *
      * @since [*next-version*]
      *
-     * @return ContainerFactoryInterface The config container factory instance, if any.
+     * @return ConfigFactoryInterface The config container factory instance, if any.
      */
     protected function _getConfigFactory()
     {
@@ -293,11 +294,11 @@ abstract class AbstractBaseModule implements
      *
      * @since [*next-version*]
      *
-     * @param ContainerFactoryInterface $configFactory The config container factory instance.
+     * @param ConfigFactoryInterface $configFactory The config container factory instance.
      */
     protected function _setConfigFactory($configFactory)
     {
-        if ($configFactory !== null && !($configFactory instanceof ContainerFactoryInterface)) {
+        if ($configFactory !== null && !($configFactory instanceof ConfigFactoryInterface)) {
             throw $this->_createInvalidArgumentException(
                 $this->__('Argument is not a container factory'),
                 null,
@@ -380,7 +381,9 @@ abstract class AbstractBaseModule implements
      */
     protected function _createConfig($data = [])
     {
-        return $this->_getConfigFactory()->make(['data' => $data]);
+        return $this->_getConfigFactory()->make([
+            ConfigFactoryInterface::K_DATA => $data
+        ]);
     }
 
     /**
