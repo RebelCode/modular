@@ -200,7 +200,7 @@ abstract class AbstractBaseModule implements
      */
     protected function _initModule(
         $key,
-        $dependencies = [],
+        $dependencies,
         ConfigFactoryInterface $configFactory,
         ContainerFactoryInterface $containerFactory,
         ContainerFactoryInterface $compContainerFactory
