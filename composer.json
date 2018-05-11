@@ -9,51 +9,49 @@
             "email": "dev@rebelcode.com"
         }
     ],
+    "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {
-        "php": "^5.3 | ^7.0",
-        "rebelcode/module-interface": "dev-develop",
-        "rebelcode/module-loader": "dev-develop",
-        "rebelcode/module-iterator-abstract": "dev-develop",
-        "rebelcode/module-locator": "dev-develop",
-        "rebelcode/module-config-interface": "dev-develop",
-        "rebelcode/module-config-validator": "dev-develop"
+        "php": "^5.4 | ^7.0",
+        "psr/container": "^1.0",
+        "rebelcode/module-iterator-abstract": "^0.1-alpha1",
+        "dhii/module-interface": "^0.1",
+        "dhii/factory-interface": "^0.1-alpha2",
+        "dhii/factory-base": "^0.1-alpha3",
+        "dhii/wp-events": "^0.3-alpha1",
+        "dhii/event-interface": "^0.2-alpha1",
+        "dhii/file-finder-abstract": "^0.1-alpha1",
+        "dhii/data-key-value-aware-abstract": "^0.1-alpha4",
+        "dhii/callback-abstract": "^0.1-alpha1",
+        "dhii/iterator-helper-base": "^0.1-alpha2",
+        "dhii/exception": "^0.1-alpha4",
+        "dhii/normalization-helper-base": "^0.1-alpha2",
+        "dhii/data-container-interface": "^0.2-alpha3",
+        "dhii/container-helper-base": "^0.1-alpha5",
+        "dhii/i18n-helper-base": "^0.1",
+        "dhii/collections-interface": "^0.2-alpha4",
+        "dhii/config-interface": "^0.2-alpha2"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
         "ptrofimov/xpmock": "^1.1",
-        "dhii/php-cs-fixer-config": "dev-php-5.3",
-        "codeclimate/php-test-reporter": "<=0.3.2"
+        "dhii/php-cs-fixer-config": "^0.1",
+        "codeclimate/php-test-reporter": "<=0.3.2",
+        "mikey179/vfsStream": "^1.6@dev"
     },
     "autoload": {
         "psr-4": {
             "RebelCode\\Modular\\": "src"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCodecom/module-interface"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCodecom/module-config-validator"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCodecom/module-config-interface"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCodecom/module-loader"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCodecom/module-iterator-abstract"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/Dhii/machine-loop-machine"
+    "autoload-dev": {
+        "psr-4": {
+            "RebelCode\\Modular\\UnitTest\\": "test/unit",
+            "RebelCode\\Modular\\FuncTest\\": "test/functional"
         }
-    ]
+    },
+    "scripts": {
+        "test": "phpunit",
+        "csfix": "php-cs-fixer fix -vvv"
+    }
 }
