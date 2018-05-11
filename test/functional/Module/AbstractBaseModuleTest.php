@@ -2,6 +2,7 @@
 
 namespace RebelCode\Modular\FuncTest\Module;
 
+use Dhii\Data\Container\ContainerFactoryInterface;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
 use RebelCode\Modular\Module\AbstractBaseModule as TestSubject;
@@ -119,7 +120,7 @@ class AbstractBaseModuleTest extends TestCase
             uniqid('definition-'),
         ];
         $config = [
-            'definitions' => $definitions,
+            ContainerFactoryInterface::K_DATA => $definitions,
             'parent'      => $parent
         ];
         $container = $this->getMockForAbstractClass('Psr\Container\ContainerInterface');
