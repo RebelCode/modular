@@ -157,7 +157,7 @@ class AttachCapableTraitTest extends TestCase
         $reflect = $this->reflect($subject);
 
         $name = uniqid('event-');
-        $handler = function() {};
+        $handler = function () {};
 
         $manager = $this->createEventManager();
         $subject->expects($this->once())

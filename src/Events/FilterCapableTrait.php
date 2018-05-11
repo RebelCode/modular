@@ -38,7 +38,7 @@ trait FilterCapableTrait
      * @param string|EventInterface $event The event key or instance.
      * @param array|object          $data  The data of the event, if any.
      *
-     * @throws RuntimeException If an error occurred and the event could not be dispatched.
+     * @throws RuntimeException           If an error occurred and the event could not be dispatched.
      * @throws InternalExceptionInterface If an error occurred while dispatching the event.
      *
      * @return EventInterface The event instance.

@@ -26,7 +26,7 @@ trait TriggerCapableTrait
      * @param string|EventInterface $event The event key or instance.
      * @param array|object          $data  The data of the event, if any.
      *
-     * @throws RuntimeException If an error occurred and the event could not be dispatched.
+     * @throws RuntimeException           If an error occurred and the event could not be dispatched.
      * @throws InternalExceptionInterface If an error occurred while dispatching the event.
      *
      * @return EventInterface The event instance.
@@ -73,9 +73,9 @@ trait TriggerCapableTrait
      * @param string       $name The event name.
      * @param array|object $data The event data.
      *
-     * @return EventInterface The created event instance.
-     *
      * @throws CouldNotMakeExceptionInterface If failed to make the event instance.
+     *
+     * @return EventInterface The created event instance.
      */
     abstract protected function _createEvent($name, $data);
 

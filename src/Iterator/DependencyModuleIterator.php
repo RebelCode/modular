@@ -75,7 +75,7 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
      *
      * @param array $modules An array of modules.
      */
-    public function __construct($modules = array())
+    public function __construct($modules = [])
     {
         $this->_setModules($modules);
         $this->_createModuleMap($modules);
@@ -90,7 +90,7 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
      */
     protected function _createModuleMap($modules)
     {
-        $this->moduleMap = array();
+        $this->moduleMap = [];
 
         foreach ($modules as $_module) {
             $this->moduleMap[$_module->getKey()] = $_module;
@@ -105,10 +105,10 @@ class DependencyModuleIterator extends AbstractDependencyModuleIterator implemen
     protected function _getModuleDependencies(ModuleInterface $module)
     {
         if (!($module instanceof DependenciesAwareInterface)) {
-            return array();
+            return [];
         }
 
-        $dependencies = array();
+        $dependencies = [];
 
         foreach ($module->getDependencies() as $_dep) {
             $_depKey = $this->_normalizeString($_dep);

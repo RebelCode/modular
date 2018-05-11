@@ -128,9 +128,9 @@ class EventFactoryTest extends TestCase
 
         $actual = $subject->make(
             [
-                'name'        => $name,
-                'params'      => $params,
-                'target'      => $target,
+                'name' => $name,
+                'params' => $params,
+                'target' => $target,
                 'propagation' => $propagation,
             ]
         );

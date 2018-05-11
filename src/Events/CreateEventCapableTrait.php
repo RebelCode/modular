@@ -24,9 +24,9 @@ trait CreateEventCapableTrait
      * @param string       $name The event name.
      * @param array|object $data The event data.
      *
-     * @return EventInterface The created event instance.
-     *
      * @throws CouldNotMakeExceptionInterface If failed to make the event instance.
+     *
+     * @return EventInterface The created event instance.
      */
     protected function _createEvent($name, $data)
     {

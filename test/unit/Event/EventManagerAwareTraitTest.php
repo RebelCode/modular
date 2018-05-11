@@ -38,7 +38,7 @@ class EventManagerAwareTraitTest extends TestCase
 
         $mock->method('__')->willReturnArgument(0);
         $mock->method('_createInvalidArgumentException')->willReturnCallback(
-            function($msg = '', $code = 0, $prev = null) {
+            function ($msg = '', $code = 0, $prev = null) {
                 return new InvalidArgumentException($msg, $code, $prev);
             }
         );

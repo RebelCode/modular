@@ -88,5 +88,5 @@ trait EventManagerAwareTrait
      *
      * @return string The translated string.
      */
-    abstract protected function __($string, $args = array(), $context = null);
+    abstract protected function __($string, $args = [], $context = null);
 }

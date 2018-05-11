@@ -42,7 +42,7 @@ class ModularModuleTraitTest extends TestCase
                 '_getInitialContainer',
                 '_createContainer',
                 '_createCompositeContainer',
-                '_createAddCapableList'
+                '_createAddCapableList',
             ]
         );
 
@@ -206,7 +206,7 @@ class ModularModuleTraitTest extends TestCase
 
         $containerList = $this->mockClassAndInterfaces('stdClass', [
             'Iterator',
-            'Dhii\Collection\AddCapableInterface'
+            'Dhii\Collection\AddCapableInterface',
         ]);
         $subject->expects($this->once())
                 ->method('_createAddCapableList')
@@ -276,7 +276,7 @@ class ModularModuleTraitTest extends TestCase
 
         $containerList = $this->mockClassAndInterfaces('stdClass', [
             'Iterator',
-            'Dhii\Collection\AddCapableInterface'
+            'Dhii\Collection\AddCapableInterface',
         ]);
         $subject->expects($this->once())
                 ->method('_createAddCapableList')

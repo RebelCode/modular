@@ -55,8 +55,8 @@ class ModuleFileFinderTest extends TestCase
      *
      * @since[*next-version*]
      *
-     * @param string $rootDir The root directory.
-     * @param int $maxDepth The maximum recursion depth from the root directory into subdirectories.
+     * @param string $rootDir  The root directory.
+     * @param int    $maxDepth The maximum recursion depth from the root directory into subdirectories.
      *
      * @return ModuleFileFinder
      */
@@ -74,7 +74,7 @@ class ModuleFileFinderTest extends TestCase
      */
     public function testLocate()
     {
-        $vfs     = $this->_createFilesystem();
+        $vfs = $this->_createFilesystem();
         $subject = $this->createInstance($vfs->url(), 2);
 
         $paths = $this->reflect($subject)->_getPaths();
@@ -92,35 +92,35 @@ class ModuleFileFinderTest extends TestCase
      */
     protected function _createFilesystem()
     {
-        $vfs                = vfsStream::setup(static::ROOT_DIR_NAME);
+        $vfs = vfsStream::setup(static::ROOT_DIR_NAME);
         $vendorDirStructure = array(
             'rebelcode' => array(
-                'some-module'    => array(
-                    'src'           => array(
+                'some-module' => array(
+                    'src' => array(
                         'SomeClass.php' => static::DUMMY_PHP_FILE_CONTENTS,
                     ),
-                    'module.php'    => static::DUMMY_MODULE_FILE_CONTENTS,
-                    'index.php'     => static::DUMMY_PHP_FILE_CONTENTS,
+                    'module.php' => static::DUMMY_MODULE_FILE_CONTENTS,
+                    'index.php' => static::DUMMY_PHP_FILE_CONTENTS,
                     'composer.json' => static::DUMMY_COMPOSER_JSON_FILE_CONTENTS,
                 ),
                 'another-module' => array(
                     'module.php' => static::DUMMY_MODULE_FILE_CONTENTS,
                 ),
-                'non-module'     => array(
+                'non-module' => array(
                     'some-file.php' => static::DUMMY_PHP_FILE_CONTENTS,
-                    'config.php'    => static::DUMMY_MODULE_FILE_CONTENTS,
+                    'config.php' => static::DUMMY_MODULE_FILE_CONTENTS,
                     'composer.json' => static::DUMMY_COMPOSER_JSON_FILE_CONTENTS,
                 ),
             ),
-            'symfony'   => array(
+            'symfony' => array(
                 'finder' => array(
-                    'src'           => array(
+                    'src' => array(
                         'SomeClass.php' => static::DUMMY_PHP_CLASS_FILE_CONTENTS,
                     ),
                     'composer.json' => static::DUMMY_COMPOSER_JSON_FILE_CONTENTS,
                 ),
                 'rc-mod' => array(
-                    'src'        => array(
+                    'src' => array(
                         'SomeClass.php' => static::DUMMY_PHP_CLASS_FILE_CONTENTS,
                     ),
                     'module.php' => static::DUMMY_MODULE_FILE_CONTENTS,

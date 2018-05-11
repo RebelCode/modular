@@ -120,8 +120,8 @@ class EventFactory extends AbstractBaseCallbackFactory implements EventFactoryIn
      */
     protected function _getFactoryCallback($config = null)
     {
-        return function($config = null) {
-            $name = $this->_containerGet($config, static::K_CFG_NAME);
+        return function ($config = null) {
+            $name   = $this->_containerGet($config, static::K_CFG_NAME);
             $params = $this->_containerGet($config, static::K_CFG_PARAMS);
             $target = $this->_containerHas($config, static::K_CFG_TARGET)
                 ? $this->_containerGet($config, static::K_CFG_TARGET)

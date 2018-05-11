@@ -121,7 +121,7 @@ class AbstractBaseModuleTest extends TestCase
         ];
         $config = [
             ContainerFactoryInterface::K_DATA => $definitions,
-            'parent'      => $parent
+            'parent' => $parent,
         ];
         $container = $this->getMockForAbstractClass('Psr\Container\ContainerInterface');
 
@@ -152,7 +152,7 @@ class AbstractBaseModuleTest extends TestCase
         $vfs = vfsStream::setup('config');
         vfsStream::create(
             [
-                'config.php' => '<?php return ' . var_export($config, true) . ';',
+                'config.php' => '<?php return '.var_export($config, true).';',
             ],
             $vfs
         );
@@ -160,7 +160,7 @@ class AbstractBaseModuleTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $actual = $reflect->_loadPhpConfigFile($vfs->url() . '/config.php');
+        $actual = $reflect->_loadPhpConfigFile($vfs->url().'/config.php');
 
         $this->assertEquals($config, $actual);
     }

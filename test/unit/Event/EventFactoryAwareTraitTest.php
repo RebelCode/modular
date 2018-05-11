@@ -2,7 +2,7 @@
 
 namespace RebelCode\Modular\Events\FuncTest;
 
-use \InvalidArgumentException;
+use InvalidArgumentException;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
 use stdClass;
 use Xpmock\TestCase;
@@ -38,7 +38,7 @@ class EventFactoryAwareTraitTest extends TestCase
 
         $mock->method('__')->willReturnArgument(0);
         $mock->method('_createInvalidArgumentException')->willReturnCallback(
-            function($msg = '', $code = 0, $prev = null) {
+            function ($msg = '', $code = 0, $prev = null) {
                 return new InvalidArgumentException($msg, $code, $prev);
             }
         );

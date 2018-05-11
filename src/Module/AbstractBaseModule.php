@@ -342,11 +342,11 @@ abstract class AbstractBaseModule implements
      * @param callable[]|ArrayAccess|stdClass|ContainerInterface $definitions The service definitions.
      * @param ContainerInterface|null                            $parent      The parent container instance, if any.
      *
-     * @return ContainerInterface The created container instance.
-     *
      * @throws CouldNotMakeExceptionInterface If the factory failed to create the exception.
      * @throws FactoryExceptionInterface      If the factory encountered an error.
      * @throws RuntimeException               If the container factory associated with this instance is null.
+     *
+     * @return ContainerInterface The created container instance.
      */
     protected function _createContainer($definitions = [], ContainerInterface $parent = null)
     {
@@ -373,16 +373,16 @@ abstract class AbstractBaseModule implements
      *
      * @param callable[]|ArrayAccess|stdClass|ContainerInterface $data The config data.
      *
-     * @return ContainerInterface The created config container instance.
-     *
      * @throws CouldNotMakeExceptionInterface If the factory failed to create the exception.
      * @throws FactoryExceptionInterface      If the factory encountered an error.
      * @throws RuntimeException               If the container factory associated with this instance is null.
+     *
+     * @return ContainerInterface The created config container instance.
      */
     protected function _createConfig($data = [])
     {
         return $this->_getConfigFactory()->make([
-            ConfigFactoryInterface::K_DATA => $data
+            ConfigFactoryInterface::K_DATA => $data,
         ]);
     }
 
