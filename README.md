@@ -7,8 +7,10 @@
 [![This package complies with Dhii standards](https://img.shields.io/badge/Dhii-Compliant-green.svg?style=flat-square)][Dhii]
 
 ## Details
-A system for working with Dhii modules. Allows primarily implementation and dependency-based ordered running of modules
-in the standard way. Will look for module file `module.php` in folders that are immediate children of a given directory.
-This means that you can store all files of a module in one directory, and all modules in one place.
+A system for working with [Dhii modules][dhii/module-interface]. Allows primarily implementation and dependency-based
+ordered running of modules in the standard way. Will look for module file `module.php` in folders that are within the
+specified depth of a given directory. This means that you can store all files of a module in one directory, and all
+modules in one place.
 
-[Dhii]: https://github.com/Dhii/dhii
+[Dhii]:                                         https://github.com/Dhii/dhii
+[dhii/module-interface]:                        https://github.com/Dhii/module-interface
