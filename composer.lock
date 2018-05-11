@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f6bce28b4a2c9ce475aef221c350334",
+    "content-hash": "73f373d3ed7f92c170b7e446c7df9692",
     "packages": [
         {
             "name": "dhii/args-list-validation",
@@ -1388,7 +1388,7 @@
         },
         {
             "name": "dhii/wp-events",
-            "version": "dev-develop",
+            "version": "v0.3-alpha1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/wp-events.git",
@@ -1599,23 +1599,24 @@
         },
         {
             "name": "dhii/php-cs-fixer-config",
-            "version": "dev-php-5.3",
+            "version": "v0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/php-cs-fixer-config.git",
-                "reference": "ee3cc6c906a1aa4dca2bcbfcfef684dbd1ebb8ca"
+                "reference": "fc2f45d1f822bff7d871ba3c4c9750ad66f5ab0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/php-cs-fixer-config/zipball/ee3cc6c906a1aa4dca2bcbfcfef684dbd1ebb8ca",
-                "reference": "ee3cc6c906a1aa4dca2bcbfcfef684dbd1ebb8ca",
+                "url": "https://api.github.com/repos/Dhii/php-cs-fixer-config/zipball/fc2f45d1f822bff7d871ba3c4c9750ad66f5ab0c",
+                "reference": "fc2f45d1f822bff7d871ba3c4c9750ad66f5ab0c",
                 "shasum": ""
             },
             "require": {
                 "friendsofphp/php-cs-fixer": ">=1.11 <1.12",
-                "php": "^5.3 | ^7.0"
+                "php": "^5.4 | ^7.0"
             },
             "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
                 "phpunit/phpunit": "^4.8"
             },
             "type": "library",
@@ -1635,7 +1636,7 @@
                 }
             ],
             "description": "A default PHP CS Fixer config implementation",
-            "time": "2016-09-03T14:45:03+00:00"
+            "time": "2017-07-23T12:53:27+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -3434,7 +3435,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "dhii/php-cs-fixer-config": 20,
         "mikey179/vfsstream": 20
     },
     "prefer-stable": true,
