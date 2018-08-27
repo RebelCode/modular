@@ -78,27 +78,42 @@ class AbstractBaseModuleTest extends TestCase
      */
     public function testConstructor()
     {
-        $config               = [
+        $configData           = [
             'key'          => uniqid('key-'),
             'dependencies' => [
                 uniqid('dependencies-'),
                 uniqid('dependencies-'),
             ],
         ];
+        $config               = $this->getMockForAbstractClass('Dhii\Config\ConfigInterface');
         $configFactory        = $this->getMockForAbstractClass('Dhii\Config\ConfigFactoryInterface');
         $containerFactory     = $this->getMockForAbstractClass('Dhii\Data\Container\ContainerFactoryInterface');
         $compContainerFactory = $this->getMockForAbstractClass('Dhii\Data\Container\ContainerFactoryInterface');
 
+        $configFactory->expects($this->once())
+                      ->method('make')
+                      ->with(['data' => $configData])
+                      ->willReturn($config);
+
+        $config->expects($this->once())
+               ->method('has')
+               ->with('dependencies')
+               ->willReturn(true);
+        $config->expects($this->exactly(2))
+               ->method('get')
+               ->withConsecutive(['key'], ['dependencies'])
+               ->willReturnOnConsecutiveCalls($configData['key'], $configData['dependencies']);
+
         $builder = $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
                         ->enableOriginalConstructor()
-                        ->setConstructorArgs([$config, $configFactory, $containerFactory, $compContainerFactory]);
+                        ->setConstructorArgs([$configData, $configFactory, $containerFactory, $compContainerFactory]);
 
         $subject = $builder->getMockForAbstractClass();
         $reflect = $this->reflect($subject);
 
-        $this->assertEquals($config['key'], $subject->getKey(),
+        $this->assertEquals($configData['key'], $subject->getKey(),
             'Module key does not match key in config.');
-        $this->assertEquals($config['dependencies'], $subject->getDependencies(),
+        $this->assertEquals($configData['dependencies'], $subject->getDependencies(),
             'Module dependencies do not match dependencies in config.');
         $this->assertSame($configFactory, $reflect->_getConfigFactory(),
             'Module config factory is incorrect');

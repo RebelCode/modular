@@ -249,13 +249,17 @@ abstract class AbstractBaseModule implements
         ContainerFactoryInterface $containerFactory,
         ContainerFactoryInterface $compContainerFactory
     ) {
-        $this->_setKey($this->_containerGet($config, 'key'));
+        $config = $configFactory->make([
+            ConfigFactoryInterface::K_DATA => $config,
+        ]);
+
+        $this->_setConfig($config);
+        $this->_setKey($config->get('key'));
         $this->_setDependencies(
-            $this->_containerHas($config, 'dependencies')
-                ? $this->_containerGet($config, 'dependencies')
+            $config->has('dependencies')
+                ? $config->get('dependencies')
                 : []
         );
-        $this->_setConfig($config);
         $this->_setConfigFactory($configFactory);
         $this->_setContainerFactory($containerFactory);
         $this->_setCompositeContainerFactory($compContainerFactory);
