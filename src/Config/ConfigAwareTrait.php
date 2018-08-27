@@ -2,10 +2,10 @@
 
 namespace RebelCode\Modular\Config;
 
+use Dhii\Config\ConfigInterface;
+use Dhii\Util\String\StringableInterface as Stringable;
+use Exception as RootException;
 use InvalidArgumentException;
-use Psr\Container\ContainerInterface;
-use ArrayAccess;
-use stdClass;
 
 /**
  * Functionality for awareness of a configuration container.
@@ -17,7 +17,7 @@ trait ConfigAwareTrait
     /**
      * The configuration container.
      *
-     * @var array|ArrayAccess|stdClass|ContainerInterface
+     * @var ConfigInterface
      */
     protected $config;
 
@@ -26,7 +26,7 @@ trait ConfigAwareTrait
      *
      * @since [*next-version*]
      *
-     * @return array|ArrayAccess|stdClass|ContainerInterface
+     * @return ConfigInterface The configuration container instance.
      */
     protected function _getConfig()
     {
@@ -38,27 +38,55 @@ trait ConfigAwareTrait
      *
      * @since [*next-version*]
      *
-     * @param array|ArrayAccess|stdClass|ContainerInterface $config The configuration container.
+     * @param ConfigInterface $config The configuration container instance.
      *
      * @throws InvalidArgumentException If the configuration container is invalid.
      */
     protected function _setConfig($config)
     {
-        $this->config = $this->_normalizeContainer($config);
+        if (!($config instanceof ConfigInterface)) {
+            throw $this->_createInvalidArgumentException(
+                $this->__('Argument is not a config instance'),
+                null,
+                null,
+                $config
+            );
+        }
+
+        $this->config = $config;
     }
 
     /**
-     * Normalizes a container.
+     * Creates a new Dhii invalid argument exception.
      *
      * @since [*next-version*]
      *
-     * @param array|ArrayAccess|stdClass|ContainerInterface $container The container to normalize.
+     * @param string|Stringable|int|float|bool|null $message  The message, if any.
+     * @param int|float|string|Stringable|null      $code     The numeric error code, if any.
+     * @param RootException|null                    $previous The inner exception, if any.
+     * @param mixed|null                            $argument The invalid argument, if any.
      *
-     * @throws InvalidArgumentException If the container is invalid.
-     *
-     * @return array|ArrayAccess|stdClass|ContainerInterface Something that can be used with
-     *                                                       {@see ContainerGetCapableTrait#_containerGet()} or
-     *                                                       {@see ContainerHasCapableTrait#_containerHas()}.
+     * @return InvalidArgumentException The new exception.
      */
-    abstract protected function _normalizeContainer($container);
+    abstract protected function _createInvalidArgumentException(
+        $message = null,
+        $code = null,
+        RootException $previous = null,
+        $argument = null
+    );
+
+    /**
+     * Translates a string, and replaces placeholders.
+     *
+     * @since [*next-version*]
+     * @see   sprintf()
+     * @see   _translate()
+     *
+     * @param string $string  The format string to translate.
+     * @param array  $args    Placeholder values to replace in the string.
+     * @param mixed  $context The context for translation.
+     *
+     * @return string The translated string.
+     */
+    abstract protected function __($string, $args = [], $context = null);
 }
