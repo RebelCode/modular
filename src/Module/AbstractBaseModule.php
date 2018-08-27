@@ -287,7 +287,10 @@ abstract class AbstractBaseModule implements
      */
     protected function _setupContainer($config, $services)
     {
-        $configData        = $this->_createCompositeContainer([$this->_getConfig(), $config]);
+        $configData        = $this->_createCompositeContainer([
+            [$this->_getKey() => $this->_getConfig()],
+            $config,
+        ]);
         $configContainer   = $this->_createConfig($configData);
         $servicesContainer = ($services instanceof ContainerInterface) ? $services : $this->_createContainer($services);
 
