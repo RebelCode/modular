@@ -31,6 +31,7 @@ use InvalidArgumentException;
 use OutOfRangeException;
 use Psr\Container\ContainerInterface;
 use Psr\EventManager\EventManagerInterface;
+use RebelCode\Modular\Config\ConfigAwareTrait;
 use RebelCode\Modular\Events\EventsFunctionalityTrait;
 use RuntimeException;
 use stdClass;
@@ -54,6 +55,13 @@ abstract class AbstractBaseModule implements
         _getKey as public getKey;
         _getDependencies as public getDependencies;
     }
+
+    /*
+     * Provides awareness of module config.
+     *
+     * @since [*next-version*]
+     */
+    use ConfigAwareTrait;
 
     /*
      * Provides functionality for retrieving a value for a path from any type of container hierarchy.
@@ -161,6 +169,20 @@ abstract class AbstractBaseModule implements
     use StringTranslatingTrait;
 
     /**
+     * The key in the module config where the module key can be found.
+     *
+     * @since [*next-version*]
+     */
+    const K_CONFIG_KEY = 'key';
+
+    /**
+     * The key in the module config where the module dependencies can be found.
+     *
+     * @since [*next-version*]
+     */
+    const K_CONFIG_DEPENDENCIES = 'dependencies';
+
+    /**
      * The factory to use for creating containers.
      *
      * @since [*next-version*]
@@ -188,25 +210,56 @@ abstract class AbstractBaseModule implements
     protected $compContainerFactory;
 
     /**
+     * Constructor.
+     *
+     * @since [*next-version*]
+     *
+     * @param array|stdClass|ArrayAccess|ContainerInterface $config               The module config.
+     * @param ConfigFactoryInterface                        $configFactory        The config factory.
+     * @param ContainerFactoryInterface                     $containerFactory     The container factory.
+     * @param ContainerFactoryInterface                     $compContainerFactory The composite container factory.
+     * @param EventManagerInterface|null                    $eventManager         The event manager, or null.
+     * @param EventFactoryInterface|null                    $eventFactory         The event factory, or null.
+     */
+    public function __construct(
+        $config,
+        ConfigFactoryInterface $configFactory,
+        ContainerFactoryInterface $containerFactory,
+        ContainerFactoryInterface $compContainerFactory,
+        EventManagerInterface $eventManager = null,
+        EventFactoryInterface $eventFactory = null
+    ) {
+        $this->_initModule($config, $configFactory, $containerFactory, $compContainerFactory);
+        $this->_initModuleEvents($eventManager, $eventFactory);
+    }
+
+    /**
      * Initializes the module with all required information.
      *
      * @since [*next-version*]
      *
-     * @param string|Stringable         $key                  The module key.
-     * @param string[]|Stringable[]     $dependencies         The module dependencies.
-     * @param ConfigFactoryInterface    $configFactory        The config factory.
-     * @param ContainerFactoryInterface $containerFactory     The container factory.
-     * @param ContainerFactoryInterface $compContainerFactory The composite container factory.
+     * @param array|stdClass|Traversable $config               The module config.
+     * @param ConfigFactoryInterface     $configFactory        The config factory.
+     * @param ContainerFactoryInterface  $containerFactory     The container factory.
+     * @param ContainerFactoryInterface  $compContainerFactory The composite container factory.
      */
     protected function _initModule(
-        $key,
-        $dependencies,
+        $config,
         ConfigFactoryInterface $configFactory,
         ContainerFactoryInterface $containerFactory,
         ContainerFactoryInterface $compContainerFactory
     ) {
-        $this->_setKey($key);
-        $this->_setDependencies($dependencies);
+        $config = $configFactory->make([
+            ConfigFactoryInterface::K_DATA => $config,
+        ]);
+
+        $this->_setConfig($config);
+        $this->_setKey($config->get('key'));
+        $this->_setDependencies(
+            $config->has('dependencies')
+                ? $config->get('dependencies')
+                : []
+        );
         $this->_setConfigFactory($configFactory);
         $this->_setContainerFactory($containerFactory);
         $this->_setCompositeContainerFactory($compContainerFactory);
@@ -238,9 +291,16 @@ abstract class AbstractBaseModule implements
      */
     protected function _setupContainer($config, $services)
     {
+        $configData        = $this->_createCompositeContainer([
+            [$this->_getKey() => $this->_getConfig()],
+            $config,
+        ]);
+        $configContainer   = $this->_createConfig($configData);
+        $servicesContainer = ($services instanceof ContainerInterface) ? $services : $this->_createContainer($services);
+
         return $this->_createCompositeContainer([
-            ($config instanceof ContainerInterface) ? $config : $this->_createConfig($config),
-            ($services instanceof ContainerInterface) ? $services : $this->_createContainer($services),
+            $configContainer,
+            $servicesContainer,
         ]);
     }
 

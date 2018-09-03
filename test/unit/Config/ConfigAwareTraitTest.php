@@ -2,12 +2,12 @@
 
 namespace RebelCode\Modular\Config\FuncTest;
 
+use Exception as RootException;
 use InvalidArgumentException;
+use PHPUnit_Framework_MockObject_MockObject as MockObject;
 use RebelCode\Modular\Config\ConfigAwareTrait as TestSubject;
 use stdClass;
 use Xpmock\TestCase;
-use Exception as RootException;
-use PHPUnit_Framework_MockObject_MockObject as MockObject;
 
 /**
  * Tests {@see TestSubject}.
@@ -37,7 +37,8 @@ class ConfigAwareTraitTest extends TestCase
         $methods = $this->mergeValues(
             $methods,
             [
-                '_normalizeContainer',
+                '_createInvalidArgumentException',
+                '__',
             ]
         );
 
@@ -82,7 +83,7 @@ class ConfigAwareTraitTest extends TestCase
     public function mockClassAndInterfaces($className, $interfaceNames = [])
     {
         $paddingClassName = uniqid($className);
-        $definition = vsprintf(
+        $definition       = vsprintf(
             'abstract class %1$s extends %2$s implements %3$s {}',
             [
                 $paddingClassName,
@@ -139,17 +140,11 @@ class ConfigAwareTraitTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $config = new stdClass();
-        $nConfig = new stdClass();
-
-        $subject->expects($this->once())
-                ->method('_normalizeContainer')
-                ->with($config)
-                ->willReturn($nConfig);
+        $config = $this->getMockForAbstractClass('Dhii\Config\ConfigInterface');
 
         $reflect->_setConfig($config);
 
-        $this->assertSame($nConfig, $reflect->_getConfig(), 'Set and retrieved configs are not the same.');
+        $this->assertSame($config, $reflect->_getConfig(), 'Set and retrieved configs are not the same.');
     }
 
     /**
@@ -165,9 +160,8 @@ class ConfigAwareTraitTest extends TestCase
         $config = new stdClass();
 
         $subject->expects($this->once())
-                ->method('_normalizeContainer')
-                ->with($config)
-                ->willThrowException(new InvalidArgumentException());
+                ->method('_createInvalidArgumentException')
+                ->willReturn(new InvalidArgumentException());
 
         $this->setExpectedException('InvalidArgumentException');
 
