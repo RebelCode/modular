@@ -238,10 +238,10 @@ abstract class AbstractBaseModule implements
      *
      * @since [*next-version*]
      *
-     * @param array|stdClass|ArrayAccess|ContainerInterface $config               The module config.
-     * @param ConfigFactoryInterface                        $configFactory        The config factory.
-     * @param ContainerFactoryInterface                     $containerFactory     The container factory.
-     * @param ContainerFactoryInterface                     $compContainerFactory The composite container factory.
+     * @param array|stdClass|Traversable $config               The module config.
+     * @param ConfigFactoryInterface     $configFactory        The config factory.
+     * @param ContainerFactoryInterface  $containerFactory     The container factory.
+     * @param ContainerFactoryInterface  $compContainerFactory The composite container factory.
      */
     protected function _initModule(
         $config,
