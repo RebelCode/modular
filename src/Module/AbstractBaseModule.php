@@ -4,6 +4,7 @@ namespace RebelCode\Modular\Module;
 
 use ArrayAccess;
 use Dhii\Config\ConfigFactoryInterface;
+use Dhii\Config\ConfigInterface;
 use Dhii\Data\Container\ContainerFactoryInterface;
 use Dhii\Data\Container\ContainerGetCapableTrait;
 use Dhii\Data\Container\ContainerGetPathCapableTrait;
@@ -291,11 +292,7 @@ abstract class AbstractBaseModule implements
      */
     protected function _setupContainer($config, $services)
     {
-        $configData        = $this->_createCompositeContainer([
-            [$this->_getKey() => $this->_getConfig()],
-            $config,
-        ]);
-        $configContainer   = $this->_createConfig($configData);
+        $configContainer   = ($config instanceof ConfigInterface) ? $config : $this->_createConfig($config);
         $servicesContainer = ($services instanceof ContainerInterface) ? $services : $this->_createContainer($services);
 
         return $this->_createCompositeContainer([
