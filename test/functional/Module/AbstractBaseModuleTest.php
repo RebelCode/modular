@@ -205,29 +205,21 @@ class AbstractBaseModuleTest extends TestCase
         $subject = $this->createInstance(['_createCompositeContainer', '_createContainer', '_createConfig']);
         $reflect = $this->reflect($subject);
 
-        $internalConfig = [];
         $paramConfig = [];
-        $fullConfig = [];
         $config = $this->getMockForAbstractClass('Psr\Container\ContainerInterface');
 
         $paramServices = [];
         $services = $this->getMockForAbstractClass('Psr\Container\ContainerInterface');
         $container = $this->getMockForAbstractClass('Psr\Container\ContainerInterface');
 
-        $subject->expects($this->exactly(2))
+        $subject->expects($this->once())
             ->method('_createCompositeContainer')
-            ->withConsecutive(
-                $this->equalTo([$internalConfig, $paramConfig]),
-                $this->equalTo([$config, $services])
-            )
-            ->willReturnOnConsecutiveCalls(
-                $fullConfig,
-                $container
-            );
+            ->with($this->equalTo([$config, $services]))
+            ->willReturn($container);
 
         $subject->expects($this->once())
             ->method('_createConfig')
-            ->with($fullConfig)
+            ->with($paramConfig)
             ->willReturn($config);
 
         $subject->expects($this->once())
