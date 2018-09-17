@@ -11,7 +11,7 @@ use PHPUnit_Framework_MockObject_MockObject as MockObject;
  *
  * @since [*next-version*]
  */
-class AbstractBaseFileConfigModule extends TestCase
+class AbstractBaseFileConfigModuleTest extends TestCase
 {
     /**
      * The class name of the test subject.
