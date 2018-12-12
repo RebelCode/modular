@@ -20,14 +20,14 @@ abstract class AbstractBaseFileConfigModule extends AbstractBaseModule
      *
      * @since [*next-version*]
      */
-    const K_CONFIG_CONFIG_FILE_PATH = 'config_file_path';
+    const K_CONFIG_CONFIG_FILE_PATH = 'config';
 
     /**
      * The key in the module config for the config file path.
      *
      * @since [*next-version*]
      */
-    const K_CONFIG_SERVICES_FILE_PATH = 'services_file_path';
+    const K_CONFIG_SERVICES_FILE_PATH = 'services';
 
     /**
      * {@inheritdoc}
