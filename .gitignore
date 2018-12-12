@@ -1,12 +1,6 @@
+/.idea/
+/nbproject/
 /vendor/
-/nbproject/private/
 /test/coverage/
 /test/log/
 /build/
-/.idea/dictionaries/
-/.idea/codeStyles/
-/.idea/codeStylesConfig.xml
-/.idea/workspace.xml
-/.idea/deployment.xml
-/.idea/vagrant.xml
-/.idea/misc.xml
