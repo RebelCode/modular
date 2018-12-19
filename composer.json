@@ -14,9 +14,11 @@
     "require": {
         "php": "^5.4 | ^7.0",
         "psr/container": "^1.0",
+        "container-interop/service-provider": "^0.4",
         "rebelcode/module-iterator-abstract": "^0.1-alpha1",
         "dhii/module-interface": "^0.1",
         "dhii/factory-interface": "^0.1-alpha2",
+        "dhii/config": "^0.1-alpha2",
         "dhii/factory-base": "^0.1-alpha3",
         "dhii/wp-events": "^0.3-alpha1",
         "dhii/event-interface": "^0.2-alpha1",
