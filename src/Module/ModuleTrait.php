@@ -3,6 +3,12 @@
 namespace RebelCode\Modular\Module;
 
 use Dhii\Data\KeyAwareTrait;
+use Dhii\Exception\CreateInvalidArgumentExceptionCapableTrait;
+use Dhii\I18n\StringTranslatingTrait;
+use Dhii\Util\Normalization\NormalizeIterableCapableTrait;
+use Dhii\Util\Normalization\NormalizeStringCapableTrait;
+use stdClass;
+use Traversable;
 
 /**
  * Common functionality for modules.
@@ -11,17 +17,39 @@ use Dhii\Data\KeyAwareTrait;
  */
 trait ModuleTrait
 {
-    /*
-     * Provides awareness and storage functionality for a key.
-     *
-     * @since [*next-version*]
-     */
-    use KeyAwareTrait;
+    /* @since [*next-version*] */
+    use KeyAwareTrait {
+        _getKey as public getKey;
+    }
 
-    /*
-     * Provides awareness and storage functionality for a list of dependencies.
+    /* @since [*next-version*] */
+    use DependenciesAwareTrait {
+        _getDependencies as public getDependencies;
+    }
+
+    /* @since [*next-version*] */
+    use NormalizeStringCapableTrait;
+
+    /* @since [*next-version*] */
+    use NormalizeIterableCapableTrait;
+
+    /* @since [*next-version*] */
+    use CreateInvalidArgumentExceptionCapableTrait;
+
+    /* @since [*next-version*] */
+    use StringTranslatingTrait;
+
+    /**
+     * Initializes the module.
      *
      * @since [*next-version*]
+     *
+     * @param string                     $key          The module key.
+     * @param array|stdClass|Traversable $dependencies A list of keys for the modules that this module depends on.
      */
-    use DependenciesAwareTrait;
+    protected function _initModule($key, $dependencies = [])
+    {
+        $this->_setKey($key);
+        $this->_setDependencies($dependencies);
+    }
 }
