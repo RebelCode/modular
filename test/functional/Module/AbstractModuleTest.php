@@ -4,7 +4,7 @@ namespace RebelCode\Modular\FuncTest\Module;
 
 use org\bovigo\vfs\vfsStream;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
-use RebelCode\Modular\Module\AbstractRcModule as TestSubject;
+use RebelCode\Modular\Module\AbstractModule as TestSubject;
 use ReflectionClass;
 use ReflectionException;
 use Xpmock\TestCase;
@@ -14,14 +14,14 @@ use Xpmock\TestCase;
  *
  * @since [*next-version*]
  */
-class AbstractRcModuleTest extends TestCase
+class AbstractModuleTest extends TestCase
 {
     /**
      * The name of the test subject.
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'RebelCode\\Modular\\Module\\AbstractRcModule';
+    const TEST_SUBJECT_CLASSNAME = 'RebelCode\\Modular\\Module\\AbstractModule';
 
     /**
      * Creates a new instance of the test subject.

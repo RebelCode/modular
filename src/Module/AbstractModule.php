@@ -15,7 +15,7 @@ use Traversable;
  *
  * @since [*next-version*]
  */
-abstract class AbstractRcModule implements
+abstract class AbstractModule implements
     /* @since [*next-version*] */
     ModuleInterface,
     /* @since [*next-version*] */
