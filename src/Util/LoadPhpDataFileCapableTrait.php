@@ -25,7 +25,7 @@ trait LoadPhpDataFileCapableTrait
      *
      * @throws RuntimeException If the file could not be read.
      *
-     * @return array The data that was returned from the PHP file.
+     * @return mixed The data that was returned from the PHP file.
      */
     protected function loadPhpDataFile($filePath)
     {
@@ -47,7 +47,7 @@ trait LoadPhpDataFileCapableTrait
             );
         }
 
-        return (array) $config;
+        return $config;
     }
 
     /**
