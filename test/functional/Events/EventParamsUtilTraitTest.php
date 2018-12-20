@@ -2,11 +2,10 @@
 
 namespace RebelCode\Modular\Events\FuncTest;
 
-use Dhii\EventManager\Event;
+use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use RebelCode\Modular\Events\Event;
 use RebelCode\Modular\Events\EventParamsUtilTrait as TestSubject;
 use Xpmock\TestCase;
-use Exception as RootException;
-use PHPUnit_Framework_MockObject_MockObject as MockObject;
 
 /**
  * Tests {@see TestSubject}.
