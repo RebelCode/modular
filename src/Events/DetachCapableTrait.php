@@ -26,9 +26,9 @@ trait DetachCapableTrait
      *
      * @return bool True on success, false on failure
      */
-    protected function _detach($event, $callback)
+    protected function detach($event, $callback)
     {
-        $eventManager = $this->_getEventManager();
+        $eventManager = $this->getEventManager();
 
         if ($eventManager === null) {
             throw $this->_createRuntimeException($this->__('Internal event manager is null'), null, null);
@@ -44,7 +44,7 @@ trait DetachCapableTrait
      *
      * @return EventManagerInterface|null The event manager instance, if any.
      */
-    abstract protected function _getEventManager();
+    abstract protected function getEventManager();
 
     /**
      * Creates a new Runtime exception.

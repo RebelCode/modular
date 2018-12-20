@@ -73,9 +73,9 @@ class EventFactoryAwareTraitTest extends TestCase
         $reflect = $this->reflect($subject);
         $input = $this->getMock('Dhii\Event\EventFactoryInterface');
 
-        $reflect->_setEventFactory($input);
+        $reflect->setEventFactory($input);
 
-        $this->assertSame($input, $reflect->_getEventFactory(), 'Set and retrieved value are not the same.');
+        $this->assertSame($input, $reflect->getEventFactory(), 'Set and retrieved value are not the same.');
     }
 
     /**
@@ -89,9 +89,9 @@ class EventFactoryAwareTraitTest extends TestCase
         $reflect = $this->reflect($subject);
         $input = null;
 
-        $reflect->_setEventFactory($input);
+        $reflect->setEventFactory($input);
 
-        $this->assertNull($reflect->_getEventFactory(), 'Event factory should be null.');
+        $this->assertNull($reflect->getEventFactory(), 'Event factory should be null.');
     }
 
     /**
@@ -107,6 +107,6 @@ class EventFactoryAwareTraitTest extends TestCase
 
         $this->setExpectedException('InvalidArgumentException');
 
-        $reflect->_setEventFactory($input);
+        $reflect->setEventFactory($input);
     }
 }

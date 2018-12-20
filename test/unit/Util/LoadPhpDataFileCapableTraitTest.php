@@ -73,7 +73,7 @@ class LoadPhpDataFileCapableTraitTest extends TestCase
 
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
-        $actual = $reflect->_loadPhpDataFile($vfs->url() . '/file.php');
+        $actual = $reflect->loadPhpDataFile($vfs->url() . '/file.php');
         $this->assertEquals($data, $actual);
     }
 
@@ -97,7 +97,7 @@ class LoadPhpDataFileCapableTraitTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $reflect->_loadPhpDataFile($vfs->url() . '/non-existent-file.php');
+        $reflect->loadPhpDataFile($vfs->url() . '/non-existent-file.php');
     }
 
     /**
@@ -116,7 +116,7 @@ class LoadPhpDataFileCapableTraitTest extends TestCase
         $reflect = $this->reflect($subject);
 
         try {
-            $reflect->_loadPhpDataFile($vfs->url() . '/file.php');
+            $reflect->loadPhpDataFile($vfs->url() . '/file.php');
             $this->fail('Expected an exception to be thrown');
         } catch (Exception $exception) {
             $this->assertInstanceOf('TestCustomException', $exception->getPrevious());

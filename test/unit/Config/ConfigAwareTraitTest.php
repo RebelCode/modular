@@ -142,9 +142,9 @@ class ConfigAwareTraitTest extends TestCase
 
         $config = $this->getMockForAbstractClass('Dhii\Config\ConfigInterface');
 
-        $reflect->_setConfig($config);
+        $reflect->setConfig($config);
 
-        $this->assertSame($config, $reflect->_getConfig(), 'Set and retrieved configs are not the same.');
+        $this->assertSame($config, $reflect->getConfig(), 'Set and retrieved configs are not the same.');
     }
 
     /**
@@ -165,6 +165,6 @@ class ConfigAwareTraitTest extends TestCase
 
         $this->setExpectedException('InvalidArgumentException');
 
-        $reflect->_setConfig($config);
+        $reflect->setConfig($config);
     }
 }

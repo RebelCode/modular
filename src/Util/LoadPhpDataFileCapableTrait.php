@@ -27,7 +27,7 @@ trait LoadPhpDataFileCapableTrait
      *
      * @return array The data that was returned from the PHP file.
      */
-    protected function _loadPhpDataFile($filePath)
+    protected function loadPhpDataFile($filePath)
     {
         if (!file_exists($filePath) || !is_readable($filePath)) {
             throw new RuntimeException(

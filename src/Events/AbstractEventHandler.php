@@ -35,7 +35,7 @@ abstract class AbstractEventHandler implements InvocableInterface
             );
         }
 
-        $this->_handle($event);
+        $this->handle($event);
     }
 
     /**
@@ -45,5 +45,5 @@ abstract class AbstractEventHandler implements InvocableInterface
      *
      * @param EventInterface $event The event instance.
      */
-    abstract protected function _handle(EventInterface $event);
+    abstract protected function handle(EventInterface $event);
 }

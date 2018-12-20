@@ -61,14 +61,14 @@ abstract class AbstractModule implements
      */
     public function __construct($key, $dependencies = [], $configFile = null, $servicesFile = null)
     {
-        $this->_initModule($key, $dependencies);
+        $this->initModule($key, $dependencies);
 
         $this->config = ($configFile !== null)
-            ? $this->_loadPhpDataFile($configFile)
+            ? $this->loadPhpDataFile($configFile)
             : [];
 
         $this->services = ($servicesFile !== null)
-            ? $this->_loadPhpDataFile($servicesFile)
+            ? $this->loadPhpDataFile($servicesFile)
             : [];
     }
 

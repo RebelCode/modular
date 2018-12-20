@@ -30,7 +30,7 @@ trait EventManagerAwareTrait
      *
      * @return EventManagerInterface|null The event manager instance, if any.
      */
-    protected function _getEventManager()
+    protected function getEventManager()
     {
         return $this->eventManager;
     }
@@ -42,7 +42,7 @@ trait EventManagerAwareTrait
      *
      * @param EventManagerInterface|null $eventManager The event manager instance.
      */
-    protected function _setEventManager($eventManager)
+    protected function setEventManager($eventManager)
     {
         if ($eventManager !== null && !($eventManager instanceof EventManagerInterface)) {
             throw $this->_createInvalidArgumentException(

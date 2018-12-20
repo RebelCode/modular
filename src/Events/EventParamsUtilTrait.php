@@ -22,7 +22,7 @@ trait EventParamsUtilTrait
      * @param EventInterface $event  The event instance.
      * @param array          $params The params to update.
      */
-    protected function _updateEventParams(EventInterface $event, $params)
+    protected function updateEventParams(EventInterface $event, $params)
     {
         $event->setParams($params + $event->getParams());
     }
@@ -36,7 +36,7 @@ trait EventParamsUtilTrait
      * @param int|string     $key   The key of the param to set.
      * @param mixed          $value The value to set.
      */
-    protected function _setEventParam(EventInterface $event, $key, $value)
+    protected function setEventParam(EventInterface $event, $key, $value)
     {
         $event->setParams([$key => $value] + $event->getParams());
     }

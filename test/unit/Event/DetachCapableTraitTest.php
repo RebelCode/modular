@@ -37,7 +37,7 @@ class DetachCapableTraitTest extends TestCase
         $methods = $this->mergeValues(
             $methods,
             [
-                '_getEventManager',
+                'getEventManager',
                 '_createRuntimeException',
                 '__',
             ]
@@ -147,7 +147,7 @@ class DetachCapableTraitTest extends TestCase
     }
 
     /**
-     * Tests the `_detach()` method with an event name and event data to assert whether the handler is detached.
+     * Tests the `detach()` method with an event name and event data to assert whether the handler is detached.
      *
      * @since [*next-version*]
      */
@@ -161,18 +161,18 @@ class DetachCapableTraitTest extends TestCase
 
         $manager = $this->createEventManager();
         $subject->expects($this->once())
-                ->method('_getEventManager')
+                ->method('getEventManager')
                 ->willReturn($manager);
 
         $manager->expects($this->once())
                 ->method('detach')
                 ->with($name, $handler);
 
-        $reflect->_detach($name, $handler);
+        $reflect->detach($name, $handler);
     }
 
     /**
-     * Tests the `_detach()` method to assert whether an exception is thrown when the event manager is null.
+     * Tests the `detach()` method to assert whether an exception is thrown when the event manager is null.
      *
      * @since [*next-version*]
      */
@@ -182,7 +182,7 @@ class DetachCapableTraitTest extends TestCase
         $reflect = $this->reflect($subject);
 
         $subject->expects($this->once())
-                ->method('_getEventManager')
+                ->method('getEventManager')
                 ->willReturn(null);
 
         $subject->expects($this->once())
@@ -191,6 +191,6 @@ class DetachCapableTraitTest extends TestCase
 
         $this->setExpectedException('RuntimeException');
 
-        $reflect->_detach(uniqid(), []);
+        $reflect->detach(uniqid(), []);
     }
 }

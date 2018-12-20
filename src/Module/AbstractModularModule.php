@@ -83,7 +83,7 @@ abstract class AbstractModularModule implements
     {
         $this->_setKey($key);
         $this->_setDependencies($dependencies);
-        $this->_init($subModules);
+        $this->init($subModules);
     }
 
     /**
@@ -93,16 +93,16 @@ abstract class AbstractModularModule implements
      *
      * @param ModuleInterface[]|stdClass|Traversable $subModules The list sub-modules instances.
      */
-    protected function _init($subModules)
+    protected function init($subModules)
     {
         $this->subModules    = [];
-        $this->subConfigs    = array_filter([$this->_getInitialConfig()]);
-        $this->subContainers = array_filter($this->_getInitialContainers());
-        $this->factories     = array_filter($this->_getInitialFactories());
-        $this->extensions    = array_filter([$this->_getInitialExtensions()]);
+        $this->subConfigs    = array_filter([$this->getInitialConfig()]);
+        $this->subContainers = array_filter($this->getInitialContainers());
+        $this->factories     = array_filter($this->getInitialFactories());
+        $this->extensions    = array_filter([$this->getInitialExtensions()]);
 
         foreach ($subModules as $module) {
-            $this->_addSubModule($module);
+            $this->addSubModule($module);
         }
     }
 
@@ -113,14 +113,14 @@ abstract class AbstractModularModule implements
      */
     public function setup()
     {
-        $rootCntr = $this->_createCompositeContainer(
-            $rootList = $this->_createAddCapableList()
+        $rootCntr = $this->createCompositeContainer(
+            $rootList = $this->createAddCapableList()
         );
 
-        $subModulesCntr = $this->_initSubModulesContainer($rootCntr);
-        $configsCntr    = $this->_initConfigContainer($rootCntr);
-        $servicesCntr   = $this->_initServicesContainer($rootCntr);
-        $subSetupCntr   = $this->_initSubModulesSetupContainer();
+        $subModulesCntr = $this->initSubModulesContainer($rootCntr);
+        $configsCntr    = $this->initConfigContainer($rootCntr);
+        $servicesCntr   = $this->initServicesContainer($rootCntr);
+        $subSetupCntr   = $this->initSubModulesSetupContainer();
 
         $rootList->add($subModulesCntr);
         $rootList->add($configsCntr);
@@ -151,7 +151,7 @@ abstract class AbstractModularModule implements
      *
      * @param ModuleInterface $subModule The module instance to add as a sub-module.
      */
-    protected function _addSubModule(ModuleInterface $subModule)
+    protected function addSubModule(ModuleInterface $subModule)
     {
         // Register the sub-container if the module's setup() returns one
         if ($container = $subModule->setup()) {
@@ -170,7 +170,7 @@ abstract class AbstractModularModule implements
         }
 
         // Save the sub-module in a key->instance map
-        $this->subModules[$this->_getModuleServiceKey($subModule)] = $subModule;
+        $this->subModules[$this->getModuleServiceKey($subModule)] = $subModule;
     }
 
     /**
@@ -182,9 +182,9 @@ abstract class AbstractModularModule implements
      *
      * @return ContainerInterface The created container.
      */
-    protected function _initSubModulesContainer(ContainerInterface $parent = null)
+    protected function initSubModulesContainer(ContainerInterface $parent = null)
     {
-        return $this->_createContainer($this->subModules, $parent);
+        return $this->createContainer($this->subModules, $parent);
     }
 
     /**
@@ -196,16 +196,16 @@ abstract class AbstractModularModule implements
      *
      * @return ContainerInterface The created container.
      */
-    protected function _initConfigContainer(ContainerInterface $parent = null)
+    protected function initConfigContainer(ContainerInterface $parent = null)
     {
-        $configList = $this->_createAddCapableList();
-        $configCntr = $this->_createCompositeContainer($configList);
+        $configList = $this->createAddCapableList();
+        $configCntr = $this->createCompositeContainer($configList);
 
         foreach (array_reverse($this->subConfigs) as $config) {
-            $configList->add($this->_createConfig($config));
+            $configList->add($this->createConfig($config));
         }
 
-        return $this->_createContainer(['config' => $configCntr], $parent);
+        return $this->createContainer(['config' => $configCntr], $parent);
     }
 
     /**
@@ -217,7 +217,7 @@ abstract class AbstractModularModule implements
      *
      * @return ContainerInterface The created container.
      */
-    protected function _initServicesContainer(ContainerInterface $parent = null)
+    protected function initServicesContainer(ContainerInterface $parent = null)
     {
         foreach ($this->extensions as $group) {
             foreach ($group as $key => $callable) {
@@ -237,7 +237,7 @@ abstract class AbstractModularModule implements
             }
         }
 
-        return $this->_createContainer($this->factories, $parent);
+        return $this->createContainer($this->factories, $parent);
     }
 
     /**
@@ -247,10 +247,10 @@ abstract class AbstractModularModule implements
      *
      * @return ContainerInterface The created container.
      */
-    protected function _initSubModulesSetupContainer()
+    protected function initSubModulesSetupContainer()
     {
-        $cntrList  = $this->_createAddCapableList();
-        $container = $this->_createCompositeContainer($cntrList);
+        $cntrList  = $this->createAddCapableList();
+        $container = $this->createCompositeContainer($cntrList);
 
         foreach (array_reverse($this->subContainers) as $subContainer) {
             $cntrList->add($subContainer);
@@ -268,7 +268,7 @@ abstract class AbstractModularModule implements
      *
      * @return string The module service key.
      */
-    protected function _getModuleServiceKey(ModuleInterface $module)
+    protected function getModuleServiceKey(ModuleInterface $module)
     {
         return sprintf('%s_module', $module->getKey());
     }
@@ -280,7 +280,7 @@ abstract class AbstractModularModule implements
      *
      * @return array
      */
-    protected function _getInitialConfig()
+    protected function getInitialConfig()
     {
         return [];
     }
@@ -292,7 +292,7 @@ abstract class AbstractModularModule implements
      *
      * @return ContainerInterface[]
      */
-    protected function _getInitialContainers()
+    protected function getInitialContainers()
     {
         return [];
     }
@@ -304,7 +304,7 @@ abstract class AbstractModularModule implements
      *
      * @return array
      */
-    protected function _getInitialFactories()
+    protected function getInitialFactories()
     {
         return [];
     }
@@ -316,7 +316,7 @@ abstract class AbstractModularModule implements
      *
      * @return array
      */
-    protected function _getInitialExtensions()
+    protected function getInitialExtensions()
     {
         return [];
     }
@@ -331,7 +331,7 @@ abstract class AbstractModularModule implements
      *
      * @return ContainerInterface The created container instance.
      */
-    abstract protected function _createContainer($definitions = [], ContainerInterface $parent = null);
+    abstract protected function createContainer($definitions = [], ContainerInterface $parent = null);
 
     /**
      * Creates a composite container with the given children container instances.
@@ -342,7 +342,7 @@ abstract class AbstractModularModule implements
      *
      * @return ContainerInterface The created composite container instance.
      */
-    abstract protected function _createCompositeContainer($containers);
+    abstract protected function createCompositeContainer($containers);
 
     /**
      * Creates a config instance with the given data.
@@ -353,7 +353,7 @@ abstract class AbstractModularModule implements
      *
      * @return ConfigInterface The created config instance.
      */
-    abstract protected function _createConfig($data);
+    abstract protected function createConfig($data);
 
     /**
      * Creates a new, modifiable list.
@@ -362,5 +362,5 @@ abstract class AbstractModularModule implements
      *
      * @return AddCapableInterface|Traversable The traversable, modifiable list.
      */
-    abstract protected function _createAddCapableList();
+    abstract protected function createAddCapableList();
 }

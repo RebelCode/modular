@@ -47,7 +47,7 @@ trait ModuleTrait
      * @param string                     $key          The module key.
      * @param array|stdClass|Traversable $dependencies A list of keys for the modules that this module depends on.
      */
-    protected function _initModule($key, $dependencies = [])
+    protected function initModule($key, $dependencies = [])
     {
         $this->_setKey($key);
         $this->_setDependencies($dependencies);

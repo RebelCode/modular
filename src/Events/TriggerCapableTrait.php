@@ -31,9 +31,9 @@ trait TriggerCapableTrait
      *
      * @return EventInterface The event instance.
      */
-    protected function _trigger($event, $data = [])
+    protected function trigger($event, $data = [])
     {
-        $eventManager = $this->_getEventManager();
+        $eventManager = $this->getEventManager();
 
         if ($eventManager === null) {
             throw $this->_createRuntimeException($this->__('Internal event manager is null'), null, null);
@@ -42,7 +42,7 @@ trait TriggerCapableTrait
         try {
             $eventObj = ($event instanceof EventInterface)
                 ? $event
-                : $this->_createEvent($event, $data);
+                : $this->createEvent($event, $data);
         } catch (CouldNotMakeExceptionInterface $ex) {
             throw $this->_createInternalException($this->__('Failed to create event instance.'), null, $ex);
         }
@@ -63,7 +63,7 @@ trait TriggerCapableTrait
      *
      * @return EventManagerInterface|null The event manager instance, if any.
      */
-    abstract protected function _getEventManager();
+    abstract protected function getEventManager();
 
     /**
      * Creates a new event instance.
@@ -77,7 +77,7 @@ trait TriggerCapableTrait
      *
      * @return EventInterface The created event instance.
      */
-    abstract protected function _createEvent($name, $data);
+    abstract protected function createEvent($name, $data);
 
     /**
      * Creates a new Runtime exception.

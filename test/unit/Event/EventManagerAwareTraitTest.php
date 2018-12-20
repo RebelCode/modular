@@ -73,9 +73,9 @@ class EventManagerAwareTraitTest extends TestCase
         $reflect = $this->reflect($subject);
         $input = $this->getMock('Psr\EventManager\EventManagerInterface');
 
-        $reflect->_setEventManager($input);
+        $reflect->setEventManager($input);
 
-        $this->assertSame($input, $reflect->_getEventManager(), 'Set and retrieved value are not the same.');
+        $this->assertSame($input, $reflect->getEventManager(), 'Set and retrieved value are not the same.');
     }
 
     /**
@@ -89,9 +89,9 @@ class EventManagerAwareTraitTest extends TestCase
         $reflect = $this->reflect($subject);
         $input = null;
 
-        $reflect->_setEventManager($input);
+        $reflect->setEventManager($input);
 
-        $this->assertSame($input, $reflect->_getEventManager(), 'Set and retrieved value are not the same.');
+        $this->assertSame($input, $reflect->getEventManager(), 'Set and retrieved value are not the same.');
     }
 
     /**
@@ -107,6 +107,6 @@ class EventManagerAwareTraitTest extends TestCase
 
         $this->setExpectedException('InvalidArgumentException');
 
-        $reflect->_setEventManager($input);
+        $reflect->setEventManager($input);
     }
 }

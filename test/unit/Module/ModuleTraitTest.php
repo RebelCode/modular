@@ -73,7 +73,7 @@ class ModuleTraitTest extends TestCase
     }
 
     /**
-     * Tests the _initModule() method to assert whether the key and dependencies setters are invoked.
+     * Tests the initModule() method to assert whether the key and dependencies setters are invoked.
      *
      * @since [*next-version*]
      */
@@ -92,11 +92,11 @@ class ModuleTraitTest extends TestCase
         $subject->expects($this->once())->method('_setKey')->with($key);
         $subject->expects($this->once())->method('_setDependencies')->with($deps);
 
-        $reflect->_initModule($key, $deps);
+        $reflect->initModule($key, $deps);
     }
 
     /**
-     * Tests the _initModule() method to assert whether the key is correctly saved and can be retrieved.
+     * Tests the initModule() method to assert whether the key is correctly saved and can be retrieved.
      *
      * @since [*next-version*]
      */
@@ -114,13 +114,13 @@ class ModuleTraitTest extends TestCase
 
         $subject->expects($this->once())->method('_setDependencies')->with($deps);
 
-        $reflect->_initModule($key, $deps);
+        $reflect->initModule($key, $deps);
 
         $this->assertEquals($key, $subject->getKey());
     }
 
     /**
-     * Tests the _initModule() method to assert whether the dependencies are correctly saved and can be retrieved.
+     * Tests the initModule() method to assert whether the dependencies are correctly saved and can be retrieved.
      *
      * @since [*next-version*]
      */
@@ -138,7 +138,7 @@ class ModuleTraitTest extends TestCase
 
         $subject->expects($this->once())->method('_setKey')->with($key);
 
-        $reflect->_initModule($key, $deps);
+        $reflect->initModule($key, $deps);
 
         $this->assertEquals($deps, $subject->getDependencies());
     }

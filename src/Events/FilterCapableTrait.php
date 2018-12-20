@@ -25,9 +25,9 @@ trait FilterCapableTrait
      *
      * @return mixed The filtered value.
      */
-    protected function _filter($event, $key, $value)
+    protected function filter($event, $key, $value)
     {
-        return $this->_trigger($event, [$key => $value])->getParam($key);
+        return $this->trigger($event, [$key => $value])->getParam($key);
     }
 
     /**
@@ -43,5 +43,5 @@ trait FilterCapableTrait
      *
      * @return EventInterface The event instance.
      */
-    abstract protected function _trigger($event, $data = []);
+    abstract protected function trigger($event, $data = []);
 }

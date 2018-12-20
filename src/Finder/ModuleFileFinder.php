@@ -81,7 +81,7 @@ class ModuleFileFinder extends AbstractFileFinder implements IteratorAggregate
         $this->_setRootDir($rootDir)
              ->_setFilenameRegex(static::FILENAME_REGEX)
              ->_setMaxDepth($maxDepth)
-             ->_setCallbackFilter([$this, '_filter'])
+             ->_setCallbackFilter([$this, 'filter'])
              ->_construct();
     }
 
@@ -96,7 +96,7 @@ class ModuleFileFinder extends AbstractFileFinder implements IteratorAggregate
      *
      * @return bool True if the file is allowed, false if it is rejected.
      */
-    protected function _filter(SplFileInfo $fileInfo)
+    protected function filter(SplFileInfo $fileInfo)
     {
         if (!$fileInfo->isReadable()) {
             throw $this->_createRuntimeException(

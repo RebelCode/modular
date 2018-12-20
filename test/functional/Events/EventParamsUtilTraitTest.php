@@ -82,7 +82,7 @@ class EventParamsUtilTraitTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $reflect->_updateEventParams($event, $update);
+        $reflect->updateEventParams($event, $update);
 
         $this->assertEquals($expected, $event->getParams());
     }
@@ -111,7 +111,7 @@ class EventParamsUtilTraitTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $reflect->_setEventParam($event, $setKey, $setVal);
+        $reflect->setEventParam($event, $setKey, $setVal);
 
         $this->assertEquals($expected, $event->getParams());
     }
@@ -141,7 +141,7 @@ class EventParamsUtilTraitTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $reflect->_setEventParam($event, $setKey, $setVal);
+        $reflect->setEventParam($event, $setKey, $setVal);
 
         $this->assertEquals($expected, $event->getParams());
     }

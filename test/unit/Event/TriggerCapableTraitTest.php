@@ -41,8 +41,8 @@ class TriggerCapableTraitTest extends TestCase
         $methods = $this->mergeValues(
             $methods,
             [
-                '_getEventManager',
-                '_createEvent',
+                'getEventManager',
+                'createEvent',
                 '_createRuntimeException',
                 '_createInternalException',
                 '__',
@@ -177,7 +177,7 @@ class TriggerCapableTraitTest extends TestCase
     }
 
     /**
-     * Tests the `_trigger()` method with an event name and event data to assert whether an event instance is created
+     * Tests the `trigger()` method with an event name and event data to assert whether an event instance is created
      * internally, dispatched via an event manager and then returned.
      *
      * @since [*next-version*]
@@ -192,12 +192,12 @@ class TriggerCapableTraitTest extends TestCase
 
         $manager = $this->createEventManager();
         $subject->expects($this->once())
-                ->method('_getEventManager')
+                ->method('getEventManager')
                 ->willReturn($manager);
 
         $event = $this->createEvent();
         $subject->expects($this->once())
-                ->method('_createEvent')
+                ->method('createEvent')
                 ->with($name, $data)
                 ->willReturn($event);
 
@@ -205,13 +205,13 @@ class TriggerCapableTraitTest extends TestCase
                 ->method('trigger')
                 ->with($event);
 
-        $return = $reflect->_trigger($name, $data);
+        $return = $reflect->trigger($name, $data);
 
         $this->assertSame($event, $return, 'Return value is not the created event instance.');
     }
 
     /**
-     * Tests the `_trigger()` method to assert whether an exception is thrown when the event manager is null.
+     * Tests the `trigger()` method to assert whether an exception is thrown when the event manager is null.
      *
      * @since [*next-version*]
      */
@@ -221,7 +221,7 @@ class TriggerCapableTraitTest extends TestCase
         $reflect = $this->reflect($subject);
 
         $subject->expects($this->once())
-                ->method('_getEventManager')
+                ->method('getEventManager')
                 ->willReturn(null);
 
         $subject->expects($this->once())
@@ -230,11 +230,11 @@ class TriggerCapableTraitTest extends TestCase
 
         $this->setExpectedException('RuntimeException');
 
-        $reflect->_trigger(uniqid(), []);
+        $reflect->trigger(uniqid(), []);
     }
 
     /**
-     * Tests the `_trigger()` method to assert whether an exception is thrown when an event instance could not be
+     * Tests the `trigger()` method to assert whether an exception is thrown when an event instance could not be
      * created.
      *
      * @since [*next-version*]
@@ -249,7 +249,7 @@ class TriggerCapableTraitTest extends TestCase
 
         $manager = $this->createEventManager();
         $subject->expects($this->once())
-                ->method('_getEventManager')
+                ->method('getEventManager')
                 ->willReturn($manager);
 
         /* @var $prevEx CouldNotMakeExceptionInterface */
@@ -258,7 +258,7 @@ class TriggerCapableTraitTest extends TestCase
             ['Dhii\Factory\Exception\CouldNotMakeExceptionInterface']
         );
         $subject->expects($this->once())
-                ->method('_createEvent')
+                ->method('createEvent')
                 ->with($name, $data)
                 ->willThrowException($prevEx);
 
@@ -268,11 +268,11 @@ class TriggerCapableTraitTest extends TestCase
 
         $this->setExpectedException('Dhii\Exception\InternalExceptionInterface');
 
-        $reflect->_trigger($name, $data);
+        $reflect->trigger($name, $data);
     }
 
     /**
-     * Tests the `_trigger()` method to assert whether an exception is thrown when an exception is thrown and caught
+     * Tests the `trigger()` method to assert whether an exception is thrown when an exception is thrown and caught
      * during event dispatch.
      *
      * @since [*next-version*]
@@ -287,12 +287,12 @@ class TriggerCapableTraitTest extends TestCase
 
         $manager = $this->createEventManager();
         $subject->expects($this->once())
-                ->method('_getEventManager')
+                ->method('getEventManager')
                 ->willReturn($manager);
 
         $event = $this->createEvent();
         $subject->expects($this->once())
-                ->method('_createEvent')
+                ->method('createEvent')
                 ->with($name, $data)
                 ->willReturn($event);
 
@@ -306,6 +306,6 @@ class TriggerCapableTraitTest extends TestCase
 
         $this->setExpectedException('Dhii\Exception\InternalExceptionInterface');
 
-        $reflect->_trigger($name, $data);
+        $reflect->trigger($name, $data);
     }
 }

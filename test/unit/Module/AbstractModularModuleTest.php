@@ -39,10 +39,10 @@ class AbstractModularModuleTest extends TestCase
                             array_merge(
                                 $methods,
                                 [
-                                    '_createConfig',
-                                    '_createContainer',
-                                    '_createCompositeContainer',
-                                    '_createAddCapableList',
+                                    'createConfig',
+                                    'createContainer',
+                                    'createCompositeContainer',
+                                    'createAddCapableList',
                                 ]
                             )
                         );
@@ -103,7 +103,7 @@ class AbstractModularModuleTest extends TestCase
      */
     public function testInit()
     {
-        $subject = $this->createInstance(['_addSubModule']);
+        $subject = $this->createInstance(['addSubModule']);
         $reflect = $this->reflect($subject);
 
         $reflect->subModules = [
@@ -142,10 +142,10 @@ class AbstractModularModuleTest extends TestCase
         ];
 
         $subject->expects($this->exactly(3))
-                ->method('_addSubModule')
+                ->method('addSubModule')
                 ->withConsecutive([$sm1], [$sm2], [$sm3]);
 
-        $reflect->_init($subModules);
+        $reflect->init($subModules);
 
         $this->assertEmpty($reflect->subModules);
         $this->assertEmpty($reflect->subConfigs);
@@ -162,25 +162,25 @@ class AbstractModularModuleTest extends TestCase
     public function testInitInitialData()
     {
         $subject = $this->createInstance([
-            '_addSubModule',
-            '_getInitialConfig',
-            '_getInitialContainers',
-            '_getInitialFactories',
-            '_getInitialExtensions',
+            'addSubModule',
+            'getInitialConfig',
+            'getInitialContainers',
+            'getInitialFactories',
+            'getInitialExtensions',
         ]);
         $reflect = $this->reflect($subject);
 
-        $subject->expects($this->once())->method('_getInitialConfig')->willReturn($config = [
+        $subject->expects($this->once())->method('getInitialConfig')->willReturn($config = [
             uniqid('config1') => uniqid('config-values'),
             uniqid('config2') => uniqid('config-values'),
         ]);
 
-        $subject->expects($this->once())->method('_getInitialContainers')->willReturn($containers = [
+        $subject->expects($this->once())->method('getInitialContainers')->willReturn($containers = [
             uniqid('container1') => $this->getMockForAbstractClass('Psr\Container\ContainerInterface'),
             uniqid('container2') => $this->getMockForAbstractClass('Psr\Container\ContainerInterface'),
         ]);
 
-        $subject->expects($this->once())->method('_getInitialFactories')->willReturn($factories = [
+        $subject->expects($this->once())->method('getInitialFactories')->willReturn($factories = [
             uniqid('factory1') => function () {
                 return 'factory1';
             },
@@ -189,7 +189,7 @@ class AbstractModularModuleTest extends TestCase
             },
         ]);
 
-        $subject->expects($this->once())->method('_getInitialExtensions')->willReturn($extensions = [
+        $subject->expects($this->once())->method('getInitialExtensions')->willReturn($extensions = [
             uniqid('extension1') => function () {
                 return 'extension1';
             },
@@ -198,7 +198,7 @@ class AbstractModularModuleTest extends TestCase
             },
         ]);
 
-        $reflect->_init([]);
+        $reflect->init([]);
 
         $this->assertEquals([$config], $reflect->subConfigs);
         $this->assertEquals($containers, $reflect->subContainers);
@@ -238,7 +238,7 @@ class AbstractModularModuleTest extends TestCase
      */
     public function testAddSubModule()
     {
-        $subject = $this->createInstance(['_getModuleServiceKey']);
+        $subject = $this->createInstance(['getModuleServiceKey']);
         $reflect = $this->reflect($subject);
 
         $reflect->subModules = [
@@ -247,12 +247,12 @@ class AbstractModularModuleTest extends TestCase
 
         $key = uniqid('key');
         $subModule = $this->getMockForAbstractClass('Dhii\Modular\Module\ModuleInterface');
-        $subject->expects($this->once())->method('_getModuleServiceKey')->with($subModule)->willReturn($key);
+        $subject->expects($this->once())->method('getModuleServiceKey')->with($subModule)->willReturn($key);
 
         $expectedSubModules = $reflect->subModules;
         $expectedSubModules[$key] = $subModule;
 
-        $reflect->_addSubModule($subModule);
+        $reflect->addSubModule($subModule);
 
         $this->assertEquals($expectedSubModules, $reflect->subModules);
     }
@@ -264,7 +264,7 @@ class AbstractModularModuleTest extends TestCase
      */
     public function testAddSubModuleSetup()
     {
-        $subject = $this->createInstance(['_getModuleServiceKey']);
+        $subject = $this->createInstance(['getModuleServiceKey']);
         $reflect = $this->reflect($subject);
 
         $reflect->subContainers = [
@@ -279,7 +279,7 @@ class AbstractModularModuleTest extends TestCase
         $expectedContainers = $reflect->subContainers;
         $expectedContainers[] = $container;
 
-        $reflect->_addSubModule($subModule);
+        $reflect->addSubModule($subModule);
 
         $this->assertEquals($expectedContainers, $reflect->subContainers);
     }
@@ -291,7 +291,7 @@ class AbstractModularModuleTest extends TestCase
      */
     public function testAddSubModuleNullContainerSetup()
     {
-        $subject = $this->createInstance(['_getModuleServiceKey']);
+        $subject = $this->createInstance(['getModuleServiceKey']);
         $reflect = $this->reflect($subject);
 
         $reflect->subContainers = [
@@ -307,7 +307,7 @@ class AbstractModularModuleTest extends TestCase
 
         $expectedContainers = $reflect->subContainers;
 
-        $reflect->_addSubModule($subModule);
+        $reflect->addSubModule($subModule);
 
         $this->assertEquals($expectedContainers, $reflect->subContainers);
     }
@@ -319,7 +319,7 @@ class AbstractModularModuleTest extends TestCase
      */
     public function testAddSubModuleServiceProvider()
     {
-        $subject = $this->createInstance(['_getModuleServiceKey']);
+        $subject = $this->createInstance(['getModuleServiceKey']);
         $reflect = $this->reflect($subject);
 
         $reflect->factories = [
@@ -367,7 +367,7 @@ class AbstractModularModuleTest extends TestCase
         $expectedExtensions = $reflect->extensions;
         $expectedExtensions[] = $extensions;
 
-        $reflect->_addSubModule($subModule);
+        $reflect->addSubModule($subModule);
 
         $this->assertEquals($expectedFactories, $reflect->factories);
         $this->assertEquals($expectedExtensions, $reflect->extensions);
@@ -380,7 +380,7 @@ class AbstractModularModuleTest extends TestCase
      */
     public function testAddSubModuleConfigProvider()
     {
-        $subject = $this->createInstance(['_getModuleServiceKey']);
+        $subject = $this->createInstance(['getModuleServiceKey']);
         $reflect = $this->reflect($subject);
 
         $reflect->subConfigs = [
@@ -402,7 +402,7 @@ class AbstractModularModuleTest extends TestCase
         $expectedConfigs = $reflect->subConfigs;
         $expectedConfigs[] = $config;
 
-        $reflect->_addSubModule($subModule);
+        $reflect->addSubModule($subModule);
 
         $this->assertEquals($expectedConfigs, $reflect->subConfigs);
     }
@@ -426,11 +426,11 @@ class AbstractModularModuleTest extends TestCase
         ];
 
         $subject->expects($this->once())
-                ->method('_createContainer')
+                ->method('createContainer')
                 ->with($reflect->subModules, $parent)
                 ->willReturn($expected);
 
-        $actual = $reflect->_initSubModulesContainer($parent);
+        $actual = $reflect->initSubModulesContainer($parent);
 
         $this->assertSame($expected, $actual);
     }
@@ -458,7 +458,7 @@ class AbstractModularModuleTest extends TestCase
         $config3 = $this->getMockForAbstractClass('Dhii\Config\ConfigInterface');
 
         $subject->expects($this->exactly(3))
-                ->method('_createConfig')
+                ->method('createConfig')
                 ->withConsecutive([$c3], [$c2], [$c1])
                 ->willReturnOnConsecutiveCalls($config3, $config2, $config1);
 
@@ -468,22 +468,22 @@ class AbstractModularModuleTest extends TestCase
              ->withConsecutive([$config3], [$config2], [$config1]);
 
         $subject->expects($this->atLeastOnce())
-                ->method('_createAddCapableList')
+                ->method('createAddCapableList')
                 ->willReturn($list);
 
         $container = $this->getMockForAbstractClass('Psr\Container\ContainerInterface');
         $subject->expects($this->atLeastOnce())
-                ->method('_createCompositeContainer')
+                ->method('createCompositeContainer')
                 ->with($list)
                 ->willReturn($container);
 
         $config = $this->getMockForAbstractClass('Psr\Container\ContainerInterface');
         $subject->expects($this->once())
-                ->method('_createContainer')
+                ->method('createContainer')
                 ->with(['config' => $container], $parent)
                 ->willReturn($config);
 
-        $actual = $reflect->_initConfigContainer($parent);
+        $actual = $reflect->initConfigContainer($parent);
 
         $this->assertSame($config, $actual);
     }
@@ -528,11 +528,11 @@ class AbstractModularModuleTest extends TestCase
         $container = $this->getMockForAbstractClass('Psr\Container\ContainerInterface');
 
         $subject->expects($this->once())
-                ->method('_createContainer')
+                ->method('createContainer')
                 ->with($expected, $parentCntr)
                 ->willReturn($container);
 
-        $reflect->_initServicesContainer($parentCntr);
+        $reflect->initServicesContainer($parentCntr);
 
         $this->assertEquals($expected, $reflect->factories);
     }
@@ -555,12 +555,12 @@ class AbstractModularModuleTest extends TestCase
 
         $list = $this->getMockForAbstractClass('Dhii\Collection\AddCapableInterface');
         $subject->expects($this->atLeastOnce())
-                ->method('_createAddCapableList')
+                ->method('createAddCapableList')
                 ->willReturn($list);
 
         $container = $this->getMockForAbstractClass('Psr\Container\ContainerInterface');
         $subject->expects($this->atLeastOnce())
-                ->method('_createCompositeContainer')
+                ->method('createCompositeContainer')
                 ->with($list)
                 ->willReturn($container);
 
@@ -568,7 +568,7 @@ class AbstractModularModuleTest extends TestCase
              ->method('add')
              ->withConsecutive([$c3], [$c2], [$c1]);
 
-        $actual = $reflect->_initSubModulesSetupContainer();
+        $actual = $reflect->initSubModulesSetupContainer();
 
         $this->assertSame($container, $actual);
     }
@@ -591,7 +591,7 @@ class AbstractModularModuleTest extends TestCase
                        ->getMockForAbstractClass();
         $module->expects($this->atLeastOnce())->method('getKey')->willReturn($key);
 
-        $actual = $reflect->_getModuleServiceKey($module);
+        $actual = $reflect->getModuleServiceKey($module);
 
         $this->assertEquals($expected, $actual);
     }

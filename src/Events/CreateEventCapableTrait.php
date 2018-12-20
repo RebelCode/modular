@@ -2,8 +2,8 @@
 
 namespace RebelCode\Modular\Events;
 
-use Dhii\Factory\Exception\CouldNotMakeExceptionInterface;
 use Dhii\Event\EventFactoryInterface;
+use Dhii\Factory\Exception\CouldNotMakeExceptionInterface;
 use Dhii\Util\String\StringableInterface as Stringable;
 use Exception as RootException;
 use Psr\EventManager\EventInterface;
@@ -28,9 +28,9 @@ trait CreateEventCapableTrait
      *
      * @return EventInterface The created event instance.
      */
-    protected function _createEvent($name, $data)
+    protected function createEvent($name, $data)
     {
-        $factory = $this->_getEventFactory();
+        $factory = $this->getEventFactory();
 
         if ($factory === null) {
             throw $this->_createRuntimeException(
@@ -55,7 +55,7 @@ trait CreateEventCapableTrait
      *
      * @return EventFactoryInterface|null The event factory instance, if any.
      */
-    abstract protected function _getEventFactory();
+    abstract protected function getEventFactory();
 
     /**
      * Creates a new Runtime exception.

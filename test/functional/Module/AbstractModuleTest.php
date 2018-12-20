@@ -107,7 +107,7 @@ class AbstractModuleTest extends TestCase
      */
     public function testConstructor()
     {
-        $subject = $this->createInstance(['_initModule', '_loadPhpDataFile']);
+        $subject = $this->createInstance(['initModule', 'loadPhpDataFile']);
 
         $key = uniqid('key');
         $deps = [
@@ -115,7 +115,7 @@ class AbstractModuleTest extends TestCase
             uniqid('dep2'),
             uniqid('dep3'),
         ];
-        $subject->expects($this->once())->method('_initModule')->with($key, $deps);
+        $subject->expects($this->once())->method('initModule')->with($key, $deps);
 
         $configFile = uniqid('config-file');
         $config = [
@@ -129,7 +129,7 @@ class AbstractModuleTest extends TestCase
         ];
 
         $subject->expects($this->exactly(2))
-                ->method('_loadPhpDataFile')
+                ->method('loadPhpDataFile')
                 ->withConsecutive([$configFile], [$servicesFile])
                 ->willReturnOnConsecutiveCalls($config, $services);
 

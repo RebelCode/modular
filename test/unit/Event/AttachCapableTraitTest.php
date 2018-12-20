@@ -37,7 +37,7 @@ class AttachCapableTraitTest extends TestCase
         $methods = $this->mergeValues(
             $methods,
             [
-                '_getEventManager',
+                'getEventManager',
                 '_createRuntimeException',
                 '__',
             ]
@@ -161,14 +161,14 @@ class AttachCapableTraitTest extends TestCase
 
         $manager = $this->createEventManager();
         $subject->expects($this->once())
-                ->method('_getEventManager')
+                ->method('getEventManager')
                 ->willReturn($manager);
 
         $manager->expects($this->once())
                 ->method('attach')
                 ->with($name, $handler);
 
-        $reflect->_attach($name, $handler);
+        $reflect->attach($name, $handler);
     }
 
     /**
@@ -182,7 +182,7 @@ class AttachCapableTraitTest extends TestCase
         $reflect = $this->reflect($subject);
 
         $subject->expects($this->once())
-                ->method('_getEventManager')
+                ->method('getEventManager')
                 ->willReturn(null);
 
         $subject->expects($this->once())
@@ -191,6 +191,6 @@ class AttachCapableTraitTest extends TestCase
 
         $this->setExpectedException('RuntimeException');
 
-        $reflect->_attach(uniqid(), []);
+        $reflect->attach(uniqid(), []);
     }
 }

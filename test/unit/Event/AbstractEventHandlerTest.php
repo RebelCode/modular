@@ -31,7 +31,7 @@ class AbstractEventHandlerTest extends TestCase
     public function createInstance()
     {
         $mock = $this->mock(static::TEST_SUBJECT_CLASSNAME)
-                     ->_handle();
+                     ->handle();
 
         return $mock->new();
     }
@@ -64,7 +64,7 @@ class AbstractEventHandlerTest extends TestCase
         $event = $this->getMockForAbstractClass('Psr\EventManager\EventInterface');
 
         $subject->expects($this->once())
-                ->method('_handle')
+                ->method('handle')
                 ->with($event);
 
         call_user_func_array($subject, [$event]);
@@ -82,7 +82,7 @@ class AbstractEventHandlerTest extends TestCase
         $arg = new stdClass();
 
         $subject->expects($this->never())
-                ->method('_handle');
+                ->method('handle');
 
         $this->setExpectedException('InvalidArgumentException');
 

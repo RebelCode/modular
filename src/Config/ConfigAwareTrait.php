@@ -28,7 +28,7 @@ trait ConfigAwareTrait
      *
      * @return ConfigInterface The configuration container instance.
      */
-    protected function _getConfig()
+    protected function getConfig()
     {
         return $this->config;
     }
@@ -42,7 +42,7 @@ trait ConfigAwareTrait
      *
      * @throws InvalidArgumentException If the configuration container is invalid.
      */
-    protected function _setConfig($config)
+    protected function setConfig($config)
     {
         if (!($config instanceof ConfigInterface)) {
             throw $this->_createInvalidArgumentException(

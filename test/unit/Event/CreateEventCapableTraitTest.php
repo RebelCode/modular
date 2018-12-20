@@ -37,7 +37,7 @@ class CreateEventCapableTraitTest extends TestCase
         $methods = $this->mergeValues(
             $methods,
             [
-                '_getEventFactory',
+                'getEventFactory',
             ]
         );
 
@@ -174,7 +174,7 @@ class CreateEventCapableTraitTest extends TestCase
         $factory = $this->getMock('Dhii\Event\EventFactoryInterface');
 
         $subject->expects($this->once())
-                ->method('_getEventFactory')
+                ->method('getEventFactory')
                 ->willReturn($factory);
 
         $event = $this->createEvent($name, $data);
@@ -183,7 +183,7 @@ class CreateEventCapableTraitTest extends TestCase
                 ->with(['name' => $name, 'params' => $data])
                 ->willReturn($event);
 
-        $actual = $reflect->_createEvent($name, $data);
+        $actual = $reflect->createEvent($name, $data);
 
         $this->assertInstanceOf(
             'Psr\EventManager\EventInterface',
@@ -211,7 +211,7 @@ class CreateEventCapableTraitTest extends TestCase
         ];
 
         $subject->expects($this->once())
-                ->method('_getEventFactory')
+                ->method('getEventFactory')
                 ->willReturn(null);
 
         $subject->expects($this->once())
@@ -220,6 +220,6 @@ class CreateEventCapableTraitTest extends TestCase
 
         $this->setExpectedException('RuntimeException');
 
-        $reflect->_createEvent($name, $data);
+        $reflect->createEvent($name, $data);
     }
 }

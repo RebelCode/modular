@@ -30,7 +30,7 @@ trait EventFactoryAwareTrait
      *
      * @return EventFactoryInterface|null The event factory instance, if any.
      */
-    protected function _getEventFactory()
+    protected function getEventFactory()
     {
         return $this->eventFactory;
     }
@@ -42,7 +42,7 @@ trait EventFactoryAwareTrait
      *
      * @param EventFactoryInterface|null $eventFactory The event factory instance or null.
      */
-    protected function _setEventFactory($eventFactory)
+    protected function setEventFactory($eventFactory)
     {
         if ($eventFactory !== null && !($eventFactory instanceof EventFactoryInterface)) {
             throw $this->_createInvalidArgumentException(

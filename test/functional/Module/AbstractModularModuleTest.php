@@ -45,23 +45,23 @@ class AbstractModularModuleTest extends TestCase
         $mock = $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
                      ->setConstructorArgs([$key, $dependencies, $subModules])
                      ->setMethods([
-                         '_createContainer',
-                         '_createCompositeContainer',
-                         '_createConfig',
-                         '_createAddCapableList',
+                         'createContainer',
+                         'createCompositeContainer',
+                         'createConfig',
+                         'createAddCapableList',
                      ])
                      ->getMockForAbstractClass();
 
-        $mock->method('_createContainer')->willReturnCallback(function ($data, $parent = null) {
+        $mock->method('createContainer')->willReturnCallback(function ($data, $parent = null) {
             return new ContainerAwareCachingContainer($data, new MemoryMemoizer(), $parent);
         });
-        $mock->method('_createCompositeContainer')->willReturnCallback(function ($containers) {
+        $mock->method('createCompositeContainer')->willReturnCallback(function ($containers) {
             return new CompositeContainer($containers);
         });
-        $mock->method('_createConfig')->willReturnCallback(function ($data) {
+        $mock->method('createConfig')->willReturnCallback(function ($data) {
             return new DereferencingConfigMap($data);
         });
-        $mock->method('_createAddCapableList')->willReturnCallback(function () {
+        $mock->method('createAddCapableList')->willReturnCallback(function () {
             return new AddCapableOrderedList();
         });
 

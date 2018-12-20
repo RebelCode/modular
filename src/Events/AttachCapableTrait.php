@@ -27,9 +27,9 @@ trait AttachCapableTrait
      *
      * @return bool True on success, false on failure
      */
-    protected function _attach($event, $callback, $priority = 0)
+    protected function attach($event, $callback, $priority = 0)
     {
-        $eventManager = $this->_getEventManager();
+        $eventManager = $this->getEventManager();
 
         if ($eventManager === null) {
             throw $this->_createRuntimeException($this->__('Internal event manager is null'), null, null);
@@ -45,7 +45,7 @@ trait AttachCapableTrait
      *
      * @return EventManagerInterface|null The event manager instance, if any.
      */
-    abstract protected function _getEventManager();
+    abstract protected function getEventManager();
 
     /**
      * Creates a new Runtime exception.

@@ -39,7 +39,7 @@ class FilterCapableTraitTest extends TestCase
         $methods = $this->mergeValues(
             $methods,
             [
-                '_trigger',
+                'trigger',
             ]
         );
 
@@ -157,7 +157,7 @@ class FilterCapableTraitTest extends TestCase
     }
 
     /**
-     * Tests the `_filter()` method to assert whether an event is correctly dispatched and the correct value returned.
+     * Tests the `filter()` method to assert whether an event is correctly dispatched and the correct value returned.
      *
      * @since [*next-version*]
      */
@@ -174,7 +174,7 @@ class FilterCapableTraitTest extends TestCase
         $event = $this->createEvent($name, [$key => $newValue]);
 
         $subject->expects($this->once())
-                ->method('_trigger')
+                ->method('trigger')
                 ->with($name, [$key => $value])
                 ->willReturn($event);
 
@@ -183,13 +183,13 @@ class FilterCapableTraitTest extends TestCase
               ->with($key)
               ->willReturn($newValue);
 
-        $actual = $reflect->_filter($name, $key, $value);
+        $actual = $reflect->filter($name, $key, $value);
 
         $this->assertSame($newValue, $actual, 'Returned value is not the new value in the event instance.');
     }
 
     /**
-     * Tests the `_filter()` method to assert whether runtime exceptions thrown within bubble out.
+     * Tests the `filter()` method to assert whether runtime exceptions thrown within bubble out.
      *
      * @since [*next-version*]
      */
@@ -203,17 +203,17 @@ class FilterCapableTraitTest extends TestCase
         $value = new stdClass();
 
         $subject->expects($this->once())
-                ->method('_trigger')
+                ->method('trigger')
                 ->with($name, [$key => $value])
                 ->willThrowException(new RuntimeException());
 
         $this->setExpectedException('RuntimeException');
 
-        $reflect->_filter($name, $key, $value);
+        $reflect->filter($name, $key, $value);
     }
 
     /**
-     * Tests the `_filter()` method to assert whether internal exceptions thrown within bubble out.
+     * Tests the `filter()` method to assert whether internal exceptions thrown within bubble out.
      *
      * @since [*next-version*]
      */
@@ -227,12 +227,12 @@ class FilterCapableTraitTest extends TestCase
         $value = new stdClass();
 
         $subject->expects($this->once())
-                ->method('_trigger')
+                ->method('trigger')
                 ->with($name, [$key => $value])
                 ->willThrowException(new InternalException(null, null, new RootException()));
 
         $this->setExpectedException('Dhii\Exception\InternalExceptionInterface');
 
-        $reflect->_filter($name, $key, $value);
+        $reflect->filter($name, $key, $value);
     }
 }
