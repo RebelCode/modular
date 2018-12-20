@@ -131,6 +131,18 @@ abstract class AbstractModularModule implements
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function run(ContainerInterface $c = null)
+    {
+        foreach ($this->subModules as $module) {
+            $module->run($c);
+        }
+    }
+
+    /**
      * Adds a sub-module to this module.
      *
      * This method MUST be called during the {@link _init()} process and SHOULD NOT have an effect thereafter.

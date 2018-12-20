@@ -155,6 +155,31 @@ class AbstractModularModuleTest extends TestCase
     }
 
     /**
+     * Tests the run method to assert whether all sub modules are run.
+     *
+     * @since [*next-version*]
+     */
+    public function testRun()
+    {
+        $subject = $this->createInstance();
+        $reflect = $this->reflect($subject);
+
+        $reflect->subModules = [
+            $sm1 = $this->getMockForAbstractClass('Dhii\Modular\Module\ModuleInterface'),
+            $sm2 = $this->getMockForAbstractClass('Dhii\Modular\Module\ModuleInterface'),
+            $sm3 = $this->getMockForAbstractClass('Dhii\Modular\Module\ModuleInterface'),
+        ];
+
+        $container = $this->getMockForAbstractClass('Psr\Container\ContainerInterface');
+
+        $sm1->expects($this->once())->method('run')->with($container);
+        $sm2->expects($this->once())->method('run')->with($container);
+        $sm3->expects($this->once())->method('run')->with($container);
+
+        $subject->run($container);
+    }
+
+    /**
      * Tests the sub-module adder method.
      *
      * @since [*next-version*]
