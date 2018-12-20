@@ -4,6 +4,7 @@ namespace RebelCode\Modular\FuncTest\Module;
 
 use org\bovigo\vfs\vfsStream;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use PHPUnit_Framework_MockObject_MockBuilder as MockBuilder;
 use RebelCode\Modular\Module\AbstractModule as TestSubject;
 use ReflectionClass;
 use ReflectionException;
@@ -198,16 +199,69 @@ class AbstractModuleTest extends TestCase
     }
 
     /**
-     * Tests the extensions getter method to assert whether the result is empty.
+     * Tests the public service factories getter method to assert whether the retrieved service factories are
+     * correct, when the services file returns a service provider instance.
+     *
+     * @since [*next-version*]
+     * @throws ReflectionException
+     */
+    public function testGetFactoriesServiceProvider()
+    {
+        $services = [
+            uniqid('key') => uniqid('pretend-im-a-closure'),
+            uniqid('key') => uniqid('pretend-im-a-closure'),
+        ];
+        $svcExport = var_export($services, true);
+
+        $vfs = vfsStream::setup('services');
+        vfsStream::create([
+            'services-file.php' => $t = sprintf(
+                '<?php return new \RebelCode\Modular\Container\ServiceProvider(%s, []);',
+                $svcExport
+            ),
+        ], $vfs);
+        $servicesFile = $vfs->url() . '/services-file.php';
+
+        $subject = $this->createInstance();
+        $reflect = new ReflectionClass($subject);
+        $constructor = $reflect->getConstructor();
+
+        $constructor->invokeArgs($subject, ['key', [], null, $servicesFile]);
+
+        $this->assertEquals($services, $subject->getFactories());
+    }
+
+    /**
+     * Tests the extensions getter method to assert whether the retrieved extensions are correct, when the services
+     * file returns a service provider instance.
      *
      * @since [*next-version*]
      * @throws ReflectionException
      */
     public function testGetExtensions()
     {
-        $subject = $this->createInstance();
+        $extensions = [
+            uniqid('key') => uniqid('pretend-im-a-closure'),
+            uniqid('key') => uniqid('pretend-im-a-closure'),
+        ];
+        $extExport = var_export($extensions, true);
 
-        $this->assertEmpty($subject->getExtensions());
+        $vfs = vfsStream::setup('services');
+        vfsStream::create([
+            'services-file.php' => $t = sprintf(
+                '<?php return new \RebelCode\Modular\Container\ServiceProvider([], %s);',
+                $extExport
+            ),
+        ], $vfs);
+        $servicesFile = $vfs->url() . '/services-file.php';
+
+        $subject = $this->createInstance();
+        $reflect = new ReflectionClass($subject);
+        $constructor = $reflect->getConstructor();
+
+        $constructor->invokeArgs($subject, ['key', [], null, $servicesFile]);
+
+        $this->assertEquals($extensions, $subject->getExtensions());
     }
 
     /**

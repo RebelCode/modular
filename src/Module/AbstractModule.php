@@ -13,6 +13,10 @@ use Traversable;
 /**
  * Common base functionality for modules.
  *
+ * This implementation is capable of loading services and config from files. The files are expected to be PHP files
+ * that `return` the services and config arrays respectively. However, services MAY be either an array or a
+ * {@link ServiceProviderInterface} instance, which allows extensions to be read from the file as well.
+ *
  * @since [*next-version*]
  */
 abstract class AbstractModule implements
@@ -41,13 +45,22 @@ abstract class AbstractModule implements
     protected $config;
 
     /**
-     * The service definitions for this module.
+     * The service factory definitions for this module.
      *
      * @since [*next-version*]
      *
      * @var array
      */
-    protected $services;
+    protected $factories;
+
+    /**
+     * The service extension definitions for this module.
+     *
+     * @since [*next-version*]
+     *
+     * @var array
+     */
+    protected $extensions;
 
     /**
      * Constructor.
@@ -62,13 +75,17 @@ abstract class AbstractModule implements
     public function __construct($key, $dependencies = [], $configFile = null, $servicesFile = null)
     {
         $this->initModule($key, $dependencies);
-
         $this->config = ($configFile !== null)
             ? $this->loadPhpDataFile($configFile)
             : [];
-
-        $this->services = ($servicesFile !== null)
+        $services = ($servicesFile !== null)
             ? $this->loadPhpDataFile($servicesFile)
+            : [];
+        $this->factories = ($services instanceof ServiceProviderInterface)
+            ? $services->getFactories()
+            : $services;
+        $this->extensions = ($services instanceof ServiceProviderInterface)
+            ? $services->getExtensions()
             : [];
     }
 
@@ -99,7 +116,7 @@ abstract class AbstractModule implements
      */
     public function getFactories()
     {
-        return $this->services;
+        return $this->factories;
     }
 
     /**
@@ -109,6 +126,6 @@ abstract class AbstractModule implements
      */
     public function getExtensions()
     {
-        return [];
+        return $this->extensions;
     }
 }
