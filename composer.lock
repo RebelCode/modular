@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "76fc59d8aa6a370371931b28da77e89f",
+    "content-hash": "98dcf5e8a5fd250fd2e66a248dc87df3",
     "packages": [
         {
             "name": "container-interop/service-provider",
@@ -2104,6 +2104,303 @@
             "time": "2016-04-19T16:54:33+00:00"
         },
         {
+            "name": "dhii/cache-abstract",
+            "version": "v0.1-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/cache-abstract.git",
+                "reference": "fdc149b52c92365e68432d01c1b342208e030c91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/cache-abstract/zipball/fdc149b52c92365e68432d01c1b342208e030c91",
+                "reference": "fdc149b52c92365e68432d01c1b342208e030c91",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/invocable-interface": "^0.1",
+                "dhii/php-cs-fixer-config": "^0.1",
+                "dhii/stringable-interface": "^0.1",
+                "phpunit/phpunit": "^4.8",
+                "psr/container": "^1.0",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "suggest": {
+                "dhii/callback-abstract": "For structured invocation of callables",
+                "dhii/exception": "For standard exceptions and exception factory methods",
+                "dhii/normalization-helper-base": "To normalize primitives, like arrays, integers, and strings",
+                "dhii/stringable-interface": "To use objects as strings"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Cache\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Abstract functionality for caching.",
+            "time": "2018-03-22T21:23:37+00:00"
+        },
+        {
+            "name": "dhii/composite-container",
+            "version": "v0.1-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/composite-container.git",
+                "reference": "e04113b2113cf055750908b56d8fbc6ec252e2fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/composite-container/zipball/e04113b2113cf055750908b56d8fbc6ec252e2fc",
+                "reference": "e04113b2113cf055750908b56d8fbc6ec252e2fc",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/container-helper-base": "^0.1-alpha7",
+                "dhii/data-container-base": "^0.1-alpha2",
+                "dhii/data-container-interface": "^0.1 | ^0.2",
+                "dhii/exception": "^0.1-alpha5",
+                "dhii/i18n-helper-base": "^0.1",
+                "dhii/normalization-helper-base": "^0.1",
+                "php": "^5.4 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "^0.1",
+                "phpunit/phpunit": "^4.8",
+                "psr/container": "^1.0",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Data\\Container\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "A composite container implementation",
+            "time": "2018-04-11T11:00:55+00:00"
+        },
+        {
+            "name": "dhii/di",
+            "version": "v0.2-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/di.git",
+                "reference": "293bd78c665c88464137dea467ea3b05de962fcc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/di/zipball/293bd78c665c88464137dea467ea3b05de962fcc",
+                "reference": "293bd78c665c88464137dea467ea3b05de962fcc",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/args-list-validation": "^0.1",
+                "dhii/callback-abstract": "^0.1-alpha5",
+                "dhii/container-helper-base": "^0.1-alpha5",
+                "dhii/data-container-abstract": "^0.1-alpha1",
+                "dhii/data-container-base": "^0.1-alpha2",
+                "dhii/data-container-interface": "^0.1 | ^0.2",
+                "dhii/data-object-abstract": "^0.1-alpha1",
+                "dhii/di-abstract": "^0.2-alpha1",
+                "dhii/exception": "^0.1-alpha5",
+                "dhii/i18n-helper-base": "^0.1",
+                "dhii/invocable-base": "^0.1",
+                "dhii/normalization-helper-base": "^0.1",
+                "dhii/validation-base": "^0.2-alpha2",
+                "php": "^5.4 | ^7.0"
+            },
+            "provide": {
+                "container-interop/container-interop-implementation": "^1.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/exception-interface": "^0.2-alpha3",
+                "dhii/invocable-interface": "^0.1",
+                "dhii/memoize-memory": "^0.2",
+                "dhii/php-cs-fixer-config": "^0.1",
+                "dhii/simple-cache-interface": "^0.1",
+                "dhii/stringable-interface": "^0.1",
+                "phpunit/phpunit": "^4.8",
+                "psr/container": "^1.0",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Di\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "A DI container implementation",
+            "keywords": [
+                "container",
+                "dependency injection",
+                "di"
+            ],
+            "time": "2018-04-11T12:44:04+00:00"
+        },
+        {
+            "name": "dhii/di-abstract",
+            "version": "v0.2-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/di-abstract.git",
+                "reference": "badfa20def27e5c6883f1c1078c98603b7bee319"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/di-abstract/zipball/badfa20def27e5c6883f1c1078c98603b7bee319",
+                "reference": "badfa20def27e5c6883f1c1078c98603b7bee319",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/data-container-interface": "^0.2",
+                "dhii/exception-interface": "^0.2-alpha3",
+                "dhii/invocable-interface": "^0.1",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "dhii/simple-cache-interface": "^0.1",
+                "dhii/stringable-interface": "^0.1",
+                "phpunit/phpunit": "^4.8",
+                "psr/container": "^1.0",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Di\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "Base abstract classes for DI container implementations",
+            "time": "2018-04-01T15:17:25+00:00"
+        },
+        {
+            "name": "dhii/memoize-memory",
+            "version": "v0.2-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/memoize-memory.git",
+                "reference": "4e93d600dfb464ab5b6d51bffe772adbfd9b94fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/memoize-memory/zipball/4e93d600dfb464ab5b6d51bffe772adbfd9b94fa",
+                "reference": "4e93d600dfb464ab5b6d51bffe772adbfd9b94fa",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/args-list-validation": "^0.1-alpha1",
+                "dhii/cache-abstract": "^0.1",
+                "dhii/callback-abstract": "^0.1-alpha4",
+                "dhii/container-helper-base": "^0.1-alpha5",
+                "dhii/data-container-base": "^0.1-alpha2",
+                "dhii/data-object-abstract": "^0.1",
+                "dhii/invocable-base": "^0.1",
+                "dhii/map": "^0.1",
+                "dhii/simple-cache-interface": "^0.1",
+                "dhii/validation-base": "^0.2-alpha2",
+                "php": "^5.4 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/invocable-interface": "^0.1",
+                "dhii/php-cs-fixer-config": "^0.1",
+                "dhii/stringable-interface": "^0.1",
+                "phpunit/phpunit": "^4.8",
+                "psr/container": "^1.0",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Cache\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "An in-memory memoizer implementation.",
+            "time": "2018-04-03T13:41:36+00:00"
+        },
+        {
             "name": "dhii/php-cs-fixer-config",
             "version": "v0.1",
             "source": {
@@ -2143,6 +2440,108 @@
             ],
             "description": "A default PHP CS Fixer config implementation",
             "time": "2017-07-23T12:53:27+00:00"
+        },
+        {
+            "name": "dhii/set",
+            "version": "v0.1-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/set.git",
+                "reference": "84a9ebe4466c1f53fa5d2764eaf0d5fdbd0c99b3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/set/zipball/84a9ebe4466c1f53fa5d2764eaf0d5fdbd0c99b3",
+                "reference": "84a9ebe4466c1f53fa5d2764eaf0d5fdbd0c99b3",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/collections-interface": "^0.2-alpha4",
+                "dhii/exception": "^0.1-alpha4",
+                "dhii/i18n-helper-base": "^0.1",
+                "dhii/normalization-helper-base": "^0.1-alpha2",
+                "dhii/stringable-interface": "^0.1",
+                "php": "^5.4 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "^0.1",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Collection\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "A set implementation",
+            "time": "2018-04-11T12:53:23+00:00"
+        },
+        {
+            "name": "dhii/simple-cache-interface",
+            "version": "v0.1-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/simple-cache-interface.git",
+                "reference": "62659e4d9526e1b9854017e5d2f1e24db12f6b92"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/simple-cache-interface/zipball/62659e4d9526e1b9854017e5d2f1e24db12f6b92",
+                "reference": "62659e4d9526e1b9854017e5d2f1e24db12f6b92",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/data-container-interface": "^0.2-alpha2",
+                "dhii/stringable-interface": "^0.1",
+                "php": "^5.3 | ^7.0",
+                "psr/container": "^1.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "^4.8",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Cache\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "A simple cache standard inspired by PSR-16.",
+            "time": "2018-05-21T16:19:27+00:00"
         },
         {
             "name": "doctrine/instantiator",

@@ -39,7 +39,12 @@
         "ptrofimov/xpmock": "^1.1",
         "dhii/php-cs-fixer-config": "^0.1",
         "codeclimate/php-test-reporter": "<=0.3.2",
-        "mikey179/vfsStream": "^1.6@dev"
+        "mikey179/vfsStream": "^1.6@dev",
+        "dhii/di": "^0.2-alpha1",
+        "dhii/memoize-memory": "^0.2-alpha1",
+        "dhii/composite-container": "^0.1-alpha1",
+        "dhii/config": "^0.1-alpha2",
+        "dhii/set": "^0.1-alpha1"
     },
     "autoload": {
         "psr-4": {
