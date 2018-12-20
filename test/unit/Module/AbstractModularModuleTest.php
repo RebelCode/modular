@@ -155,6 +155,58 @@ class AbstractModularModuleTest extends TestCase
     }
 
     /**
+     * Tests the initialization method with added initial data.
+     *
+     * @since [*next-version*]
+     */
+    public function testInitInitialData()
+    {
+        $subject = $this->createInstance([
+            '_addSubModule',
+            '_getInitialConfig',
+            '_getInitialContainers',
+            '_getInitialFactories',
+            '_getInitialExtensions',
+        ]);
+        $reflect = $this->reflect($subject);
+
+        $subject->expects($this->once())->method('_getInitialConfig')->willReturn($config = [
+            uniqid('config1') => uniqid('config-values'),
+            uniqid('config2') => uniqid('config-values'),
+        ]);
+
+        $subject->expects($this->once())->method('_getInitialContainers')->willReturn($containers = [
+            uniqid('container1') => $this->getMockForAbstractClass('Psr\Container\ContainerInterface'),
+            uniqid('container2') => $this->getMockForAbstractClass('Psr\Container\ContainerInterface'),
+        ]);
+
+        $subject->expects($this->once())->method('_getInitialFactories')->willReturn($factories = [
+            uniqid('factory1') => function () {
+                return 'factory1';
+            },
+            uniqid('factory2') => function () {
+                return 'factory2';
+            },
+        ]);
+
+        $subject->expects($this->once())->method('_getInitialExtensions')->willReturn($extensions = [
+            uniqid('extension1') => function () {
+                return 'extension1';
+            },
+            uniqid('extension2') => function () {
+                return 'extension2';
+            },
+        ]);
+
+        $reflect->_init([]);
+
+        $this->assertEquals([$config], $reflect->subConfigs);
+        $this->assertEquals($containers, $reflect->subContainers);
+        $this->assertEquals($factories, $reflect->factories);
+        $this->assertEquals([$extensions], $reflect->extensions);
+    }
+
+    /**
      * Tests the run method to assert whether all sub modules are run.
      *
      * @since [*next-version*]

@@ -96,10 +96,10 @@ abstract class AbstractModularModule implements
     protected function _init($subModules)
     {
         $this->subModules    = [];
-        $this->subConfigs    = [];
-        $this->subContainers = [];
-        $this->factories     = [];
-        $this->extensions    = [];
+        $this->subConfigs    = array_filter([$this->_getInitialConfig()]);
+        $this->subContainers = array_filter($this->_getInitialContainers());
+        $this->factories     = array_filter($this->_getInitialFactories());
+        $this->extensions    = array_filter([$this->_getInitialExtensions()]);
 
         foreach ($subModules as $module) {
             $this->_addSubModule($module);
@@ -271,6 +271,54 @@ abstract class AbstractModularModule implements
     protected function _getModuleServiceKey(ModuleInterface $module)
     {
         return sprintf('%s_module', $module->getKey());
+    }
+
+    /**
+     * Retrieves the initial configs list, before any sub-modules are added.
+     *
+     * @since [*next-version*]
+     *
+     * @return array
+     */
+    protected function _getInitialConfig()
+    {
+        return [];
+    }
+
+    /**
+     * Retrieves the initial containers list, before any sub-modules are added.
+     *
+     * @since [*next-version*]
+     *
+     * @return ContainerInterface[]
+     */
+    protected function _getInitialContainers()
+    {
+        return [];
+    }
+
+    /**
+     * Retrieves the initial factories, before any sub-modules are added.
+     *
+     * @since [*next-version*]
+     *
+     * @return array
+     */
+    protected function _getInitialFactories()
+    {
+        return [];
+    }
+
+    /**
+     * Retrieves the initial extensions, before any sub-modules are added.
+     *
+     * @since [*next-version*]
+     *
+     * @return array
+     */
+    protected function _getInitialExtensions()
+    {
+        return [];
     }
 
     /**
