@@ -11,7 +11,6 @@ use Dhii\EventManager\Event;
 use Dhii\Event\EventFactoryInterface;
 use Dhii\Exception\CreateInvalidArgumentExceptionCapableTrait;
 use Dhii\Exception\CreateOutOfRangeExceptionCapableTrait;
-use Dhii\Factory\AbstractBaseCallbackFactory;
 use Dhii\I18n\StringTranslatingTrait;
 use Dhii\Util\Normalization\NormalizeStringCapableTrait;
 
@@ -20,7 +19,7 @@ use Dhii\Util\Normalization\NormalizeStringCapableTrait;
  *
  * @since [*next-version*]
  */
-class EventFactory extends AbstractBaseCallbackFactory implements EventFactoryInterface
+class EventFactory implements EventFactoryInterface
 {
     /*
      * Provides functionality for reading from any type of container.
@@ -118,19 +117,17 @@ class EventFactory extends AbstractBaseCallbackFactory implements EventFactoryIn
      *
      * @since [*next-version*]
      */
-    protected function _getFactoryCallback($config = null)
+    public function make($config = null)
     {
-        return function ($config = null) {
-            $name   = $this->_containerGet($config, static::K_CFG_NAME);
-            $params = $this->_containerGet($config, static::K_CFG_PARAMS);
-            $target = $this->_containerHas($config, static::K_CFG_TARGET)
-                ? $this->_containerGet($config, static::K_CFG_TARGET)
-                : null;
-            $propagation = $this->_containerHas($config, static::K_CFG_PROPAGATION)
-                ? $this->_containerGet($config, static::K_CFG_PROPAGATION)
-                : true;
+        $name   = $this->_containerGet($config, static::K_CFG_NAME);
+        $params = $this->_containerGet($config, static::K_CFG_PARAMS);
+        $target = $this->_containerHas($config, static::K_CFG_TARGET)
+            ? $this->_containerGet($config, static::K_CFG_TARGET)
+            : null;
+        $propagation = $this->_containerHas($config, static::K_CFG_PROPAGATION)
+            ? $this->_containerGet($config, static::K_CFG_PROPAGATION)
+            : true;
 
-            return new Event($name, $params, $target, $propagation);
-        };
+        return new Event($name, $params, $target, $propagation);
     }
 }
